@@ -1,0 +1,452 @@
+﻿<title>FORM ‘B’:- Application for Registration of Co-operative Societies</title>
+<section class="cus-background">
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Form B</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            @*<div class="col-lg-12">
+                <h2 class="text-primary">FORM ‘B’</h2>
+                <h5>Application for Registration of Co-operative Societies</h5>
+            </div>*@<!--end .col -->
+            <div class="col-lg-12">
+                <article class="margin-bottom-lg">
+                    <p class="lead">
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        @if (ViewBag.result == "1")
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        @if (ViewBag.result == "0")
+        {
+            <div class="alert alert-warning" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        <div class="card card-underline">
+            <div class="card-head">
+                <ul class="nav nav-tabs pull-right" data-toggle="tabs">
+                    @*<li class="active"><a href="#first6">FIRST TAB</a></li>*@
+                    <li class="active"><a href="#first6">Society Details</a></li>
+                    <li><a href="#second6">Managing Committee Members</a></li>
+                    <li><a href="#third6">List of Members</a></li>
+                    @*<li><a href="#second6">NO. TWO</a></li>
+                        <li><a href="#third6">THE THIRD</a></li>*@
+                </ul>
+                <header>
+                    <div class="col-lg-12 pull-right">
+                        <h5 class="text-primary">FORM ‘B’</h5>
+                        <h6>Application for Registration of Co-operative Societies</h6>
+                    </div>
+                </header>
+            </div>
+            <div class="card-body tab-content">
+                <div class="tab-pane active" id="first6">
+                    <form class="form form-validate" novalidate="novalidate" action="@Url.Action("Application", "Society")" accept-charset="utf-8" method="post">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col-md-6 form-group">
+                                        @Html.DropDownList("District", new SelectList(ViewBag.District as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "District", @class = "form-control", required = "required" })
+                                        <label for="district">1. Select District</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        @Html.DropDownList("ARCSOffice", new SelectList(Enumerable.Empty<SelectListItem>(), "ACRSCode", "ACRSName"),
+                                        "Select", new { id = "ARCSOffice", @class = "form-control", required = "required" })
+                                        <label for="ARCSOffice">2. ARCS Office</label>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" class="form-control" id="NameofProposedSociety" name="NameofProposedSociety" required>
+                                        <label for="NameofProposedSociety">3. Name of Proposed Society</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        @Html.DropDownList("ClassofSocietyandLiability", new SelectList(ViewBag.ClassOfSociety as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "ClassofSocietyandLiability", @class = "form-control", required = "required" })
+                                        <label for="ClassofSocietyandLiability">4. Class of Society and Liability</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        @Html.DropDownList("SubClassOfSociety", new SelectList(Enumerable.Empty<SelectListItem>(), "SocietySubClassCode", "SocietySubClassName"),
+                                        "Select", new { id = "SubClassOfSociety", @class = "form-control", required = "required" })
+                                        <label for="ARCSOffice">4.1 Sub Class Of Society</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="RegisteredAddress" name="RegisteredAddress" required>
+                                        <label for="RegisteredAddress">5. Registered Address</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="HouseNoSectorNoRoad" name="HouseNoSectorNoRoad" required>
+                                        <label for="HouseNoSectorNoRoad">5.1 House No. /Sector No. /Road</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="PostOffice" name="PostOffice" required>
+                                        <label for="PostOffice">5.2 Post Office</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="PostalCode" name="PostalCode" data-rule-number="true" maxlength="6" pattern="[0-9]{6}" required>
+                                        <label for="PostalCode">5.3 Postal Code</label>
+                                        <p class="help-block">Five digit zip code</p>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" class="form-control" id="AreaofOperation" name="AreaofOperation" required readonly>
+                                        <label for="AreaofOperation">6. Area of Operation</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="Mainobjects1" name="Mainobject1" required>
+                                        <label for="Mainobjects">7. Main objects</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="Mainobjects2" name="Mainobject2">
+                                        <label for="Mainobjects1">7.1 Main objects</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="Mainobjects3" name="Mainobject3">
+                                        <label for="Mainobjects2">7.2 Main objects</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="Mainobjects4" name="Mainobject4">
+                                        <label for="Mainobjects3">7.3 Main objects</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="Noofmemberspresent" name="Noofmemberspresent" data-rule-number="true" data-rule-range="[1,100]" maxlength="2" required>
+                                        <label for="Noofmemberspresent">8. No of members present</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        @Html.DropDownList("Occupation", new SelectList(ViewBag.Occupations as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "Occupation", @class = "form-control", required = "required" })
+                                        <label for="Occupation">9. Select Occupation</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="Categoryofsociety" name="Categoryofsociety">
+                                        <label for="Categoryofsociety">10. Category of society (if any)</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="Estimatedunsecureddebtsofmembers" name="Estimatedunsecureddebtsofmembers">
+                                        <label for="Estimatedunsecureddebtsofmembers">11. Estimated unsecured debts of members (in case of credit society)</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="AreaMortgagedbymembers" name="AreaMortgagedbymembers">
+                                        <label for="AreaMortgagedbymembers">12. Area Mortgaged by members (in case of credit society)</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="Valueofashare" name="Valueofashare" required>
+                                        <label for="Valueofashare">13. Value of a share</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="detailsofshares" name="detailsofshares" required>
+                                        <label for="detailsofshares">14. Capital with details of shares, deposits fee etc.</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="ModeofPayment" name="ModeofPayment" required>
+                                        <label for="ModeofPayment">15. Mode of Payment</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 text-right">
+                                <button class="btn btn-primary btn-success" id="Step1" type="submit">Save As Draft</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="second6">
+                    @Html.Partial("~/Views/Shared/_CommitteMembersDetails.cshtml")
+                </div>
+                <div class="tab-pane" id="third6">
+                    @Html.Partial("~/Views/Shared/_MemberDetails.cshtml")
+                </div>
+            </div>
+        </div>
+
+        @*<div class="card tabs-right style-default-light">
+                <ul id="mytabs" class="card-head nav nav-tabs text-center" data-toggle="tabs">
+                    <li class="active"><a href="#first6"><i class="fa fa-lg fa-user"></i><br /><h4>Society Details<br /><small>Save Basic Details</small></h4></a></li>
+                    <li><a href="#second6"><i class="fa fa-lg fa-list-ol"></i><br /><h4>Managing<br /><small>Committee Members</small></h4></a></li>
+                    <li><a href="#third6"><i class="fa fa-lg fa-plus-square-o"></i><br /><h4>List of Members<br /><small>Details</small></h4></a></li>
+                </ul>
+                <div class="card-body tab-content style-default-bright">
+                    <div class="tab-pane active" id="first6">
+                        <form class="form form-validate" novalidate="novalidate" action="@Url.Action("Application", "Society")" accept-charset="utf-8" method="post">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="col-md-6 form-group">
+                                            @Html.DropDownList("District", new SelectList(ViewBag.District as System.Collections.IEnumerable, "Value", "Text"),
+                                            "Select", new { id = "District", @class = "form-control", required = "required" })
+                                            <label for="district">1. Select District</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            @Html.DropDownList("ARCSOffice", new SelectList(Enumerable.Empty<SelectListItem>(), "ACRSCode", "ACRSName"),
+                                            "Select", new { id = "ARCSOffice", @class = "form-control", required = "required" })
+                                            <label for="ARCSOffice">2. ARCS Office</label>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" class="form-control" id="NameofProposedSociety" name="NameofProposedSociety" required>
+                                            <label for="NameofProposedSociety">3. Name of Proposed Society</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            @Html.DropDownList("ClassofSocietyandLiability", new SelectList(ViewBag.ClassOfSociety as System.Collections.IEnumerable, "Value", "Text"),
+                                            "Select", new { id = "ClassofSocietyandLiability", @class = "form-control", required = "required" })
+                                            <label for="ClassofSocietyandLiability">4. Class of Society and Liability</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            @Html.DropDownList("SubClassOfSociety", new SelectList(Enumerable.Empty<SelectListItem>(), "SocietySubClassCode", "SocietySubClassName"),
+                                            "Select", new { id = "SubClassOfSociety", @class = "form-control", required = "required" })
+                                            <label for="ARCSOffice">4.1 Sub Class Of Society</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="RegisteredAddress" name="RegisteredAddress" required>
+                                            <label for="RegisteredAddress">5. Registered Address</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="HouseNoSectorNoRoad" name="HouseNoSectorNoRoad" required>
+                                            <label for="HouseNoSectorNoRoad">5.1 House No. /Sector No. /Road</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="PostOffice" name="PostOffice" required>
+                                            <label for="PostOffice">5.2 Post Office</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="PostalCode" name="PostalCode" data-rule-number="true" maxlength="6" pattern="[0-9]{6}" required>
+                                            <label for="PostalCode">5.3 Postal Code</label>
+                                            <p class="help-block">Five digit zip code</p>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" class="form-control" id="AreaofOperation" name="AreaofOperation" required readonly>
+                                            <label for="AreaofOperation">6. Area of Operation</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="Mainobjects1" name="Mainobject1" required>
+                                            <label for="Mainobjects">7. Main objects</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="Mainobjects2" name="Mainobject2">
+                                            <label for="Mainobjects1">7.1 Main objects</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="Mainobjects3" name="Mainobject3">
+                                            <label for="Mainobjects2">7.2 Main objects</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="Mainobjects4" name="Mainobject4">
+                                            <label for="Mainobjects3">7.3 Main objects</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="Noofmemberspresent" name="Noofmemberspresent" data-rule-number="true" data-rule-range="[1,100]" maxlength="2" required>
+                                            <label for="Noofmemberspresent">8. No of members present</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            @Html.DropDownList("Occupation", new SelectList(ViewBag.Occupations as System.Collections.IEnumerable, "Value", "Text"),
+                                            "Select", new { id = "Occupation", @class = "form-control", required = "required" })
+                                            <label for="Occupation">9. Select Occupation</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="Categoryofsociety" name="Categoryofsociety">
+                                            <label for="Categoryofsociety">10. Category of society (if any)</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="Estimatedunsecureddebtsofmembers" name="Estimatedunsecureddebtsofmembers">
+                                            <label for="Estimatedunsecureddebtsofmembers">11. Estimated unsecured debts of members (in case of credit society)</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="AreaMortgagedbymembers" name="AreaMortgagedbymembers">
+                                            <label for="AreaMortgagedbymembers">12. Area Mortgaged by members (in case of credit society)</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="Valueofashare" name="Valueofashare" required>
+                                            <label for="Valueofashare">13. Value of a share</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="detailsofshares" name="detailsofshares" required>
+                                            <label for="detailsofshares">14. Capital with details of shares, deposits fee etc.</label>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <input type="text" class="form-control" id="ModeofPayment" name="ModeofPayment" required>
+                                            <label for="ModeofPayment">15. Mode of Payment</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 text-right">
+                                    <button class="btn btn-primary btn-success" id="Step1" type="submit">Save As Draft</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="second6">
+                        <div class="row">
+                            <div class="card">
+                                @Html.Partial("~/Views/Shared/_CommitteMembersDetails.cshtml")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="third6">
+                        <div class="row">
+                            <div class="card">
+                                @Html.Partial("~/Views/Shared/_MemberDetails.cshtml")
+                            </div>
+                        </div>
+                    </div><!--end .card -->
+                    <em class="text-caption">Application for Registration of Co-operative Societies under Section 3 & 4 of the Haryana Co-operative Societies Act, 1984 and Rule 4 of the Haryana Co-operative Societies Rules, 1989 As the undersigned hereby apply for the registration of a society, as proposed hereunder, under sections 7 and 8(1) (d) of the Act, and enclose herewith three copies of the bye-laws in accordance with Rule 5</em>
+                </div><!--end .section-body -->
+            </div>*@
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#District").change(function () {
+            var dID = $(this).val();
+            var e = document.getElementById("District");
+            var value = e.options[e.selectedIndex].text;
+            $("#AreaofOperation").val(value);
+            $.getJSON("/Account/BindARCSOffice", { DistrictCode: dID },
+                   function (data) {
+                       var select = $("#ARCSOffice");
+                       select.empty();
+                       select.append($('<option/>', {
+                           value: 0,
+                           text: "Select"
+                       }));
+                       $.each(data, function (index, itemData) {
+                           select.append($('<option/>', {
+                               value: itemData.Value,
+                               text: itemData.Text
+                           }));
+                       });
+                   });
+        });
+        var e = document.getElementById("District");
+        var value = e.options[e.selectedIndex].text;
+        if (value != "Select") {
+            $.getJSON("/Account/BindARCSOffice", { DistrictCode: value },
+            function (data) {
+                var select = $("#ARCSOffice");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select"
+                }));
+                $.each(data, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+            });
+        }
+    });
+
+    $(document).ready(function () {
+        $("#ClassofSocietyandLiability").change(function () {
+            debugger;
+            var dID = $(this).val();
+            $.getJSON("/Society/BindSubClassOfSociety", { SocietySubClassCode: dID },
+                   function (data) {
+                       var select = $("#SubClassOfSociety");
+                       select.empty();
+                       select.append($('<option/>', {
+                           value: 0,
+                           text: "Select"
+                       }));
+                       $.each(data, function (index, itemData) {
+                           select.append($('<option/>', {
+                               value: itemData.Value,
+                               text: itemData.Text
+                           }));
+                       });
+                   });
+        });
+    });
+
+    //$(document).ready(function () {
+    //    $('input.checkbox').on('change', function () {
+    //        $('input.checkbox').not(this).prop('checked', false);
+    //    });
+    //});
+
+    //function isChecked(checkbox, sub1) {
+    //    var button = document.getElementById(sub1);
+    //    if (checkbox.checked === true) {
+    //        Save.disabled = "";
+    //        $("#showNotification").hide();
+    //    } else {
+    //        Save.disabled = "disabled";
+    //    }
+    //}
+
+    //function isChecked(checkbox, sub1) {
+    //    Save.disabled = "disabled";
+    //    document.getElementById(sub1).disabled = !checkbox.checked;
+    //}
+
+    $(document).ready(function () {
+        var number = parseInt(@ViewBag.tabResult); //Accessing the number from the ViewBag
+        if (number != "NaN") {
+            if (number == 0) {
+                $('#mytabs a[href="#first6"]').tab('show');
+            }
+            if (number == 1) {
+                $('#mytabs a[href="#second6"]').tab('show');
+            }
+            if (number == 2) {
+                $('#mytabs a[href="#third6"]').tab('show');
+            }
+        }
+    });
+
+    $('.AadharNo').keyup(function () {
+        var name = $('.AadharNo').val();
+        if (name.length >= 12) {
+            var url = "/Society/ValidateAadharCard";
+            $.get(url, { input: name }, function (data) {
+                if (data == "true") {
+                    $('input[type="submit"]').removeAttr('disabled');
+                    $('#Save').removeAttr('disabled');
+                    $("#result").html("<span style='color:#228B22'>AadharNo is vaild.</span>");
+                    $("#divAadharNo").removeClass();
+                    $("#divAadharNo").addClass("col-md-6 form-group has-success has-feedback");
+                }
+                else {
+                    $("#result").html("<span style='color:#B22222'>AadharNo is not vaild.</span>");
+                    $("#divAadharNo").removeClass();
+                    $("#divAadharNo").addClass("col-md-6 form-group has-error has-feedback");
+                    $('#Save').attr('disabled', 'disabled');
+                }
+            });
+        }
+        else {
+            $('#Save').attr('disabled', 'disabled');
+        }
+    })
+
+    $('.AadharNo1').keyup(function () {
+        var name = $('.AadharNo1').val();
+        if (name.length >= 12) {
+            var url = "/Society/ValidateAadharCard";
+            $.get(url, { input: name }, function (data) {
+                if (data == "true") {
+                    $('input[type="submit"]').removeAttr('disabled');
+                    $('#btnFinal').removeAttr('disabled');
+                    $("#result1").html("<span style='color:#228B22'>AadharNo is vaild.</span>");
+                    $("#divAadharNo1").removeClass();
+                    $("#divAadharNo1").addClass("col-md-6 form-group has-success has-feedback");
+                }
+                else {
+                    $("#result1").html("<span style='color:#B22222'>AadharNo is not vaild.</span>");
+                    $("#divAadharNo1").removeClass();
+                    $("#divAadharNo1").addClass("col-md-6 form-group has-error has-feedback");
+                    $('#btnFinal').attr('disabled', 'disabled');
+                }
+            });
+        }
+        else {
+            $('#btnFinal').attr('disabled', 'disabled');
+        }
+    })
+</script>

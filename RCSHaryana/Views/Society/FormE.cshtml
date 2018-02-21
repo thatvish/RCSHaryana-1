@@ -1,0 +1,336 @@
+﻿<title>FORM ‘E’</title>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Receipt of Custodian of Books</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary">FORM E</h2>
+                <h5>Receipt of Custodian of Books</h5>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <article class="margin-bottom-lg">
+                    <p class="lead">
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        @if (ViewBag.result == "1")
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        @if (ViewBag.result == "0")
+        {
+            <div class="alert alert-warning" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        <div class="card tabs-right style-default-light">
+
+
+
+            <div class="card-body tab-content style-default-bright">
+                <div class="tab-pane active" id="first6">
+                    <div id="print-content">
+                        <form class="form form-validate" novalidate="novalidate" accept-charset="utf-8" method="get">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-body tab-content style-default-bright">
+                                            <p>
+                                                <h3>Receipt of Custodian of Books</h3>
+                                                I @ViewBag.SocietyMemberName
+                                                @ViewBag.RelationshipCode
+                                                @ViewBag.RelationshipMemberName
+                                                resident of
+                                                @ViewBag.Address
+                                                @ViewBag.HouseNo
+                                                @ViewBag.SectorStreet
+                                                @ViewBag.District
+                                                a do hereby certify that I have taken over the charge of the below listed books of
+                                                @ViewBag.SocietyName today,
+                                                the @ViewBag.DateCustodianBooksReceived and
+                                                I undertake that I shall produce them on demand to any of the persons
+                                                duly authorised in this behalf under the Haryana Cooperative Societies Act, Rules framed thereunder and the Bye-laws
+                                                of the society in the manner as has been laid down in the said Act, Rules and the bye-laws.
+                                                <br />
+                                                <br />
+                                                <br />
+                                                (List of books alongwith pages to be given)
+                                            </p>
+
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <table width="1000" border="1">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>S.no</td>
+                                                        <td><label> Document Name</label></td>
+                                                        <td><label> Checkbox</label> </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>1. </td>
+                                                        <td>Proceeding Book</td>
+                                                        <td><input type="checkbox" /></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2. </td>
+                                                        <td>Cash Book</td>
+                                                        <td><input type="checkbox" /></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3. </td>
+                                                        <td>Ledger Book</td>
+                                                        <td><input type="checkbox" /></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4. </td>
+                                                        <td>Member Register</td>
+                                                        <td><input type="checkbox" /></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5. </td>
+                                                        <td>Act S Rule</td>
+                                                        <td><input type="checkbox" /></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6. </td>
+                                                        <td>Bye-laws of society</td>
+                                                        <td><input type="checkbox" /></td>
+
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                            <p>
+                                                <br />
+                                                <br />
+                                                <br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                Signature ***impression of the custodian of the books<br />
+                                            </p>
+                                            <div class="col-md-6 form-group">
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <label>
+                                                    Signature of the witnesses
+                                                </label>
+                                                <br />
+                                                <br />
+                                                <p>
+                                                    1. ________________
+                                                
+                                                    <br />
+                                                    2. ________________
+                                                </p>
+                                                
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <label>
+                                                    Adress of the witnesses
+                                                </label>
+                                                <br />
+                                                <br />
+                                                <p>
+                                                    1. _________________<br />
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;_________________<br />
+                                                </p>
+                                                <p>
+                                                    2. _________________<br />
+                                                    &nbsp;&nbsp;&nbsp; _________________<br />
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <br /><br />
+                                                <p>
+                                                    Countersigned
+                                                </p>
+                                                <br />
+                                                <br />
+                                                <p>
+                                                    (President)<br /><br />
+                                                    Place__________________<br />
+                                                    Date __________________<br />
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="button" onclick="printDiv('print-content')" value="Print The Form" />
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div><!--end .card -->
+
+
+    <p>(Note: - Name and full address of the witnesses should be given. Any two promoter members of the society can act as witness).</p>
+
+
+
+
+
+    <!--end .section-body -->
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#District").change(function () {
+            var dID = $(this).val();
+            var e = document.getElementById("District");
+            var value = e.options[e.selectedIndex].text;
+            $("#AreaofOperation").val(value);
+            $.getJSON("/Account/BindARCSOffice", { DistrictCode: dID },
+                   function (data) {
+                       var select = $("#ARCSOffice");
+                       select.empty();
+                       select.append($('<option/>', {
+                           value: 0,
+                           text: "Select"
+                       }));
+                       $.each(data, function (index, itemData) {
+                           select.append($('<option/>', {
+                               value: itemData.Value,
+                               text: itemData.Text
+                           }));
+                       });
+                   });
+        });
+
+        var e = document.getElementById("ARCSOffice");
+        var value = e.options[e.selectedIndex].text;
+        if (value == "Select") {
+            var e = document.getElementById("District");
+            var DistrictValue = e.options[e.selectedIndex].value;
+            $.getJSON("/Account/BindARCSOffice", { DistrictCode: DistrictValue },
+            function (data) {
+                var select = $("#ARCSOffice");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select"
+                }));
+                $.each(data, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+            });
+        }
+    });
+
+    $(document).ready(function () {
+        $("#ClassofSocietyandLiability").change(function () {
+            var dID = $(this).val();
+            $.getJSON("/Society/BindSubClassOfSociety", { SocietySubClassCode: dID },
+                   function (data) {
+                       var select = $("#SubClassOfSociety");
+                       select.empty();
+                       select.append($('<option/>', {
+                           value: 0,
+                           text: "Select"
+                       }));
+                       $.each(data, function (index, itemData) {
+                           select.append($('<option/>', {
+                               value: itemData.Value,
+                               text: itemData.Text
+                           }));
+                       });
+                   });
+        });
+    });
+
+    $(document).ready(function () {
+        $('input.checkbox').on('change', function () {
+            $('input.checkbox').not(this).prop('checked', false);
+        });
+    });
+
+    function isChecked(checkbox, sub1) {
+        var button = document.getElementById(sub1);
+        if (checkbox.checked === true) {
+            Save.disabled = "";
+            $("#showNotification").hide();
+        } else {
+            Save.disabled = "disabled";
+        }
+    }
+
+    function isChecked(checkbox, sub1) {
+        Save.disabled = "disabled";
+        document.getElementById(sub1).disabled = !checkbox.checked;
+    }
+
+    $(document).ready(function () {
+        var number = parseInt(@ViewBag.tabResult); //Accessing the number from the ViewBag
+        if (number != "NaN") {
+            if (number == 0) {
+                $('#mytabs a[href="#first6"]').tab('show');
+            }
+            if (number == 1) {
+                $('#mytabs a[href="#second6"]').tab('show');
+            }
+            if (number == 2) {
+                $('#mytabs a[href="#third6"]').tab('show');
+            }
+        }
+    });
+
+    function ValidateAadharCard(textAadharCard, btnStatus) {
+        debugger;
+        var AadharCard = $(this).val();
+        var button = document.getElementById(sub1);
+        $.getJSON("/Society/ValidateAadharCard", { AadharCard: AadharCard },
+               function (data) {
+                   if (data == true) {
+                       Save.disabled = "";
+                   }
+                   else {
+                       Save.disabled = "disabled";
+                   }
+                   alert(data);
+               });
+    }
+
+
+    function printDiv(divName)
+    {
+
+        var printContents = document.getElementById(divName).innerHTML;
+        w=window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+</script>

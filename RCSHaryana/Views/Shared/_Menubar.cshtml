@@ -1,0 +1,64 @@
+﻿<script>
+    $(document).ready(function () {
+        $('.gui-controls li a').click(function (e) {
+            $('.gui-controls li.active').removeClass('active');
+            var $parent = $(this).parent();
+            $parent.addClass('active');
+           // e.preventDefault();
+        });
+    });
+</script>
+<div id="menubar" class="menubar-inverse ">
+    <div class="menubar-fixed-panel">
+        <div>
+            <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <div class="expanded">
+            <a href="@Url.Action("Society", "Application")">
+                <span class="text-lg text-bold text-primary ">RCS&nbsp;HARYANA</span>
+            </a>
+        </div>
+    </div>
+    <div class="menubar-scroll-panel">
+        <!-- BEGIN MAIN MENU -->
+        <ul id="main-menu" class="gui-controls">
+            <!-- BEGIN DASHBOARD -->
+            <li>
+                <a href="">
+                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li class="gui-folder">
+                <a>
+                    <div class="gui-icon"><span class="glyphicon glyphicon-list-alt"></span></div>
+                    <span class="title">Forms</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="@Url.Action("Application", "Society")">
+                            <span class="title">Form B</span>
+                        </a>
+                    </li>
+                    <li><a href="@Url.Action("Application", "Society")"><span class="title">Form C</span></a></li>
+                    <li><a href="@Url.Action("Application", "Society")"><span class="title">Form D</span></a></li>
+                    <li><a href=""><span class="title">Form E</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Setting</span>
+                </a>
+            </li>
+        </ul><!--end .main-menu -->
+        <!-- END MAIN MENU -->
+        <div class="menubar-foot-panel">
+            <small class="no-linebreak hidden-folded">
+                <span class="opacity-75">Copyright &copy; 2018</span> <strong>NIC</strong>
+            </small>
+        </div>
+    </div><!--end .menubar-scroll-panel-->
+</div>
