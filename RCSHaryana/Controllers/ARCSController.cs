@@ -1171,7 +1171,7 @@ namespace RCSHaryana.Controllers
             }
             catch (Exception ex)
             {
-                //return RedirectToAction("Error", "Unauthorised");
+         //return RedirectToAction("Error", "Unauthorised");
                 throw ex;
             }
         }
