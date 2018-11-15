@@ -1,0 +1,104 @@
+﻿<title> Form ‘L’</title>
+<section>
+    <div class="section-body contain-lg">
+        <div class="card tabs-right style-default-light">
+            <div id="maindiv">
+                <p align="center">FORM L</p>
+                <p align="center">List of Members</p>
+                <table class="table-bordered dataTables_full table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Member Img
+                            </th>
+                            <th>
+                                Name & Father's name
+                            </th>
+                            <th>
+                                Age
+                            </th>
+                            <th>
+                                Occup
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Share
+                            </th>
+                            <th>
+                                Name of Nominee & Age
+                            </th>
+                            <th>
+                                Relation wd Nominee
+                            </th>
+                            <th>
+                                Sign
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.FormL)
+                        {
+                            <tr>
+                                <td>
+                                    <span><img src="@item.Fullpath" width="52px;" height="75px;" /></span>
+                                </td>
+                                <td>
+                                    <span>@item.MemberName</span>
+                                    <span>@item.RelationshipName</span>
+                                    <br />
+                                    <span>@item.FatherName</span>
+                                </td>
+                                <td>
+                                    <span>@item.Age</span>
+                                </td>
+                                <td>
+                                    <span>@item.OccupationName</span>
+                                </td>
+                                <td>
+                                    <span>@item.Address1</span>
+                                    <br />
+                                    <span>@item.Address2</span>
+                                    <br />
+                                    <span>@item.PostOffice</span>
+                                    <br />
+                                    <span>@item.DistrictName</span>
+                                    <br />
+                                    <span>@item.Pin</span>
+                                </td>
+                                <td>
+                                    <span>@item.NoOfShares</span>
+                                </td>
+                                <td>
+                                    <span>@item.NomineeName</span><br />
+                                    <span>@item.NomineeAge</span>
+                                </td>
+                                <td>
+                                    <span>@item.RelationWithMember</span>
+                                </td>
+                                <td>
+                                    <span>&nbsp;</span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                <em>Form L is to be compulsorily attested by notary before uploading.</em>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">                
+                <a href="@Url.Action("Report", "Society",new {id= "PDF",value="FormL"})" class="btn btn btn-primary" target="_blank">Print & Download</a>
+            </div>
+        </div>
+    </div>
+    <!--end .section-body -->
+</section>
+
+<script type="text/javascript">
+    function exportpdf() {
+        $("#maindiv").print();
+    }
+</script>

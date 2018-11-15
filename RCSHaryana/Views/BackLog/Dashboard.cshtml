@@ -1,0 +1,315 @@
+﻿<style>
+    .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .col-md-6 {
+        font-weight: normal;
+    }
+    #dvLoading {
+        background: #000 url('../../images/giphy.gif') no-repeat center center;
+        height: 100px;
+        width: 100px;
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        margin: -25px 0 0 -25px;
+    }
+</style>
+
+
+<script src="~/scripts/js/Backlog.js"></script>
+@*<script src="~/scripts/js/DashboardSocietyListForOfficers.js"></script>*@
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<section>
+    <form class="form form-validate" novalidate="novalidate" autocomplete="off" action="@Url.Action("Dashboard", "BackLog")" accept-charset="utf-8" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="card">
+                @if (Convert.ToInt32(Session["SocietyStatus"]) > 1)
+                {
+                    <div class="card-head style-primary">
+                        <marquee scrollamount="22" style="text-align:center"><header style="text-align:center">Application Forwarded to ARCS</header></marquee>
+                    </div>
+                }
+                <br />
+                <div class="card-head style-primary">
+                    <header style="text-align:center">Details</header>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input pattern="[a-zA-Z0-9/(),.-'' ]+" type="text" class="form-control" id="backlogSocietyName" name="backlogSocietyName" autocomplete="off" required>
+                        <label for="Address">1. Society Name <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" readonly class="form-control" id="backlogRID" name="backlogRID" autocomplete="off" required>
+                        <label for="Address">2. Old Registration No. <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input type="text" class="form-control" id="backlogDateofReg" name="backlogDateofReg" autocomplete="off" required>
+                        <label for="backlogDateofReg">3. Date of Registration <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input pattern="[a-zA-Z0-9/()]+" type="text" class="form-control" id="backlogSocietyTrans" readonly name="backlogSocietyTrans" autocomplete="off" required>
+                        <label for="Address">4. Computer Generated Id <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        @Html.DropDownList("SubClassOfSociety", new SelectList(ViewBag.lstARCSCode as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "SubClassOfSociety", @class = "form-control", required = "required" })
+                        <label for="ARCSOffice">5 Kind Of Society <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        @Html.DropDownList("CommunityofSociety", new SelectList(ViewBag.CommunityofSociety as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "CommunityofSociety", @class = "form-control", required = "required" })
+                        <label for="Address">6. Category of Society <small>(e.g. General/Employees/Ex Servicemen etc.)</small>  <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" class="form-control" id="backlogAreaopt" name="backlogAreaopt" autocomplete="false" required>
+                        <label for="Address">7. Area of Operation <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input type="text" class="form-control" title=" click here to Fill Last General body meeting" id="backlogBodyMeeting" name="backlogBodyMeeting" autocomplete="false" readonly required>
+                        <label for="Address">8. Date of Last General body meeting <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input type="text" class="form-control" title=" click here to Fill Last Date of Audit" id="lastauditdatetime" name="lastauditdatetime" autocomplete="false" readonly required>
+                        <label for="Address">9. Last Date of Audit <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input type="text" class="form-control" title="click here to fill Last Date of Inspection" id="datetimeInspection" name="datetimeInspection" autocomplete="false" readonly required>
+                        <label title="Fill Last Date of Inspection" for="Address">10. Last Date of Inspection <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    @*<div class="col-md-6 form-group">
+                            <br />
+                            <input pattern="[0-9/(),.-\s]+" required data-rule-digits="true" type="number" class="form-control" id="backlogDateAmountFee" name="backlogDateAmountFee" autocomplete="false">
+                            <label for="Address">11. Date of Deposit of Audit Fees(Last) <span style="color:red;"><strong>*</strong></span></label>
+                        </div>*@
+                    <div class="col-md-6 form-group">
+                        <br />
+                        <input pattern="[0-9/(),.-\s]+" required data-rule-digits="true" type="number" class="form-control" id="backlogAmountFee" name="backlogAmountFee" autocomplete="false">
+                        <label for="Address">11. Amount of Audit Fees Deposited(Last) <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-12 form-group text-right">
+                        <button type="submit" class="btn btn-primary btn-success" id="adas">Submit</button>
+                        @*<button class="btn btn-primary btn-success" id="Step1" onclick="return Add();" type="submit">Save As Draft</button>*@
+                    </div>
+                </div>
+            </div>
+        </div><!--end .row -->
+    </form>
+    <div id="dvLoading" style="display:none"></div>
+</section>
+<style type="text/css">
+    .row {
+        margin-top: 94px;
+    }
+</style>
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    $(document).ready(function () {
+         if (@Convert.ToInt32(Session["SocietyStatus"]) != 0)
+            {
+             $('#adas').attr('disabled', 'disabled');
+             $('#CommunityofSociety').attr('disabled', 'disabled');
+            }
+        $("#backlogSocietyName").val('@ViewBag.SocietyName');
+        $("#backlogRID").val('@ViewBag.RegId');
+        $("#backlogDateofReg").val('@ViewBag.DateofRegistration');
+        $("#backlogSocietyTrans").val('@ViewBag.SocietyTransId');
+        $("#backlogAreaopt").val('@ViewBag.BackLogAreaOfOperation');
+        $("#lastauditdatetime").val('@ViewBag.LastDateAudit');
+        $("#datetimeInspection").val('@ViewBag.LastDateInspection');
+        $("#backlogBodyMeeting").val('@ViewBag.GeneralBodyMeeting');
+        $("#backlogAmountFee").val('@ViewBag.AmountOfAuditFees');
+        $("#CommunityofSociety").val('@ViewBag.CommunityTypeId');
+        $("#SubClassOfSociety").val('@ViewBag.KindSocietyTypeId');
+
+        $(function () {
+            $("#datetime,#datetimeInspection,#backlogBodyMeeting,#lastauditdatetime").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '-100:+100',
+                dateFormat: 'dd-mm-yy',
+                showOn: 'focus',
+                maxDate: 0,
+                showButtonPanel: true,
+                closeText: 'Clear', // Text to show for "close" button
+                onClose: function () {
+                    var event = arguments.callee.caller.caller.arguments[0];
+                    // If "Clear" gets clicked, then really clear it
+                    if ($(event.delegateTarget).hasClass('ui-datepicker-close')) {
+                        $(this).val('');
+                    }
+                }
+            });
+        });
+            if ('@TempData["Success"]' == "Success")
+            {
+                alert("Your Password has been successfully changed.");
+        }
+        if ('@TempData["AuditSuccess"]' == "Success")
+            {
+                alert("BackLog Details has been successfully changed.");
+        }
+    });
+
+    $(function () {
+        $("#SubClassOfSociety").change(function () {
+            if ($('#SubClassOfSociety').val() === "35") {
+                $('#myModal101').modal('show');
+            }
+        });
+    });
+    history.go(1);
+
+    $("#adas").click(function () {
+        var isvalid = "0";
+        if ($("#backlogBodyMeeting").val() == "") {
+            var isvalid = "2";
+            $('#backlogBodyMeeting').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#backlogBodyMeeting').css('border-color', 'green');
+        }
+
+        if ($("#lastauditdatetime").val() == "") {
+            var isvalid = "2";
+            $('#lastauditdatetime').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#lastauditdatetime').css('border-color', 'green');
+        }
+        if ($("#backlogAreaopt").val() == "") {
+            var isvalid = "2";
+            $('#backlogAreaopt').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#backlogAreaopt').css('border-color', 'green');
+        }
+        if ($("#backlogAmountFee").val() == "") {
+            var isvalid = "2";
+            $('#backlogAmountFee').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#backlogAmountFee').css('border-color', 'green');
+        }
+        
+        if ($("#datetimeInspection").val() == "") {
+            var isvalid = "2";
+            $('#datetimeInspection').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#datetimeInspection').css('border-color', 'green');
+        }
+        if ($('#SubClassOfSociety').val() == null || $('#SubClassOfSociety').val() == "")
+        {
+            var isvalid = "2";
+            $('#SubClassOfSociety').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#SubClassOfSociety').css('border-color', 'green');
+        }
+        if ($('#CommunityofSociety').val() == null || $('#CommunityofSociety').val() == "") {
+            var isvalid = "2";
+            $('#CommunityofSociety').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#CommunityofSociety').css('border-color', 'green');
+        }
+        if ($("#backlogSocietyName").val() == "") {
+            var isvalid = "2";
+            $('#backlogSocietyName').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#backlogSocietyName').css('border-color', 'green');
+        }
+        if ($("#backlogDateofReg").val() == "") {
+            var isvalid = "2";
+            $('#backlogDateofReg').css('border-color', 'Red');
+            event.preventDefault();
+        }
+        else {
+            $('#backlogDateofReg').css('border-color', 'green');
+        }       
+        if (isvalid === "2") { alert("Fill the Mandatory Field First.") }
+        if (isvalid === "0") { AddBacklogAuditDetail(); }
+    });
+
+</script>
+
+<div class="modal fade cus-modal-div" id="myModal101" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Add Kind of Society</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form form-validate" novalidate="novalidate" action="@Url.Action("AddKindSociety", "BackLog")" accept-charset="utf-8" method="post">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="Value" name="Value">
+                                    <label for="Mainobjects">Kind of Society<span style="color:red;"><strong>*</strong></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="btnAdd">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $("#backlogDateofReg").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '-100:+0',
+                dateFormat: 'dd-mm-yy',
+                showOn: 'focus',
+                showButtonPanel: true,
+                closeText: 'Clear', // Text to show for "close" button
+                onClose: function () {
+                    var event = arguments.callee.caller.caller.arguments[0];
+                    // If "Clear" gets clicked, then really clear it
+                    if ($(event.delegateTarget).hasClass('ui-datepicker-close')) {
+                        $(this).val('');
+                    }
+                }
+            });
+        });
+    });
+</script>

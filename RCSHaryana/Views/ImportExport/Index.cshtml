@@ -1,0 +1,16 @@
+﻿@model RCSEntities.ImportExport
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Import Excel</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <h4>@ViewBag.Result</h4>
+        @using (Html.BeginForm("Index", "ImportExport", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input class="dz-upload" type="file" name="postedFile" />
+            <input type="submit" value="Import" />
+        }
+    </div>
+</section>

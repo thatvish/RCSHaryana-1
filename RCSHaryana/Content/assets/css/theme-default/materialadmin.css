@@ -573,6 +573,9 @@ hr.ruler-xl {
 hr.ruler-xxl {
   margin: 56px 0;
 }
+.cus-section-tabs {
+    margin-top: 140px !important;
+}
 .img-backdrop {
   position: absolute;
   left: 0;
@@ -2094,6 +2097,7 @@ body:not(.menubar-first) .menubar-fixed-panel {
 .menubar-inverse .gui-controls li .title {
   color: rgba(255, 255, 255, 0.55);
   text-shadow: 0 1px 2px #000000;
+  font-size: 18px;
 }
 .menubar-inverse .gui-controls li > a:hover .title {
   color: #ffffff;
@@ -2450,6 +2454,7 @@ section.section-account .img-circle {
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   vertical-align: baseline;
+  font-size: 16px;
 }
 .table thead {
   opacity: 0.75;
@@ -2700,14 +2705,14 @@ label {
     border-top: none;
     border-bottom-color: rgba(12, 12, 12, 0.12);
     background: transparent;
-    color: #0c0c0c;
+    color: #616263;
     font-size: 18px;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 .cus-header img.img-responsive {
     width: 100%;
-    max-height: 120px;
+    max-height: 100px;
 }
 .form-control.placeholder {
   color: #969c9c;
@@ -3948,7 +3953,7 @@ fieldset[disabled] .btn {
     font-family: sans-serif;
 }
 .form-group .form-control ~ label, .form-group .form-control ~ .form-control-line {
-     color: #333 !important;
+     color: #0aa89e !important;
     opacity: 0.9 !important;
     font-weight: bold;
     font-size: 14px;
@@ -4862,6 +4867,7 @@ li.dropdown-progress .progress {
 .tabs-left > .nav-tabs > li > a {
   border-bottom: none;
   border-right: 2px solid transparent;
+  font-size: 15px;
 }
 .tabs-left > .nav-tabs > li > a:hover,
 .tabs-left > .nav-tabs > li > a:focus {
@@ -7218,7 +7224,8 @@ sub.badge {
 /********************************/
 .fade-carousel .slides .slide-1, 
 .fade-carousel .slides .slide-2,
-.fade-carousel .slides .slide-3 {
+.fade-carousel .slides .slide-3,
+.fade-carousel .slides .slide-4 {
   height: 500px;
   background-size: cover;
   background-position: center center;
@@ -7226,12 +7233,19 @@ sub.badge {
 }
 .fade-carousel .slides .slide-1 {
     background-image: url('../../img/1.png');
+    background-size: 100% 100%;
 }
 .fade-carousel .slides .slide-2 {
   background-image: url('../../img/5.png');
+  background-size: 100% 100%;
 }
 .fade-carousel .slides .slide-3 {
+  background-image: url('../../img/6.png');
+  background-size: 100% 100%;
+}
+.fade-carousel .slides .slide-4 {
   background-image: url('../../img/4.png');
+  background-size: 100% 100%;
 }
 .cus-slider-div .carousel-indicators {
 	bottom: 15px;

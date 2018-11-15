@@ -1,0 +1,145 @@
+﻿<title>FORM II</title>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">CERTIFICATE OF REGISTRATION</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary" style="text-align:center">FORM II</h2>
+                <h5 style="text-align:center">CERTIFICATE OF REGISTRATION</h5>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <article class="margin-bottom-lg">
+                    <p class="lead">
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        @if (ViewBag.result == "1")
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        @if (ViewBag.result == "0")
+        {
+            <div class="alert alert-warning" role="alert">
+                @ViewBag.show
+            </div>
+        }
+    </div>
+    <div class="card card-underline">
+        <div class="card-body">
+            <div class="card tabs-right style-default-light">
+                <div class="card-body tab-content style-default-bright">
+                    <div class="tab-pane active" id="first6">
+                        <div id="print-content">
+                            <div class="col-lg-12">
+                                <h5 align="center" class="Bold">FORM II</h5>
+                                <p align="center">(See Rule 7)</p>
+                                <h5 align="center" class="Bold">CERTIFICATE OF REGISTRATION</h5>
+                            </div>
+                            <div class="col-lg-2"><p>&nbsp;</p></div>
+                            <div class="col-lg-8">
+                                <p>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    I, hereby certify that pursunant to the provisions of the Haryana Cooperative
+
+                                    Societies Act, 1984, <span style="font-weight: bold" ;> @ViewBag.SocietyName @ViewBag.Address1 @ViewBag.Address2
+                                    @ViewBag.District </span> has this day been registered at No. <span style="font-weight: bold" ;> @ViewBag.SocietyTransID.  </span>
+</p>
+                            </div>
+                            <div class="col-lg-12" align="center">
+                                <p class="midtext" align="center">Given under my hand and seal this @ViewBag.DateofApprovalbyARCS</p>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                <div class="col-lg-4">
+                                    <p class="col-md-6">1. Signature :</p>
+                                </div>
+                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                <div class="col-lg-4">
+                                    <p class="col-md-6">sign</p>
+                                </div>
+
+                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                <div class="col-lg-6">
+                                    <p class="col-md-6">2. Name of the Registering Authority :</p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <p class="col-md-6">name</p>
+                                </div>
+
+                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                <div class="col-lg-4">
+                                    <p class="col-md-6">3. Rank :</p>
+                                </div>
+                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                <div class="col-lg-4">
+                                    <p class="col-md-6">Assistant Registrar Cooperative Societies @ViewBag.District</p>
+                                </div>
+
+                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                <div class="col-lg-4">
+                                    <p class="col-md-6">4. Address :</p>
+                                </div>
+                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                <div class="col-lg-4">
+                                    <p class="col-md-6"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end .card -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <a href="@Url.Action("Report", "Society",new {id= "PDF",value="Certificate"})" class="btn btn btn-primary" target="_blank">Print & Download</a>
+        </div>
+        </div>
+
+        @*<div class="col-lg-6"><input type="button" class="btn btn btn-primary " onclick="printDiv('print-content')" value="Print The Form" /></div>
+            <div class="col-lg-6 text-right">
+                @using (Html.BeginForm("Export", "Society", FormMethod.Post))
+            {
+                    <input type="hidden" name="GridHtml" />
+                    <input type="hidden" name="FormName" />
+                    <input class="btn btn btn-primary" type="submit" id="btnSubmit" value="Download" />
+                }
+            </div>*@
+
+</section>
+<script type="text/javascript">
+
+    $("#Downlaod").click(function () {
+        var url = "/ARCS/createreport_BP";
+        $.get(url, function (data) {
+
+        });
+    });
+
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("input[name='GridHtml']").val($("#print-content").html());
+            $("input[name='FormName']").val("RegistrationCertificate");
+        });
+    });
+</script>
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w = window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+</script>

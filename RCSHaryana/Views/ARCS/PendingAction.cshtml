@@ -1,0 +1,283 @@
+﻿<script src="~/scripts/js/ListOfManagingCommitteeMembersForOfficers.js"></script>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Society Details</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <div class="card tabs-left style-default-light">
+            <!-- BEGIN SEARCH BAR -->
+            <div class="card-body style-primary no-y-padding">
+                <form class="form form-inverse" accept-charset="utf-8" method="post">
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-content">
+                                <div class="form-control-line"></div>
+                                @Html.DropDownList("SocietyList", new SelectList(ViewBag.lstSL as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "SocietyList", @class = "form-control", required = "required" })
+                            </div>
+                            <div class="input-group-btn">
+                                <button id="btnSearch" class="btn btn-floating-action btn-default-bright" onclick="BindAllSocietyDetailsForOfficers();" type="button"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <ul class="card-head nav nav-tabs tabs-accent" data-toggle="tabs">
+                <li class="active"><a href="#SoceityDetails">Soceity Details</a></li>
+                @*<li><a href="#CommitteeMembers">Committee Members</a></li>*@
+                <li><a href="#ListofMembers">List of Members</a></li>
+                <li><a href="#ByLaws" id="ShowViewDocs">Dcouments</a></li>
+                <li><a href="#Forward">Action</a></li>
+            </ul>
+            <div id="mytabs" class="card-body tab-content style-default-bright">
+                @if (ViewBag.result == "1")
+                {
+                    <div class="alert alert-success" role="alert">
+                        @ViewBag.show
+                    </div>
+                }
+                @if (ViewBag.result == "0")
+                {
+                    <div class="alert alert-warning" role="alert">
+                        @ViewBag.show
+                    </div>
+                }
+                <div class="tab-pane active" id="SoceityDetails">
+                    @Html.Partial("~/Views/Shared/_SocietyDetailsForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="CommitteeMembers">
+                    @Html.Partial("~/Views/Shared/_ListandDetailsOfCommitteeMembersForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="ListofMembers">
+                    @Html.Partial("~/Views/Shared/_listOfSocietyMembersForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="ByLaws">
+                    @Html.Partial("~/Views/Shared/_ViewDocsForOfficers.cshtml")
+                    @*<div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Docs Name
+                                    </th>
+                                    <th>
+                                        View
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody">
+                                <tr>
+                                    <td>
+                                        Form L
+                                    </td>
+                                    <td>
+                                        <a href="~/ViewPDF.aspx?FormType=1" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Form C
+                                    </td>
+                                    <td>
+                                        <a href="~/ViewPDF.aspx?FormType=2" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Form D
+                                    </td>
+                                    <td>
+                                        <a href="~/ViewPDF.aspx?FormType=3" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Form E
+                                    </td>
+                                    <td>
+                                        <a href="~/ViewPDF.aspx?FormType=4" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Form F
+                                    </td>
+                                    <td>
+                                        <a href="~/ViewPDF.aspx?FormType=6" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Form G
+                                    </td>
+                                    <td>
+                                        <a href="~/ViewPDF.aspx?FormType=7" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Bye-Laws
+                                    </td>
+                                    <td>
+                                        <a href="~/ViewPDF.aspx?FormType=10" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Bank Receipt
+                                    </td>
+                                    <td>
+                                        <a href="~/ViewPDF.aspx?FormType=5" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!--end .table-responsive -->
+                </div><!--end .card-body -->
+            </div><!--end .card -->
+        </div>*@
+                </div>
+                <div class="tab-pane" id="Forward">
+                    <form class="form form-validate" novalidate="novalidate" action="@Url.Action("PendingAction", "ARCS")" accept-charset="utf-8" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Remark By Inspector
+                                                    </th>
+                                                    <th>
+                                                        Remark Date
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="tblBindRemark"></tbody>
+                                        </table>
+                                    </div><!--end .table-responsive -->
+                                    <div class="col-md-12 form-group">
+                                        <textarea pattern="[a-zA-Z0-9\s]+" rows="3" class="form-control" id="ARCSRemarks" name="ARCSRemarks" required placeholder="Remarks"></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.DropDownList("Action", new List<SelectListItem>
+                                                 { new SelectListItem { Text = "Approve", Value = "3"},
+                                                   new SelectListItem { Text = "Hearing Date", Value = "7"},
+                                                   new SelectListItem { Text = "Reject", Value = "1"},
+                                                   }, "Select", new { id = "Action", @class = "form-control", required = "required" })
+
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <div class="input-group date" data-provide="datepicker">
+                                            <input id="datetime" type="date" name="HearingDate" class="form-control">
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 form-group">
+                                        <button id="btnForword" class="btn btn-primary" disabled type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('.datepicker').datepicker();
+
+    var e = document.getElementById("Action");
+    var SocietyTransID = e.options[e.selectedIndex].value;
+
+    $(document).ready(function () {
+        $("#Action").change(function () {
+            //debugger;
+            var dID = $(this).val();
+            if (dID == 7) {
+                //document.getElementById("datetime").disabled = false;
+            }
+            else {
+                //document.getElementById("datetime").disabled = true;
+            }
+        });
+    });
+    $('#ShowViewDocs,#btnSearch').click(function () {
+        //debugger;
+        $.ajax({
+            url: '/ARCS/ViewFormDocs/',
+            type: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "html",
+            success: function (data) {
+                //alert(JSON.stringify(result));
+                $('#ByLaws').html(data);
+            },
+            error: function (errormessage) {
+                //alert(errormessage.responseText);
+            }
+        });
+    })
+    $(document).ready(function () {
+        var number = parseInt(@ViewBag.tabResult); //Accessing the number from the ViewBag
+        if (number != "NaN") {
+            if (number == 5) {
+                //alert("Hello");
+                $('#mytabs a[href="#Forward"]').tab('show');
+            }
+        }
+    });
+
+</script>
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+    $('#btnSearch').click(function () {
+        //debugger;
+        loadremark();
+    });
+    function loadremark() {
+        var e = document.getElementById("SocietyList");
+        var SocietyTransID = e.options[e.selectedIndex].value;
+        $.ajax({
+            url: "/ARCS/SocietyMemberRemark/",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: { SocietyTransID }, 
+            success: function (result) {
+                var html = '';
+                $.each(result, function (key, item) {
+                    var getDate = item.Date
+                    var date = new Date(parseInt(getDate.substr(6)));
+                    var month = date.getMonth() + 1;
+                    html += '<tr>';
+                    html += '<td>' + item.Remarks + '</td>';
+                    html += '<td>' + date.getDate() + '/' + month + '/' + date.getFullYear() + '</td>';
+                    html += '</tr>';
+                });
+                $('.tblBindRemark').html(html);
+            },
+            error: function (errormessage) {
+                //alert(errormessage.responseText);
+            }
+        });
+    }
+</script>

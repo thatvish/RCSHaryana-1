@@ -1,0 +1,295 @@
+﻿<title>FORM ‘E’</title>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Receipt of Custodian of Books</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary">FORM E</h2>
+                <h5>Receipt of Custodian of Books</h5>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <article class="margin-bottom-lg">
+                    <p class="lead">
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        <div class="card-body tab-content style-default-bright">
+            <div class="tab-pane active" id="first6">
+                <div id="print-content">
+                    <div class="row">
+                        <p align="center">
+                            Form 'E'
+                        </p>
+                        <p align="center">
+                            Receipt of Custodian of Books
+                        </p>
+                        <p>
+                            I @ViewBag.SocietyMemberName
+                            @ViewBag.RelationshipName
+                            @ViewBag.RelationshipMemberName
+                            resident of
+                            @ViewBag.Address 
+                            @ViewBag.HouseNo
+                            @ViewBag.SectorStreet
+                            District 
+                            @ViewBag.District
+                            a do hereby certify that I have taken over the charge of the below listed books of
+                            @ViewBag.SocietyName today,
+                            @DateTime.Now.ToString("dd/MM/yyyy") and
+                            I undertake that I shall produce them on demand to any of the persons
+                            duly authorised in this behalf under the Haryana Cooperative Societies Act, Rules framed thereunder and the Bye-laws
+                            of the society in the manner as has been laid down in the said Act, Rules and the bye-laws.
+                        </p>
+                        <p>
+                            (List of books alongwith pages to be given)
+                        </p>
+                        <form id="frmFormE" class="form floating-label" autocomplete="off" action="@Url.Action("FormE", "Society")" accept-charset="utf-8" method="post">
+                            <div class="col-md-12 form-group">
+                                <table class="table-responsive" width="700px;">
+                                    <tr>
+                                        <td>1. </td>
+                                        <td>Proceeding Book</td>
+                                        <td>
+                                            @if (ViewBag.FormEValue == 1)
+                                            {
+                                            <label class="md md-done"></label>
+                                            }
+                                            else
+                                            {
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2. </td>
+                                        <td>Cash Book</td>
+                                        <td>
+                                            @if (ViewBag.FormEValue == 1)
+                                            {
+                                            <label class="md md-done"></label>
+                                            }
+                                            else
+                                            {
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3. </td>
+                                        <td>Ledger Book</td>
+                                        <td>
+                                            @if (ViewBag.FormEValue == 1)
+                                            {
+                                            <label class="md md-done"></label>
+                                            }
+                                            else
+                                            {
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4. </td>
+                                        <td>Member Register</td>
+                                        <td>
+                                            @if (ViewBag.FormEValue == 1)
+                                            {
+                                            <label class="md md-done"></label>
+                                            }
+                                            else
+                                            {
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5. </td>
+                                        <td>Act & Rule</td>
+                                        <td>
+                                            @if (ViewBag.FormEValue == 1)
+                                            {
+                                            <label class="md md-done"></label>
+                                            }
+                                            else
+                                            {
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6. </td>
+                                        <td>Bye-laws of society</td>
+                                        <td>
+                                            @if (ViewBag.FormEValue == 1)
+                                            {
+                                            <label class="md md-done"></label>
+                                            }
+                                            else
+                                            {
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7. </td>
+                                        <td>Applications for membership</td>
+                                        <td>
+                                            @if (ViewBag.FormEValue == 1)
+                                            {
+                                            <label class="md md-done"></label>
+                                            }
+                                            else
+                                            {
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8. </td>
+                                        <td>Other</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                                <div class="row">
+                                    @*<div class="col-xs-6 text-center">
+                                        <button class="btn btn-primary btn-raised" id="btnSave" type="submit">Save</button>
+                                    </div>end .col*@ 
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-lg-12">
+                            <p class="col-lg-offset-4" align="right">
+                                Signature or thumb impression
+                                of the custodian of the books
+                            </p>
+                        </div>
+                        <p>
+                            &nbsp;
+                        </p>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>
+                                    Signature of the witnesses
+                                </label>
+                                <p>
+                                    1.
+                                </p>
+                                <p>
+                                    2.
+                                </p>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>
+                                    Address of the witnesses
+                                </label>
+                                <p>
+                                    1.
+                                </p>
+                                <p>
+                                    2.
+                                </p>
+                            </div>
+                            <div class="col-md-10 form-group">
+                                <p class="col-lg-offset-12" align="right">
+                                    Countersigned
+                                </p>
+                                <p></p>
+                                <p></p>
+                                <p class="col-lg-offset-12" align="right">
+                                    (President)
+                                </p>
+                                <p>
+                                    Place__________________
+                                </p>
+                                <p>
+                                    Date __________________
+                                </p>
+                                <p>
+                                    (NOTE :- Name and full address of the witnesses should be given. Any two promoter members of the society can act as witness )
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+        @*<input class="btn btn btn-primary" type="button" value="Print & Download" onclick="location.href='@Url.Action("Report", "Society",new {id= "PDF" ,value="FormE"})'"  />*@
+            <a href="@Url.Action("Report", "Society",new {id= "PDF",value="FormE"})" class="btn btn btn-primary" target="_blank">Print & Download</a>
+        </div>
+    </div>
+    <!--end .section-body -->
+</section>
+<script>
+    function exportpdf() {
+        $("#print-content").print();
+    }
+    function demoFromHTML() {
+        //debugger;
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#print-content')[0];
+        specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 550
+        };
+        pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+            function (dispose) {
+                pdf.save('FormE.pdf');
+            }, margins
+        );
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("input[name='GridHtml']").val($("#print-content").html());
+            $("input[name='FormName']").val("FormE");
+        });
+    });
+</script>
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w = window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+
+    $(document).ready(function () {
+        var number = parseInt(@ViewBag.FormEValue); //Accessing the number from the ViewBag
+        if (number != "NaN") {
+            if (number == 1) {
+                document.getElementById('btnSave').style.visibility = 'hidden';
+            }
+            if (number == 0) {
+                document.getElementById('btnSave').style.visibility = 'visible';
+            }
+        }
+    });
+</script>
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+</script> 

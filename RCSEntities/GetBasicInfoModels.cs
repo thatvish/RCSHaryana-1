@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RCSEntities
+﻿namespace RCSEntities
 {
     public class GetBasicInfoModels
     {
-
+        public string Keypath { get; set; }
     }
 
     public class GetDistrict
@@ -51,5 +45,17 @@ namespace RCSEntities
     {
         public int MemberCommDesignationCode { get; set; }
         public string MemberCommDesignationName { get; set; }
+    }
+
+    public class SocietyListModel
+    {
+        public string SocietyTransId { get; set; }
+        public string SocietyName { get; set; }
+    }
+
+    public class InspectorListModel
+    {
+        public string InspectorId  { get; set; }
+        public string InspectorName { get; set; }
     }
 }

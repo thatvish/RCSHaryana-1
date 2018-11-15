@@ -14,30 +14,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="your,keywords">
     <meta name="description" content="Short explanation about this website">
+
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
     <!-- END META -->
     <!-- BEGIN STYLESHEETS -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css' />
+
+    <link href="/Content/assets/css/fonts/font.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="/content/assets/css/theme-default/bootstrap.css?1422792965" />
     <link type="text/css" rel="stylesheet" href="/content/assets/css/theme-default/materialadmin.css?1425466319" />
     <link type="text/css" rel="stylesheet" href="/content/assets/css/theme-default/font-awesome.min.css?1422529194" />
     <link type="text/css" rel="stylesheet" href="/content/assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
     <link type="text/css" rel="stylesheet" href="/Content/assets/css/theme-1/libs/jquery-ui/jquery-ui-boostbox.css" />
-    @*<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">*@
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-            crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="/Content/assets/css/theme-default/BootStrapTour.css"/>
 
-    @*<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>*@
-
-    @*<script src="/content/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>*@
-    <!-- END STYLESHEETS -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="/content/assets/js/libs/utils/html5shiv.js?1403934957"></script>
-    <script type="text/javascript" src="/content/assets/js/libs/utils/respond.min.js?1403934956"></script>
-    <![endif]-->
+    <script src="~/Content/assets/js/libs/jquery/jquery-min.js"></script>
+    <script src="/Content/assets/js/libs/jquery/jquery-ui.js" ></script>
+    @*<script src="/Content/assets/js/libs/jquery/jspdf.js"></script>
+    <script src="/Content/src/js/browser.js"></script>
+    <script src="/Content/src/js/print.js"></script>*@
+   
 </head>
 
 <body class="menubar-hoverable header-fixed menubar-pin ">
@@ -64,7 +62,30 @@
         </div><!--end #content-->
         <!-- END CONTENT -->
         <!-- BEGIN MENUBAR-->
+      
+        @if (Convert.ToInt32(Session["RoleId"]) == 1)
+        {
         @Html.Partial("_Menubar")
+        }
+        else if (Convert.ToInt32(Session["RoleId"]) == 2)
+        {
+        @Html.Partial("_MenubarARCS")
+        }
+        else if (Convert.ToInt32(Session["RoleId"]) == 3)
+        {
+        @Html.Partial("_MenubarInspector")
+        }
+        else if (Convert.ToInt32(Session["RoleId"]) == 4)
+        {
+            @Html.Partial("_MenubarAdmin")
+        }
+        else if (Convert.ToInt32(Session["RoleId"]) == 5)
+        {
+            @Html.Partial("_MenubarBackLog")
+        }
+        else
+        {
+        }   
         <!--end #menubar-->
         <!-- END MENUBAR -->
         <!-- BEGIN OFFCANVAS RIGHT -->
@@ -73,17 +94,24 @@
         <!-- END OFFCANVAS RIGHT -->
 
     </div><!--end #base-->
-    <!-- END BASE -->
-    <!-- BEGIN JAVASCRIPT -->
-
-    @*<script src="/Content/assets/js/libs/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/content/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>*@
+    
     <script src="/content/assets/js/libs/bootstrap/bootstrap.min.js"></script>
+    <script src="/Content/assets/js/libs/jquery/BootStrapTour.js"></script>
     <script src="/content/assets/js/libs/spin.js/spin.min.js"></script>
     <script src="/content/assets/js/libs/autosize/jquery.autosize.min.js"></script>
+    <script src="/content/assets/js/libs/moment/moment.min.js"></script>
+    <script src="/content/assets/js/libs/flot/jquery.flot.min.js"></script>
+    <script src="/content/assets/js/libs/flot/jquery.flot.time.min.js"></script>
+    <script src="/content/assets/js/libs/flot/jquery.flot.resize.min.js"></script>
+    <script src="/content/assets/js/libs/flot/jquery.flot.orderBars.js"></script>
+    <script src="/content/assets/js/libs/flot/jquery.flot.pie.js"></script>
+    <script src="/content/assets/js/libs/flot/curvedLines.js"></script>
+    <script src="/content/assets/js/libs/jquery-knob/jquery.knob.min.js"></script>
+    <script src="/content/assets/js/libs/sparkline/jquery.sparkline.min.js"></script>
     <script src="/content/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
-    <script src="/content/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="/content/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="/content/assets/js/libs/d3/d3.min.js"></script>
+    <script src="/content/assets/js/libs/d3/d3.v3.js"></script>
+    <script src="/content/assets/js/libs/rickshaw/rickshaw.min.js"></script>
     <script src="/content/assets/js/core/source/App.js"></script>
     <script src="/content/assets/js/core/source/AppNavigation.js"></script>
     <script src="/content/assets/js/core/source/AppOffcanvas.js"></script>
@@ -91,7 +119,11 @@
     <script src="/content/assets/js/core/source/AppForm.js"></script>
     <script src="/content/assets/js/core/source/AppNavSearch.js"></script>
     <script src="/content/assets/js/core/source/AppVendor.js"></script>
+    <script src="/content/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/content/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="/content/assets/js/libs/wizard/jquery.bootstrap.wizard.min.js"></script>
     <script src="/content/assets/js/core/demo/Demo.js"></script>
-    <!-- END JAVASCRIPT -->
+    <script src="/content/assets/js/core/demo/DemoFormWizard.js"></script>
 </body>
 </html>
+

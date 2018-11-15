@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SendSms</title>
+</head>
+<body>
+    <div> 
+        <form action="@Url.Action("SendSms", "Inspector")" accept-charset="utf-8" method="post">
+            <input type="text" value="MobileNo" name="MobileNo" />
+            <input type="text" value="msg" name="Message" />
+            <input type="submit" value="Send" />
+        </form>
+    </div>
+</body>
+</html>

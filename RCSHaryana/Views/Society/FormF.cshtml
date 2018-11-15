@@ -1,0 +1,119 @@
+﻿<title>FORM ‘F'</title>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active"></li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary">FORM ‘F’</h2>
+                <h5></h5>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <article class="margin-bottom-lg">
+                    <p class="lead">
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        @if (ViewBag.result == "1")
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        @if (ViewBag.result == "0")
+        {
+            <div class="alert alert-warning" role="alert">
+                @ViewBag.show
+            </div>
+        }
+    </div>
+    <div class="card tabs-right style-default-light">
+
+        <div class="card-body tab-content style-default-bright">
+            <div class="tab-pane active" id="first6">
+                <div id="print-content">
+                    <form class="form form-validate" novalidate="novalidate" action="@Url.Action("Application", "Society", new { value = TempData["Value"]})" accept-charset="utf-8" method="post">
+
+                        <p>
+                        <p align="center">
+                            Form “F”
+                        </p>
+
+                        <div class="col-lg-12">
+                            To<br />
+                            <div class="text-center">
+                                <p align="left">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    The Assistant Registrar,<br />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Co-operative Societies,@ViewBag.District <br />
+                                    <Mas_dis.District Name><br />
+                                </p>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="col-2"></div>
+                        <div class="col-lg-10">
+
+                            Through :-	Registration file of the proposed, The @ViewBag.SocietyName @ViewBag.Address1 @ViewBag.Address2
+                            @ViewBag.PostOffice @ViewBag.District @ViewBag.Pin
+                            <SocietyTransTbl_Log.SocietyName,Address1+Adress2,Post Office>
+                                <Mas_Tehsil.TehsilName>
+                                    <Mas_Dis.District Name>
+                                        <SocietyTransTbl_Log.Pin>
+                                            <br /><br />
+                        </div>
+                        <div class="col-lg-10">
+
+                            Memorandum,<br /><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Forwarded herewith the papers, cited as subject, for disposal under Section 8 of the Haryana Co-operative Societies Act, 1984.<br /><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;2. &nbsp;	I have satisfied myself that the application compiles with the provisions of the Act and the Rules, the objects of the proposed
+                            society are in accordance with Section 4 of this act, the proposed bye-laws are not contrary to the provisions of the Act and
+                            the Rules and the Rules and the proposed society has reasonable chances of success.<br /><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;3. &nbsp;	I recommend that the proposed society and its bye-laws may kindly be registered.<br /><br /><br />
+                        </div>
+
+                        <div class="col-lg-10">
+                            <p align="right">
+                                Sub Inspector/ Inspector<br />
+                                Co-operative Societies @ViewBag.InspectName
+                                <Mas_Inspector. InspectName>Circle<br />
+                            </p>
+                        </div>
+                        <div class="col-lg-10">
+                            Date : @ViewBag.DateOfSubmittionByInspector <Mas_Inspector. DateOfSubmittionByInspector>
+                        </div>
+
+
+
+
+
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div><!--end .card -->
+    <input type="button" onclick="printDiv('print-content')" value="Print The Form" />
+    <br /><br />
+    <!--end .section-body -->
+</section>
+<script type="text/javascript">
+ 
+    function printDiv(divName) {
+
+        var printContents = document.getElementById(divName).innerHTML;
+        w = window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+</script>

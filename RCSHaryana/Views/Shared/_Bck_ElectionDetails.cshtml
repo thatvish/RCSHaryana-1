@@ -1,0 +1,91 @@
+﻿<style>
+    .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .col-md-6 {
+        font-weight: normal;
+    }
+    #dvLoading {
+        background: #000 url('../../images/giphy.gif') no-repeat center center;
+        height: 100px;
+        width: 100px;
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        margin: -25px 0 0 -25px;
+    }
+</style>
+<script src="~/scripts/js/Backlog.js"></script>
+<section>
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="card">
+            <div class="card-head style-primary">
+                <header style="text-align:center">Election Details</header>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12 form-group">
+                    <br />
+                    <input type="text" class="form-control" id="ElectionDatetime" name="ElectionDatetime" autocomplete="off" required readonly>
+                    <label for="Address"> 1. Date of Election of Managing Committee</label>
+                </div>
+                <div class="col-md-2 form-group text-right">
+                    <br />
+                    <button type="submit" class="btn btn-primary btn-success" disabled id="SubmitDateInARCS">Update</button>
+                    @*<input type="button" value="Update" disabled="disabled" class="btn btn-primary" id="SubmitDateInARCS" />*@
+                </div>
+            </div>
+        </div>
+    </div><!--end .row -->
+    <div id="dvLoading" style="display:none"></div>
+</section>
+
+<script>
+    $(document).ready(function () {
+     
+            if (@Convert.ToInt16(Session["SocietyStatus"]) == 12)
+            {
+                $('#SubmitDateInARCS').attr('disabled', 'disabled');
+            }
+            
+             
+
+
+        $("#ElectionDatetime").val('@ViewBag.GetElectionDate');
+
+        $("#SubmitDateInARCS").click(function () {
+            if ($("#ElectionDatetime").val() == "") {
+                alert("Fill the Election Date First");
+                $('#ElectionDatetime').css('border-color', 'Red');
+                return false;
+
+            }
+            else {
+                $('#ElectionDatetime').css('border-color', 'green');
+                AddElectionDate();
+            }
+
+        });
+    });
+$("#ElectionDatetime").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-100:+100',
+        dateFormat: 'dd-mm-yy',
+        maxDate: 0,
+        showOn: 'focus',
+        showButtonPanel: true,
+        closeText: 'Clear', // Text to show for "close" button
+        onClose: function () {
+            var event = arguments.callee.caller.caller.arguments[0];
+            // If "Clear" gets clicked, then really clear it
+            if ($(event.delegateTarget).hasClass('ui-datepicker-close')) {
+                $(this).val('');
+            }
+        }
+    });
+</script>

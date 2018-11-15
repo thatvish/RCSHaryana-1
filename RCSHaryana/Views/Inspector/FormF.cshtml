@@ -1,0 +1,141 @@
+﻿<title>FORM ‘F'</title>
+<section>
+    <div class="card" id="maindiv">
+        <br />
+        <p align="center">
+            Form “F”
+        </p>
+        <div class="col-lg-12">
+            To<p>&nbsp;</p>
+            <div class="text-center">
+                <p align="left">
+                    The Assistant Registrar,
+                    <br />
+                    Co-operative Societies,@ViewBag.ARCSName
+                </p>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        <div class="col-2"></div>
+        <div class="col-lg-10">
+            Through :-	Registration file of the proposed,@ViewBag.SocietyName @ViewBag.Address1 District @ViewBag.Address2
+            Post Office @ViewBag.PostOffice Postal Code @ViewBag.Pin
+            <p>&nbsp;</p>
+        </div>
+        <div class="col-lg-10">
+            Memorandum,<p>&nbsp;</p>
+    Forwarded herewith the papers, cited as subject, for disposal under Section 8 of the Haryana Co-operative Societies Act, 1984.<br />
+            <div id="PositiveRemark" style="display:none">
+                Please find enclosed here with the registration file of the proposed society
+                on the subject cited about disposal under section of the Haryana Corporation Society Act,1984.
+                I have satisfied my self tht the Act of the rules,The objects of the proposed society are in accordance with the section 4 of the Act.
+                The proposed Bye-Laws are not contrary to the provisions of the Act and the rules,The Proposed society has reasonable chances of success therefore,
+                I recommended that the proposed society and its Bye-Lawsmay kindly be registered. <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+            <div id="NegativeRemark">
+                &nbsp;Please refer the subject cited about in this regard,
+                It is intimated that the proposed society may not be registered due to the reason specified in the Form G.<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <p align="right">
+                Inspector Co-operative Societies @ViewBag.InspectName<BR />
+            </p>
+            <p align="right">
+                Circle<br />
+                Date : @ViewBag.DateOfSubmittionByInspector
+                </p>
+        </div>
+        @*<div class="col-lg-10">
+            Date : @ViewBag.DateOfSubmittionByInspector
+        </div>*@
+    </div>
+    <div class="row">
+        <a href="@Url.Action("Report", "Inspector",new { id = "PDF", value = "FormF" })" style="display:none" class="btn btn btn-primary" id="positiveRemarkId" target="_blank">Print & Download</a>
+        <a href="@Url.Action("Report", "Inspector",new { id = "PDF", value = "FormFNegative" })" class="btn btn btn-primary" id="NegativeRemarkId" target="_blank">Print & Download</a>           
+        </div>
+</section>
+<script type="text/javascript">
+
+    function exportpdf() {
+        $("#maindiv").print();
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("input[name='GridHtml']").val($("#print-content").html());
+            $("input[name='FormName']").val("FormF");
+        });
+    });
+</script>
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w = window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        //debugger;
+        //alert('@ViewBag.Remarks');
+       // debugger;
+        if ('@ViewBag.Remarks' == 'Positive')
+        {
+            document.getElementById('positiveRemarkId').style.display = 'block';
+            document.getElementById('PositiveRemark').style.display = 'block';
+            document.getElementById('NegativeRemark').style.display = 'None';
+            document.getElementById('NegativeRemarkId').style.display = 'None';
+        }
+        if ('@ViewBag.Remarks' == 'Negative') {            
+            document.getElementById('NegativeRemarkId').style.display = 'block';
+            document.getElementById('NegativeRemark').style.display = 'block';
+            document.getElementById('PositiveRemark').style.display = 'None';
+            document.getElementById('positiveRemarkId').style.display = 'None';
+        }
+
+    });
+</script>
+
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+</script>
+<script>
+    function demoFromHTML1() {
+      //  debugger;
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#print-content1')[0];
+        specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 550
+        };
+        pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+            function (dispose) {
+                pdf.save('FormF.pdf');
+            }, margins
+        );
+    }
+</script>

@@ -1,17 +1,32 @@
-﻿<title>FORM ‘B’:- Application for Registration of Co-operative Societies</title>
+﻿<style>
+    .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+    }
+</style>
+<title>FORM ‘B’:- Application for Registration of Co-operative Societies</title>
+<script src="~/scripts/js/SocietyDetailsforUser.js"></script>
+<script src="~/scripts/js/managingcommitteMembers.js"></script>
+<script src="~/scripts/js/committeMembers.js"></script>
+<style type="text/css">
+    .tab-pane .tools .btn.btn-flat {
+        /* padding: 4.5px 7px; */
+        margin-bottom: 5px;
+        margin-top: -30px;
+        margin-right: 10px;
+    }
+</style>
 <section class="cus-background">
     <div class="section-header">
         <ol class="breadcrumb">
+            <li><a href="@Url.Action("Application", "Society")">DashBaord</a></li>
             <li class="active">Form B</li>
         </ol>
     </div>
     <div class="section-body contain-lg">
         <!-- BEGIN INTRO -->
         <div class="row">
-            @*<div class="col-lg-12">
-                <h2 class="text-primary">FORM ‘B’</h2>
-                <h5>Application for Registration of Co-operative Societies</h5>
-            </div>*@<!--end .col -->
             <div class="col-lg-12">
                 <article class="margin-bottom-lg">
                     <p class="lead">
@@ -32,244 +47,201 @@
             </div>
         }
         <div class="card card-underline">
-            <div class="card-head">
-                <ul class="nav nav-tabs pull-right" data-toggle="tabs">
-                    @*<li class="active"><a href="#first6">FIRST TAB</a></li>*@
-                    <li class="active"><a href="#first6">Society Details</a></li>
-                    <li><a href="#second6">Managing Committee Members</a></li>
-                    <li><a href="#third6">List of Members</a></li>
-                    @*<li><a href="#second6">NO. TWO</a></li>
-                        <li><a href="#third6">THE THIRD</a></li>*@
-                </ul>
+
+            <div id="mytabs" class="card-head">
                 <header>
-                    <div class="col-lg-12 pull-right">
-                        <h5 class="text-primary">FORM ‘B’</h5>
-                        <h6>Application for Registration of Co-operative Societies</h6>
+                    <div class="col-lg- pull-right">
+                        <h6>Application for Registration of Co-operative Society</h6>
                     </div>
                 </header>
+                <ul class="nav nav-tabs pull-left" data-toggle="tabs">
+                    <li class="active"><a href="#first6">1. Society Details</a></li>
+                    <li><a href="#second6">2. Managing Committee Members</a></li>
+                    <li><a href="#third6">3. List of Members</a></li>
+                    <li><a href="#sixth6">4. Form C</a></li>
+                    <li><a href="#forth6">5. Form D</a></li>
+                    <li><a href="#fifth6">6. Form E</a></li>
+                    <li><a href="#custodian6">7.Custodian</a></li>
+
+                </ul>
+
             </div>
             <div class="card-body tab-content">
                 <div class="tab-pane active" id="first6">
+
+                    <div class="tools row text-right">
+                        <div class="col-lg-6 text-left"><a id="#" class="btn btn-flat hidden-xs" href="#"><span class="#"></span> &nbsp;Step 1</a></div>
+                        <a id="NextToCommitteeMember" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-right"></span> &nbsp;Step 2</a>
+                    </div>
+                    <!-- BEGIN SEARCH BAR -->
+                    @if (ViewBag.SocietyTransID == 1)
+                    {
+                        <div class="card-body style-primary no-y-padding">
+                            <form class="form form-inverse" accept-charset="utf-8" method="post">
+                                <div class="form-group">
+                                    <div class="input-group input-group-lg">
+                                        <div class="input-group-content">
+                                            <div class="form-control-line"></div>
+                                            @Html.DropDownList("SocietyList", new SelectList(ViewBag.lstSL as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "SocietyList", @class = "form-control", required = "required" })
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <button id="btnSearch" class="btn btn-floating-action btn-default-bright" onclick="BindAllSocietyDetails();" type="button"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                    <br />
                     <form class="form form-validate" novalidate="novalidate" action="@Url.Action("Application", "Society")" accept-charset="utf-8" method="post">
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="col-md-6 form-group">
                                         @Html.DropDownList("District", new SelectList(ViewBag.District as System.Collections.IEnumerable, "Value", "Text"),
                                         "Select", new { id = "District", @class = "form-control", required = "required" })
-                                        <label for="district">1. Select District</label>
+                                        <label for="district">1. Select District <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        @Html.DropDownList("ARCSOffice", new SelectList(Enumerable.Empty<SelectListItem>(), "ACRSCode", "ACRSName"),
+                                        @Html.DropDownList("ARCSOffice", new SelectList(Enumerable.Empty<SelectListItem>(), "ARCSCode", "ACRSName"),
                                         "Select", new { id = "ARCSOffice", @class = "form-control", required = "required" })
-                                        <label for="ARCSOffice">2. ARCS Office</label>
+                                        <label for="ARCSOffice">2. ARCS Office <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
-                                    <div class="col-md-12 form-group">
-                                        <input type="text" class="form-control" id="NameofProposedSociety" name="NameofProposedSociety" required>
-                                        <label for="NameofProposedSociety">3. Name of Proposed Society</label>
+                                    <div id="divUserName" class="col-md-12 form-group">
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="NameofProposedSociety" name="NameofProposedSociety" onblur="checkProposedSoceities(this)" required>
+                                        <label for="NameofProposedSociety">3. Name of Proposed Society <span style="color:red;"><strong>*</strong></span></label>
+                                        <div><em id="result"></em></div>
+                                        <span id="status"></span>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         @Html.DropDownList("ClassofSocietyandLiability", new SelectList(ViewBag.ClassOfSociety as System.Collections.IEnumerable, "Value", "Text"),
                                         "Select", new { id = "ClassofSocietyandLiability", @class = "form-control", required = "required" })
-                                        <label for="ClassofSocietyandLiability">4. Class of Society and Liability</label>
+                                        <label for="ClassofSocietyandLiability">4. Class of Society and Liability <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        @Html.DropDownList("SubClassOfSociety", new SelectList(Enumerable.Empty<SelectListItem>(), "SocietySubClassCode", "SocietySubClassName"),
+                                        @Html.DropDownList("SubClassOfSociety", new SelectList(ViewBag.lstARCSCode as System.Collections.IEnumerable, "Value", "Text"),
                                         "Select", new { id = "SubClassOfSociety", @class = "form-control", required = "required" })
-                                        <label for="ARCSOffice">4.1 Sub Class Of Society</label>
+                                        <label for="ARCSOffice">4.1 Sub Class Of Society <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="RegisteredAddress" name="RegisteredAddress" required>
-                                        <label for="RegisteredAddress">5. Registered Address</label>
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="RegisteredAddress" name="RegisteredAddress" required>
+                                        <label for="RegisteredAddress">5. Registered Address <span style="color:red;"><strong>*</strong></span></label>
+                                        <p class="help-block"> (For Ex. House No. /Sector No. /Road)</p>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="HouseNoSectorNoRoad" name="HouseNoSectorNoRoad" required>
-                                        <label for="HouseNoSectorNoRoad">5.1 House No. /Sector No. /Road</label>
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="HouseNoSectorNoRoad" name="HouseNoSectorNoRoad" required>
+                                        <label for="HouseNoSectorNoRoad">5.1 District <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="PostOffice" name="PostOffice" required>
-                                        <label for="PostOffice">5.2 Post Office</label>
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="PostOffice" name="PostOffice" required>
+                                        <label for="PostOffice">5.2 Post Office <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="PostalCode" name="PostalCode" data-rule-number="true" maxlength="6" pattern="[0-9]{6}" required>
-                                        <label for="PostalCode">5.3 Postal Code</label>
-                                        <p class="help-block">Five digit zip code</p>
+                                        <input type="text" autocomplete="off" class="form-control" id="PostalCode" name="PostalCode" data-rule-number="true" minlength="6" maxlength="6" pattern="[0-9]{6}" required>
+                                        <label for="PostalCode">5.3 Postal Code <span style="color:red;"><strong>*</strong></span></label>
+                                        <p class="help-block">Six digit zip code</p>
                                     </div>
                                     <div class="col-md-12 form-group">
-                                        <input type="text" class="form-control" id="AreaofOperation" name="AreaofOperation" required readonly>
-                                        <label for="AreaofOperation">6. Area of Operation</label>
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="AreaofOperation" name="AreaofOperation" required>
+                                        <label for="AreaofOperation">6. Area of Operation<span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="Mainobjects1" name="Mainobject1" required>
-                                        <label for="Mainobjects">7. Main objects</label>
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="Mainobjects1" name="Mainobject1" required>
+                                        <label for="Mainobjects">7. Main objects <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="Mainobjects2" name="Mainobject2">
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="Mainobjects2" name="Mainobject2">
                                         <label for="Mainobjects1">7.1 Main objects</label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="Mainobjects3" name="Mainobject3">
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="Mainobjects3" name="Mainobject3">
                                         <label for="Mainobjects2">7.2 Main objects</label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="Mainobjects4" name="Mainobject4">
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="Mainobjects4" name="Mainobject4">
                                         <label for="Mainobjects3">7.3 Main objects</label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="Noofmemberspresent" name="Noofmemberspresent" data-rule-number="true" data-rule-range="[1,100]" maxlength="2" required>
-                                        <label for="Noofmemberspresent">8. No of members present</label>
+                                        <input type="text" autocomplete="off" class="form-control" id="Noofmemberspresent" name="Noofmemberspresent" data-rule-number="true" data-rule-range="[1,100]" maxlength="2" required>
+                                        <label for="Noofmemberspresent">8. No of members at present <span style="color:red;"><strong>*</strong></span></label>
+                                    </div>
+                                    @*<div class="col-md-6 form-group">
+
+                                            <label for="Occupation">9. Select Occupation <span style="color:red;"><strong>*</strong></span></label>
+                                        </div>*@
+                                    <div class="col-md-6 form-group">
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="Categoryofsociety" name="Categoryofsociety">
+                                        <label for="Categoryofsociety">9. Occupation of members/Category of society (if any)</label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        @Html.DropDownList("Occupation", new SelectList(ViewBag.Occupations as System.Collections.IEnumerable, "Value", "Text"),
-                                        "Select", new { id = "Occupation", @class = "form-control", required = "required" })
-                                        <label for="Occupation">9. Select Occupation</label>
+                                        <input type="text" autocomplete="off" class="form-control" id="Estimatedunsecureddebtsofmembers" name="Estimatedunsecureddebtsofmembers">
+                                        <label for="Estimatedunsecureddebtsofmembers">10. Estimated unsecured debts of members (in case of credit society)</label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="Categoryofsociety" name="Categoryofsociety">
-                                        <label for="Categoryofsociety">10. Category of society (if any)</label>
+                                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="AreaMortgagedbymembers" name="AreaMortgagedbymembers">
+                                        <label for="AreaMortgagedbymembers">11. Area Mortgaged by members (in case of credit society)</label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="Estimatedunsecureddebtsofmembers" name="Estimatedunsecureddebtsofmembers">
-                                        <label for="Estimatedunsecureddebtsofmembers">11. Estimated unsecured debts of members (in case of credit society)</label>
+                                        <input type="text" autocomplete="off" class="form-control" id="Valueofashare" name="Valueofashare" data-rule-number="true" required>
+                                        <label for="Valueofashare">12. Value of a share <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="AreaMortgagedbymembers" name="AreaMortgagedbymembers">
-                                        <label for="AreaMortgagedbymembers">12. Area Mortgaged by members (in case of credit society)</label>
+                                        <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="detailsofshares" name="detailsofshares" required data-rule-number="true">
+                                        <label for="detailsofshares">13. Capital with details of shares, deposits fee etc. <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="Valueofashare" name="Valueofashare" required>
-                                        <label for="Valueofashare">13. Value of a share</label>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="detailsofshares" name="detailsofshares" required>
-                                        <label for="detailsofshares">14. Capital with details of shares, deposits fee etc.</label>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="ModeofPayment" name="ModeofPayment" required>
-                                        <label for="ModeofPayment">15. Mode of Payment</label>
+                                        <input pattern="[a-zA-Z0-9(),\s]+" type="text" autocomplete="off" class="form-control" id="ModeofPayment" name="ModeofPayment" required>
+                                        <label for="ModeofPayment">14. Mode of Payment <span style="color:red;"><strong>*</strong></span></label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 text-right">
-                                <button class="btn btn-primary btn-success" id="Step1" type="submit">Save As Draft</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane" id="second6">
-                    @Html.Partial("~/Views/Shared/_CommitteMembersDetails.cshtml")
-                </div>
-                <div class="tab-pane" id="third6">
-                    @Html.Partial("~/Views/Shared/_MemberDetails.cshtml")
-                </div>
-            </div>
-        </div>
 
-        @*<div class="card tabs-right style-default-light">
-                <ul id="mytabs" class="card-head nav nav-tabs text-center" data-toggle="tabs">
-                    <li class="active"><a href="#first6"><i class="fa fa-lg fa-user"></i><br /><h4>Society Details<br /><small>Save Basic Details</small></h4></a></li>
-                    <li><a href="#second6"><i class="fa fa-lg fa-list-ol"></i><br /><h4>Managing<br /><small>Committee Members</small></h4></a></li>
-                    <li><a href="#third6"><i class="fa fa-lg fa-plus-square-o"></i><br /><h4>List of Members<br /><small>Details</small></h4></a></li>
-                </ul>
-                <div class="card-body tab-content style-default-bright">
-                    <div class="tab-pane active" id="first6">
-                        <form class="form form-validate" novalidate="novalidate" action="@Url.Action("Application", "Society")" accept-charset="utf-8" method="post">
-                            <div class="row">
                                 <div class="card">
+                                    <div class="card-head style-primary-light">
+                                        <header>Correspondence Address</header>
+                                    </div>
                                     <div class="card-body">
                                         <div class="col-md-6 form-group">
-                                            @Html.DropDownList("District", new SelectList(ViewBag.District as System.Collections.IEnumerable, "Value", "Text"),
-                                            "Select", new { id = "District", @class = "form-control", required = "required" })
-                                            <label for="district">1. Select District</label>
+                                            <input pattern="[a-zA-Z0-9\s]+" type="text" class="form-control" id="Name1" autocomplete="off" name="Name1" required>
+                                            <label for="Name">1. Name <span style="color:red;"><strong>*</strong></span></label>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            @Html.DropDownList("ARCSOffice", new SelectList(Enumerable.Empty<SelectListItem>(), "ACRSCode", "ACRSName"),
-                                            "Select", new { id = "ARCSOffice", @class = "form-control", required = "required" })
-                                            <label for="ARCSOffice">2. ARCS Office</label>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <input type="text" class="form-control" id="NameofProposedSociety" name="NameofProposedSociety" required>
-                                            <label for="NameofProposedSociety">3. Name of Proposed Society</label>
+                                            <input pattern="[a-zA-Z0-9\s]+" type="text" class="form-control" id="FatherName1" autocomplete="off" name="FatherName1" required>
+                                            <label for="Name">1.2 Father's Name <span style="color:red;"><strong>*</strong></span></label>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            @Html.DropDownList("ClassofSocietyandLiability", new SelectList(ViewBag.ClassOfSociety as System.Collections.IEnumerable, "Value", "Text"),
-                                            "Select", new { id = "ClassofSocietyandLiability", @class = "form-control", required = "required" })
-                                            <label for="ClassofSocietyandLiability">4. Class of Society and Liability</label>
+                                            <input type="text" class="form-control" id="Mobile1" name="Mobile1" autocomplete="off" required data-rule-digits="true" maxlength="10" minlength="10">
+                                            <label for="Mobile">2. Mobile <span style="color:red;"><strong>*</strong></span></label>
+                                            <p class="help-block">10 digit mobile no</p>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            @Html.DropDownList("SubClassOfSociety", new SelectList(Enumerable.Empty<SelectListItem>(), "SocietySubClassCode", "SocietySubClassName"),
-                                            "Select", new { id = "SubClassOfSociety", @class = "form-control", required = "required" })
-                                            <label for="ARCSOffice">4.1 Sub Class Of Society</label>
+                                            <input type="email" class="form-control" id="Email1" name="Email1" autocomplete="off" required>
+                                            <label for="Email">3. Email <span style="color:red;"><strong>*</strong></span></label>
+                                            <p class="help-block">example@example.com</p>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="RegisteredAddress" name="RegisteredAddress" required>
-                                            <label for="RegisteredAddress">5. Registered Address</label>
+                                            <input ppattern="[a-zA-Z0-9/(),.-\s]+" type="text" class="form-control" id="Address3" name="Address3" autocomplete="off" required>
+                                            <label for="Address">4.Registered Address <span style="color:red;"><strong>*</strong></span></label>
+                                            <p class="help-block">House No. /Sector No. /Road </p>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="HouseNoSectorNoRoad" name="HouseNoSectorNoRoad" required>
-                                            <label for="HouseNoSectorNoRoad">5.1 House No. /Sector No. /Road</label>
+                                            @Html.DropDownList("DistrictForUser1", new SelectList(ViewBag.DistrictForUser as System.Collections.IEnumerable, "Value", "Text"),
+                                            "Select", new { id = "DistrictForUser1", @class = "form-control", required = "required" })
+                                            <label for="district">5. Select District <span style="color:red;"><strong>*</strong></span></label>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="PostOffice" name="PostOffice" required>
-                                            <label for="PostOffice">5.2 Post Office</label>
+                                            <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" class="form-control" id="PostOffice1" name="PostOffice1" autocomplete="off" required>
+                                            <label for="PostOffice">6. Post Office <span style="color:red;"><strong>*</strong></span></label>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="PostalCode" name="PostalCode" data-rule-number="true" maxlength="6" pattern="[0-9]{6}" required>
-                                            <label for="PostalCode">5.3 Postal Code</label>
-                                            <p class="help-block">Five digit zip code</p>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <input type="text" class="form-control" id="AreaofOperation" name="AreaofOperation" required readonly>
-                                            <label for="AreaofOperation">6. Area of Operation</label>
+                                            <input type="text" class="form-control" id="PostalCode1" name="PostalCode1" autocomplete="off" data-rule-number="true" maxlength="6" pattern="[0-9]{6}" required>
+                                            <label for="PostalCode">7. Postal Code <span style="color:red;"><strong>*</strong></span></label>
+                                            <p class="help-block">Six digit zip code</p>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="Mainobjects1" name="Mainobject1" required>
-                                            <label for="Mainobjects">7. Main objects</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="Mainobjects2" name="Mainobject2">
-                                            <label for="Mainobjects1">7.1 Main objects</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="Mainobjects3" name="Mainobject3">
-                                            <label for="Mainobjects2">7.2 Main objects</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="Mainobjects4" name="Mainobject4">
-                                            <label for="Mainobjects3">7.3 Main objects</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="Noofmemberspresent" name="Noofmemberspresent" data-rule-number="true" data-rule-range="[1,100]" maxlength="2" required>
-                                            <label for="Noofmemberspresent">8. No of members present</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            @Html.DropDownList("Occupation", new SelectList(ViewBag.Occupations as System.Collections.IEnumerable, "Value", "Text"),
-                                            "Select", new { id = "Occupation", @class = "form-control", required = "required" })
-                                            <label for="Occupation">9. Select Occupation</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="Categoryofsociety" name="Categoryofsociety">
-                                            <label for="Categoryofsociety">10. Category of society (if any)</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="Estimatedunsecureddebtsofmembers" name="Estimatedunsecureddebtsofmembers">
-                                            <label for="Estimatedunsecureddebtsofmembers">11. Estimated unsecured debts of members (in case of credit society)</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="AreaMortgagedbymembers" name="AreaMortgagedbymembers">
-                                            <label for="AreaMortgagedbymembers">12. Area Mortgaged by members (in case of credit society)</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="Valueofashare" name="Valueofashare" required>
-                                            <label for="Valueofashare">13. Value of a share</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="detailsofshares" name="detailsofshares" required>
-                                            <label for="detailsofshares">14. Capital with details of shares, deposits fee etc.</label>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="ModeofPayment" name="ModeofPayment" required>
-                                            <label for="ModeofPayment">15. Mode of Payment</label>
+                                            <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" class="form-control" id="HouseNoSectorNoRoad1" name="HouseNoSectorNoRoad1" autocomplete="off" required>
+                                            <label for="HouseNoSectorNoRoad">8. LandMark <span style="color:red;"><strong>*</strong></span></label>
                                         </div>
                                     </div>
                                 </div>
@@ -277,117 +249,344 @@
                                     <button class="btn btn-primary btn-success" id="Step1" type="submit">Save As Draft</button>
                                 </div>
                             </div>
+                            </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="second6">
+                    @Html.Partial("~/Views/Shared/_CommitteMembersDetails.cshtml")
+                    <input type="hidden" id="delete" />
+                </div>
+                <div class="tab-pane" id="third6">
+                    @Html.Partial("~/Views/Shared/_MemberDetails.cshtml")
+                </div>
+                <div class="tab-pane" id="forth6">
+                    <div class="tools row">
+                        <div class="col-lg-6 text-left"><a id="BackToFormC" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-left"></span> &nbsp;Step 4</a></div>
+                        <div class="col-lg-6 text-right"><a id="NextToFormE" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-right"></span> &nbsp;Step 6</a></div>
+                    </div>
+                    <div class="section-header">
+                        <ol class="breadcrumb">
+                            <li class="active">Receipt of Cashier</li>
+                        </ol>
+                    </div>
+                    <form class="form form-validate" novalidate="novalidate" action="@Url.Action("procedurefee", "Society")" accept-charset="utf-8" method="post">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" class="form-control" id="ShareMoney" name="ShareMoney" required data-rule-number="true">
+                                        <label for="Mainobjects">Share Money <span style="color:red;"><strong>*</strong></span></label>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-12 form-group ">
+                                        <input type="text" class="form-control" id="AdmissionFee" name="AdmissionFee" required data-rule-number="true">
+                                        <label for="Mainobjects">Admission Fee<span style="color:red;"><strong>*</strong></span></label>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" class="form-control" id="Deposits" name="Deposits" data-rule-number="true">
+                                        <label for="Mainobjects">Deposits</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" id="btnAddFee">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="fifth6">
+                    <div class="tools row">
+                        <div class="col-lg-6 text-left"><a id="NextToFormD" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-left"></span> &nbsp;Step 5</a></div>
+                        <div class="col-lg-6 text-right"><a id="NextToCustodian" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-right"></span> &nbsp;Step 7</a></div>
+                    </div>
+                    <div class="section-header">
+                        <ol class="breadcrumb">
+                            <li class="active">Receipt of Custodian of Books</li>
+                        </ol>
+                    </div>
+                    @*@if (RCSEntities.UserInfo.CitizenInfo.FormE == 1)*@
+                    @if (ViewBag.FormEValue == 1)
+                    {
+                        <div class="col-md-12 form-group">
+                            <table class="table-responsive" style="width:700px;">
+                                <tr>
+                                    <td>1. </td>
+                                    <td>Proceeding Book</td>
+                                    <td>
+                                        <label class="md md-done"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2. </td>
+                                    <td>Cash Book</td>
+                                    <td>
+                                        <label class="md md-done"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3. </td>
+                                    <td>Ledger Book</td>
+                                    <td>
+                                        <label class="md md-done"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4. </td>
+                                    <td>Member Register</td>
+                                    <td>
+                                        <label class="md md-done"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5. </td>
+                                    <td>Act & Rule</td>
+                                    <td>
+                                        <label class="md md-done"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6. </td>
+                                    <td>Bye-laws of society</td>
+                                    <td>
+                                        <label class="md md-done"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7. </td>
+                                    <td>Applications for membership</td>
+                                    <td>
+                                        <label class="md md-done"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>8. </td>
+                                    <td>Other</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="frmFormE" class="form floating-label" autocomplete="off" action="@Url.Action("FormE", "Society")" accept-charset="utf-8" method="post">
+                            <div class="col-md-12 form-group">
+                                <table class="table-responsive" style="width:700px;">
+                                    <tr>
+                                        <td>1. </td>
+                                        <td>Proceeding Book</td>
+                                        <td>
+                                            <input type="checkbox" id="chk1" name="chk1" required value="true" @(Request.Form["chk1"] == "true" ? " checked" : "") />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2. </td>
+                                        <td>Cash Book</td>
+                                        <td>
+                                            <input type="checkbox" id="chk2" name="chk2" required value="true" @(Request.Form["chk2"] == "true" ? " checked" : "") />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3. </td>
+                                        <td>Ledger Book</td>
+                                        <td>
+                                            <input type="checkbox" id="chk3" name="chk3" required value="true" @(Request.Form["chk3"] == "true" ? " checked" : "") />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4. </td>
+                                        <td>Member Register</td>
+                                        <td>
+
+                                            <input type="checkbox" id="chk4" name="chk4" required value="true" @(Request.Form["chk4"] == "true" ? " checked" : "") />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5. </td>
+                                        <td>Act & Rules</td>
+                                        <td>
+
+                                            <input type="checkbox" id="chk5" name="chk5" required value="true" @(Request.Form["chk5"] == "true" ? " checked" : "") />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6. </td>
+                                        <td>Bye-laws of society</td>
+                                        <td>
+                                            <input type="checkbox" id="chk6" name="chk6" required value="true" @(Request.Form["chk6"] == "true" ? " checked" : "") />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7. </td>
+                                        <td>Applications for membership</td>
+                                        <td>
+                                            <input type="checkbox" id="chk7" name="chk7" required value="true" @(Request.Form["chk7"] == "true" ? " checked" : "") />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>8. </td>
+                                        <td>Other</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                                <div class="row">
+                                    <div class="col-xs-6 text-center">
+                                        <button class="btn btn-primary btn-raised" id="btnSaveFormE" type="submit">Save</button>
+                                    </div><!--end .col -->
+                                </div>
+                            </div>
                         </form>
-                    </div>
-                    <div class="tab-pane" id="second6">
+                    }
+                </div>
+                <div class="tab-pane" id="custodian6">
+
+                    @*<div class="tools row">
+                            <div class="col-lg-6 text-left"><a id="BackToSocietyMembers" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-left"></span> &nbsp;Step 3</a></div>
+                            <div class="col-lg-6 text-right"><a id="BackToFormD" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-right"></span> &nbsp;Step 5</a></div>
+                        </div>*@
+                    <form id="frmFormE" class="form form-validate" novalidate="novalidate" autocomplete="off" action="@Url.Action("CustodianSave", "Society")" accept-charset="utf-8" method="post">
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="card">
-                                @Html.Partial("~/Views/Shared/_CommitteMembersDetails.cshtml")
+                                <div class="card-body">
+                                    <div class="col-md-6 form-group">
+                                        <input type="hidden" value="0" id="offdelete" />
+                                        @Html.DropDownList("CustodianMemberId", new SelectList(ViewBag.MemberDetail as System.Collections.IEnumerable, "Value", "Text"),
+                                                "Select", new { id = "CustodianMemberId", @class = "form-control", required = "required" })
+                                        <label for="CustodianMember">Select Custodian Member <span style="color:red;"><strong>*</strong></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 text-right">
+                                    <button class="btn btn-primary btn-raised" id="btnSaveFormCustodian" type="submit">Save</button>
+                                </div><!--end .col -->
                             </div>
                         </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="sixth6">
+                    <div class="tools row">
+                        <div class="col-lg-6 text-left"><a id="BackToSocietyMembers" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-left"></span> &nbsp;Step 3</a></div>
+                        <div class="col-lg-6 text-right"><a id="BackToFormD" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-right"></span> &nbsp;Step 5</a></div>
                     </div>
-                    <div class="tab-pane" id="third6">
+                    <form id="frmFormE" class="form form-validate" novalidate="novalidate" autocomplete="off" action="@Url.Action("FormC", "Society")" accept-charset="utf-8" method="post">
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="card">
-                                @Html.Partial("~/Views/Shared/_MemberDetails.cshtml")
+                                <div class="card-body">
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" readonly="readonly" class="form-control" autocomplete="off" id="datepicker1" name="datepicker1" required>
+                                        <label for="datepicker1">1. Meeting Date</label>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        @Html.DropDownList("Bank", new List<SelectListItem>
+                                                 { new SelectListItem { Text = "Central Cooperative Bank", Value = "Central Cooperative Bank"},
+                                                   new SelectListItem { Text = "Urban Cooperative Bank", Value = "Urban Cooperative Bank"},
+                                                   new SelectListItem { Text = "HARCO Bank", Value = "HARCO Bank"}
+                                                   }, "Select Bank", new { id = "Bank", @class = "form-control", required = "required" })
+                                        <label for="SelectBank">2. Select Bank <span style="color:red;"><strong>*</strong></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 text-right">
+                                    <button class="btn btn-primary btn-raised" id="btnSaveFormC1" type="submit">Save</button>
+                                </div><!--end .col -->
                             </div>
                         </div>
-                    </div><!--end .card -->
-                    <em class="text-caption">Application for Registration of Co-operative Societies under Section 3 & 4 of the Haryana Co-operative Societies Act, 1984 and Rule 4 of the Haryana Co-operative Societies Rules, 1989 As the undersigned hereby apply for the registration of a society, as proposed hereunder, under sections 7 and 8(1) (d) of the Act, and enclose herewith three copies of the bye-laws in accordance with Rule 5</em>
-                </div><!--end .section-body -->
-            </div>*@
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <script type="text/javascript">
+
     $(document).ready(function () {
-        $("#District").change(function () {
-            var dID = $(this).val();
-            var e = document.getElementById("District");
-            var value = e.options[e.selectedIndex].text;
-            $("#AreaofOperation").val(value);
-            $.getJSON("/Account/BindARCSOffice", { DistrictCode: dID },
-                   function (data) {
-                       var select = $("#ARCSOffice");
-                       select.empty();
-                       select.append($('<option/>', {
-                           value: 0,
-                           text: "Select"
-                       }));
-                       $.each(data, function (index, itemData) {
-                           select.append($('<option/>', {
-                               value: itemData.Value,
-                               text: itemData.Text
-                           }));
-                       });
-                   });
+        $("#NextToCommitteeMember").click(function () {
+            $('#mytabs a[href="#second6"]').tab('show');
         });
+        $("#BackToApplication").click(function () {
+            $('#mytabs a[href="#first6"]').tab('show');
+        });
+        $("#NextToSocietyMembers").click(function () {
+            $('#mytabs a[href="#third6"]').tab('show');
+        });
+        $("#BackToCommitteMembers").click(function () {
+            $('#mytabs a[href="#second6"]').tab('show');
+        });
+        $("#NextToFormD").click(function () {
+            $('#mytabs a[href="#forth6"]').tab('show');
+        });
+        $("#BackToSocietyMembers").click(function () {
+            $('#mytabs a[href="#third6"]').tab('show');
+        });
+        $("#NextToFormE").click(function () {
+            $('#mytabs a[href="#fifth6"]').tab('show');
+        });
+        $("#BackToFormD").click(function () {
+            $('#mytabs a[href="#forth6"]').tab('show');
+        });
+        $("#NextToFormC").click(function () {
+            $('#mytabs a[href="#sixth6"]').tab('show');
+        });
+        $("#BackToFormE").click(function () {
+            $('#mytabs a[href="#fifth6"]').tab('show');
+        });
+        $("#BackToFormC").click(function () {
+            $('#mytabs a[href="#sixth6"]').tab('show');
+        });
+        $("#NextToCustodian").click(function () {
+            $('#mytabs a[href="#custodian6"]').tab('show');
+        });
+
+    });
+
+    $("#District").change(function () {
+        var dID = $(this).val();
         var e = document.getElementById("District");
         var value = e.options[e.selectedIndex].text;
-        if (value != "Select") {
-            $.getJSON("/Account/BindARCSOffice", { DistrictCode: value },
-            function (data) {
-                var select = $("#ARCSOffice");
-                select.empty();
-                select.append($('<option/>', {
-                    value: 0,
-                    text: "Select"
-                }));
-                $.each(data, function (index, itemData) {
-                    select.append($('<option/>', {
-                        value: itemData.Value,
-                        text: itemData.Text
-                    }));
-                });
-            });
+        $.getJSON("/Account/BindARCSOffice", { DistrictCode: dID },
+               function (data) {
+                   var select = $("#ARCSOffice");
+                   select.empty();
+                   select.append($('<option/>', {
+                       value: 0,
+                       text: "Select"
+                   }));
+                   $.each(data, function (index, itemData) {
+                       select.append($('<option/>', {
+                           value: itemData.Value,
+                           text: itemData.Text
+                       }));
+                   });
+               });
+    });
+
+    $(document).ready(function () {
+        var number = parseInt(@ViewBag.FormEValue); //Accessing the number from the ViewBag
+        if (number != "NaN") {
+            if (number == 1) {
+                document.getElementById('btnSave').style.visibility = 'hidden';
+                document.getElementById('chk1').attributes = 'disabled';
+                document.getElementById('chk2').attributes = 'disabled';
+                document.getElementById('chk3').attributes = 'disabled';
+                document.getElementById('chk4').attributes = 'disabled';
+                document.getElementById('chk5').attributes = 'disabled';
+                document.getElementById('chk6').attributes = 'disabled';
+                document.getElementById('chk7').attributes = 'disabled';
+            }
+            if (number == 0) {
+                document.getElementById('btnSave').style.visibility = 'visible';
+            }
         }
     });
 
     $(document).ready(function () {
-        $("#ClassofSocietyandLiability").change(function () {
-            debugger;
-            var dID = $(this).val();
-            $.getJSON("/Society/BindSubClassOfSociety", { SocietySubClassCode: dID },
-                   function (data) {
-                       var select = $("#SubClassOfSociety");
-                       select.empty();
-                       select.append($('<option/>', {
-                           value: 0,
-                           text: "Select"
-                       }));
-                       $.each(data, function (index, itemData) {
-                           select.append($('<option/>', {
-                               value: itemData.Value,
-                               text: itemData.Text
-                           }));
-                       });
-                   });
-        });
-    });
-
-    //$(document).ready(function () {
-    //    $('input.checkbox').on('change', function () {
-    //        $('input.checkbox').not(this).prop('checked', false);
-    //    });
-    //});
-
-    //function isChecked(checkbox, sub1) {
-    //    var button = document.getElementById(sub1);
-    //    if (checkbox.checked === true) {
-    //        Save.disabled = "";
-    //        $("#showNotification").hide();
-    //    } else {
-    //        Save.disabled = "disabled";
-    //    }
-    //}
-
-    //function isChecked(checkbox, sub1) {
-    //    Save.disabled = "disabled";
-    //    document.getElementById(sub1).disabled = !checkbox.checked;
-    //}
-
-    $(document).ready(function () {
         var number = parseInt(@ViewBag.tabResult); //Accessing the number from the ViewBag
         if (number != "NaN") {
+
             if (number == 0) {
                 $('#mytabs a[href="#first6"]').tab('show');
             }
@@ -397,22 +596,162 @@
             if (number == 2) {
                 $('#mytabs a[href="#third6"]').tab('show');
             }
+            if (number == 3) {
+                $('#mytabs a[href="#forth6"]').tab('show');
+            }
+            if (number == 4) {
+                $('#mytabs a[href="#forth6"]').tab('show');
+            }
+            if (number == 5) {
+                $('#mytabs a[href="#fifth6"]').tab('show');
+            }
+            if (number == 6) {
+                $('#mytabs a[href="#custodian6"]').tab('show');
+            }
         }
+
+        var number1 = parseInt(@ViewBag.SocietyStatus);
+        if (number1 != "NaN") {
+            if (number1 == 1) {
+                $('#msgCommitteMember').show();
+                $('#tbMCM').hide();
+                $('#AddManagingCommitteMembers').attr('disabled', 'disabled');
+                $('#btnUpdate').attr('disabled', 'disabled');
+                $('#deleteManagingCommitte').attr('disabled', 'disabled');
+                $('#Step1').attr('disabled', 'disabled');
+                $('#btnAddFee').attr('disabled', 'disabled');
+                $('#btnSaveFormE').attr('disabled', 'disabled');
+                $("#delete").val(1);
+                $('#btnAdd1').attr('disabled', 'disabled');
+                $('#btnUpdate1').attr('disabled', 'disabled');
+                $('#AddMemberDetails').attr('disabled', 'disabled');
+                $('#btnAdd').attr('disabled', 'disabled');
+                $('#btnUpdate').attr('disabled', 'disabled');
+                $('#msgSocietyMember').show();
+                $('#btnSaveFormC').attr('disabled', 'disabled');
+            }
+            if (number1 == 2) {
+                $('#msgCommitteMember').show();
+                $('#tbMCM').hide();
+                $('#AddManagingCommitteMembers').attr('disabled', 'disabled');
+                $('#btnUpdate').attr('disabled', 'disabled');
+                $('#deleteManagingCommitte').attr('disabled', 'disabled');
+                $('#Step1').attr('disabled', 'disabled');
+                $('#btnAdd11').attr('disabled', 'disabled');
+                $('#btnUpdate11').attr('disabled', 'disabled');
+                $('#btnAddFee').attr('disabled', 'disabled');
+                $('#btnSaveFormE').attr('disabled', 'disabled');
+                $("#delete").val(1);
+                $('#btnAdd1').attr('disabled', 'disabled');
+                $('#btnUpdate1').attr('disabled', 'disabled');
+                $('#AddMemberDetails').attr('disabled', 'disabled');
+                $('#btnAdd').attr('disabled', 'disabled');
+                $('#btnUpdate').attr('disabled', 'disabled');
+                $('#msgSocietyMember').show();
+                $('#btnSaveFormC').attr('disabled', 'disabled');
+                $('#btnSaveFormC1').attr('disabled', 'disabled');
+                $('#btnSaveFormCustodian').attr('disabled', 'disabled');
+
+
+            }
+            if (number1 == 0) {
+                $('#msgCommitteMember').hide();
+                $('#msgSocietyMember').hide();
+                $("#delete").val(0);
+            }
+        }
+
+        var number2 = parseInt(@ViewBag.NoOfMembers);
+        if (number2 != "NaN") {
+            if (number2 != 0) {
+                $('#message').show();
+                $('#btnUpload').attr('disabled', 'disabled');
+            }
+            if (number1 == 0) {
+                $('#message').hide();
+            }
+        }
+
+        var number3 = parseInt(@ViewBag.SocietyTransID);
+        if (number3 != "NaN") {
+            if (number3 == 1) {
+                $('#applicationmsg').show();
+                $('#Step1').attr('disabled', 'disabled');
+            }
+            else {
+                $('#applicationmsg').hide();
+            }
+        }
+
+        var number4 = parseInt(@ViewBag.StatusEditable);
+        if (number4 != "NaN") {
+            if (number4 == 1) {
+                $('#AddMemberDetails').hide();
+                $('#Step1').attr('disabled', 'disabled');
+                $('#btnAddFee').attr('disabled', 'disabled');
+                $('#btnSaveFormE').attr('disabled', 'disabled');
+                $('#btnSaveFormC').attr('disabled', 'disabled');
+            }
+            else {
+                $('#AddMemberDetails').show();
+            }
+        }
+
+    });
+    $("#btnSaveFormC1").click(function () {
+        if ($("#datepicker1").val() == "") {
+            alert("Fill the Date First");
+            $('#datepicker1').css('border-color', 'Red');
+            event.preventDefault();
+
+        }
+        else {
+            $('#datepicker1').css('border-color', 'green');
+
+        }
+
     });
 
-    $('.AadharNo').keyup(function () {
-        var name = $('.AadharNo').val();
+    $("#btnSaveFormCustodian").click(function () {
+        if ($("#CustodianMemberId").val() == "") {
+            alert("Select the Custodian First");
+            $('#CustodianMemberId').css('border-color', 'Red');
+            event.preventDefault();
+
+        }
+        else {
+            $('#CustodianMemberId').css('border-color', 'green');
+
+        }
+
+    });
+
+    function AllowNumbersOnly(e, el) {
+        var key = e.which || e.keyCode;
+        if (key == 8 || key == 9 || key == 46 || (e.keyCode >= 35 && e.keyCode <= 39)) return true;
+        if (e.shiftKey) e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        var value1 = el.value;
+        if (key >= 48 && key <= 57 || key >= 96 && key <= 105) return true;
+        else {
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return false;
+        }
+    }
+
+    $('.AadharNo1').keyup(function () {
+        var name = $('.AadharNo1').val();
+        var name2 = $('#AadharNo1').val().trim();
         if (name.length >= 12) {
             var url = "/Society/ValidateAadharCard";
             $.get(url, { input: name }, function (data) {
                 if (data == "true") {
-                    $('input[type="submit"]').removeAttr('disabled');
-                    $('#Save').removeAttr('disabled');
-                    $("#result").html("<span style='color:#228B22'>AadharNo is vaild.</span>");
-                    $("#divAadharNo").removeClass();
-                    $("#divAadharNo").addClass("col-md-6 form-group has-success has-feedback");
+                    $('#AadharNo1').css('border-color', 'green');
                 }
                 else {
+                    $('#AadharNo1').css('border-color', 'Red');
+                    alert("Aadhar card is not valid");
+                    $('#AadharNo1').val('');
+                    $('#AadharNo1').css('border-color', 'green');
                     $("#result").html("<span style='color:#B22222'>AadharNo is not vaild.</span>");
                     $("#divAadharNo").removeClass();
                     $("#divAadharNo").addClass("col-md-6 form-group has-error has-feedback");
@@ -425,28 +764,66 @@
         }
     })
 
-    $('.AadharNo1').keyup(function () {
-        var name = $('.AadharNo1').val();
-        if (name.length >= 12) {
-            var url = "/Society/ValidateAadharCard";
+    function checkProposedSoceities(NameofProposedSociety) {
+        var name = $('#NameofProposedSociety').val();
+        if (name.length >= 0) {
+            var url = "/Society/CheckProposedSoceityName";
             $.get(url, { input: name }, function (data) {
-                if (data == "true") {
-                    $('input[type="submit"]').removeAttr('disabled');
-                    $('#btnFinal').removeAttr('disabled');
-                    $("#result1").html("<span style='color:#228B22'>AadharNo is vaild.</span>");
-                    $("#divAadharNo1").removeClass();
-                    $("#divAadharNo1").addClass("col-md-6 form-group has-success has-feedback");
+                if (data != "Not Available") {
+                    $("#result").html("<span style='color:#228B22'>Society name is available</span>");
+                    $("#UserName").css('background-color', '');
+                    document.getElementById("Step1").disabled = false;
+                    $("#info").html("<span></span>");
+                    $("#divUserName").addClass("form-group has-success has-feedback");
+                    $("#status").addClass("glyphicon glyphicon-ok form-control-feedback");
                 }
                 else {
-                    $("#result1").html("<span style='color:#B22222'>AadharNo is not vaild.</span>");
-                    $("#divAadharNo1").removeClass();
-                    $("#divAadharNo1").addClass("col-md-6 form-group has-error has-feedback");
-                    $('#btnFinal').attr('disabled', 'disabled');
+                    $("#result").html("<span style='color:#B22222'>Society name already taken.</span>");
+                    document.getElementById("Step1").disabled = true;
+                    $("#info").html("<span style='color:#B22222'>create button disable because Society name already taken by other, kindly choose another Society name</span>");
+                    $("#divUserName").removeClass();
+                    $("#divUserName").addClass("form-group has-error has-feedback");
+                    $("#status").removeClass();
                 }
             });
         }
         else {
-            $('#btnFinal').attr('disabled', 'disabled');
+            $("#status").removeClass();
+            $("#divUserName").removeClass();
+            $("#divUserName").addClass("form-group has-error has-feedback");
+            $("#result").html("<span style='color:#0aa89e'>3. Name of Proposed Society</span>");
         }
-    })
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+</script>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $("#datepicker1").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '-100:+0',
+                dateFormat: 'mm-dd-yy',
+                showOn: 'focus',
+                showButtonPanel: true,
+                closeText: 'Clear', // Text to show for "close" button
+                onClose: function () {
+                    var event = arguments.callee.caller.caller.arguments[0];
+                    // If "Clear" gets clicked, then really clear it
+                    if ($(event.delegateTarget).hasClass('ui-datepicker-close')) {
+                        $(this).val('');
+                    }
+                }
+            });
+        });
+    });
 </script>

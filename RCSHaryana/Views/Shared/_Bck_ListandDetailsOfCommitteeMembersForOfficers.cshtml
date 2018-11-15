@@ -1,0 +1,111 @@
+﻿<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            @*<em id="msgCommitteMember">you can't Add/edit your committe members, becuase your request sent to ARCS officer.</em>*@
+            <div class="table-responsive">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th hidden="hidden">
+                                ID
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            @*<th>
+                                    Relationship
+                                </th>*@
+                            <th>
+                                Guardian's/ Father's /Husband's Name
+                            </th>
+                            <th>
+                                Designation
+                            </th>
+                            <th id="tblactionCommitteMember">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="Bck_tblMembercommittee"></tbody>
+                </table>
+            </div><!--end .table-responsive -->
+        </div><!--end .card-body -->
+
+    </div><!--end .card -->
+</div>
+<div class="modal fade cus-modal-div" id="myModalLFormARCS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form class="form form-validate" novalidate="novalidate" accept-charset="utf-8" method="post">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-6 form-group">
+                                    <input type="hidden" value="0" id="offdelete" />
+                                    <input type="hidden" class="form-control" id="SocietyMemberID" name="SocietyMemberID">
+                                    <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="SocietyMemberName" name="SocietyMemberName" required>
+                                    <label for="SocietyMemberName">1. Society Member Name <span style="color:red;"><strong>*</strong></span></label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    @Html.DropDownList("BckManagingRelationshipName", new SelectList(ViewBag.Relationship as System.Collections.IEnumerable, "Value", "Text"),
+                                                         "Select", new { id = "BckManagingRelationshipName", @class = "form-control", required = "required" })
+                                    <label for="SocietyMemberDesignation">3. Relationship Name <span style="color:red;"><strong>*</strong></span></label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="RelationshipMemberName" name="RelationshipMemberName" required>
+                                    <label for="RelationshipMemberName">2. Guardian's/ Father's /Husband's Name <span style="color:red;"><strong>*</strong></span></label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    @Html.DropDownList("SocietyMemberDesignation", new SelectList(ViewBag.MemberCommDesignation as System.Collections.IEnumerable, "Value", "Text"),
+                                                     "Select", new { id = "SocietyMemberDesignation", @class = "form-control", required = "required" })
+                                    <label for="SocietyMemberDesignation">3. Society Member Designation <span style="color:red;"><strong>*</strong></span></label>
+                                </div>                              
+                            </div>
+                        </div>                      
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnUpdateInARCS"  onclick="UpdateManagingCommitteMemberARCS();">Update</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (@Convert.ToInt16(Session["SocietyStatus"]) == 12) {
+            $('#btnUpdateInARCS').attr('disabled', 'disabled');
+        }
+    });
+    $("#SocietyMemberDesignation").change(function () {
+        var e = document.getElementById("SocietyMemberDesignation");
+        var value = e.options[e.selectedIndex].value;
+        if (value === "1" || value === "2") {
+            $.getJSON("/Society/CheckPresidentValidation", { SocietyMemberDesignation: value },
+                function (data) {
+                    if (data >= 1) {
+                        if (value === "1") {
+                            alert("You already select the president for member. You can only edit that member profile");
+                            $("#SocietyMemberDesignation").val("");
+                        }
+                        if (value === "2") {
+                            alert("You already select the vice president for member. You can only edit that member profile");
+                            $("#SocietyMemberDesignation").val("");
+                        }
+                        if (value === "4") {
+                            alert("You already select the cashier for member. You can only edit that member profile");
+                            $("#SocietyMemberDesignation").val("");
+                        }
+                        if (value === "3") {
+                            alert("You already select the Secretary for member. You can only edit that member profile");
+                            $("#SocietyMemberDesignation").val("");
+                        }
+                    }
+                });
+        }
+    });
+
+</script>

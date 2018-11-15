@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value xml:space="preserve">                                                                 </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>Form “F”
+</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>
+To
+ 
+
+The Assistant Registrar, 
+Co-operative Societies </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!ARCSName.Value, "GetDetailsForFormC")</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>,
+
+ 
+
+Through :-	Registration file of the proposed, </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!SocietyName.Value, "GetDetailsForFormC")</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Address1.Value, "GetDetailsForFormC")</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value> District </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Address2.Value, "GetDetailsForFormC")</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value> Post Office </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!PostOffice.Value, "GetDetailsForFormC")</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value> Postal Code </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Pin.Value, "GetDetailsForFormC")</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value> 
+ 
+
+Memorandum,
+ 
+
+Forwarded herewith the papers, cited as subject, for disposal under Section 8 of the Haryana </Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Co-operative Societies Act, 1984.</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>
+Please find enclosed here with the registration file of the proposed society on the subject cited </Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>about disposal under section of the Haryana Corporation Society Act,1984.</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>I have satisfied my self tht the Act of the rules,The objects of the proposed society are in accor-</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>-dance with the section 4 of the Act.The proposed Bye-Laws are not contrary to the provisions </Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>of the Act and the rules,The Proposed society has reasonable chances of success therefore,</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>I recommended that the proposed society and its Bye-Lawsmay kindly be registered.</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>
+
+ 
+                                                                                                                      Inspector </Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>                                                                                                                      Co-operative Societies  </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!InspectName.Value, "GetDetailsForFormF")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>                                                                                                                      Circle
+                                                                                                                      Date : </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Format(CDate(First(Fields!DATE.Value, "GetInspectorInfoFormG")),"dd-MMM-yyyy")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.39688cm</Top>
+        <Left>0.66146cm</Left>
+        <Height>14.2875cm</Height>
+        <Width>17.83292cm</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>5.92708in</Height>
+    <Style />
+  </Body>
+  <Width>7.28125in</Width>
+  <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="NewRcsHryDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>805b4c77-f2d2-4837-81e7-ca2506bf78ee</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="NewRcsHryFormF">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>5b9d8ae5-8773-4d96-b521-fe013a76e46a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="GetDetailsForFormF">
+      <Query>
+        <DataSourceName>NewRcsHryDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DisName">
+          <DataField>DisName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SocietyName">
+          <DataField>SocietyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address1">
+          <DataField>Address1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address2">
+          <DataField>Address2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PostOffice">
+          <DataField>PostOffice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Pin">
+          <DataField>Pin</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DateOfSubmittionByInspector">
+          <DataField>DateOfSubmittionByInspector</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="InspectName">
+          <DataField>InspectName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>NewRcsHryDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Project For Report 23 July\RCSHaryana\RCSHaryana\NewRcsHryDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>GetDetailsForFormF</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetDetailsForFormFTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="GetDetailsForFormC">
+      <Query>
+        <DataSourceName>NewRcsHryFormF</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="SocietyName">
+          <DataField>SocietyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address1">
+          <DataField>Address1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address2">
+          <DataField>Address2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PostOffice">
+          <DataField>PostOffice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AreaOfOperation">
+          <DataField>AreaOfOperation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DateofApplicationReceived">
+          <DataField>DateofApplicationReceived</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Pin">
+          <DataField>Pin</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SocietyTransID">
+          <DataField>SocietyTransID</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DisName">
+          <DataField>DisName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AdmissionFees">
+          <DataField>AdmissionFees</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ShareMoney">
+          <DataField>ShareMoney</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Total">
+          <DataField>Total</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Deposit">
+          <DataField>Deposit</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DateOfApproval">
+          <DataField>DateOfApproval</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ARCSName">
+          <DataField>ARCSName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SocietyMemberName">
+          <DataField>SocietyMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>NewRcsHryFormF</rd:DataSetName>
+        <rd:SchemaPath>D:\Project For Report 23 July\RCSHaryana\RCSHaryana\NewRcsHryFormF.xsd</rd:SchemaPath>
+        <rd:TableName>GetDetailsForFormC</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetDetailsForFormCTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="GetInspectorInfoFormG">
+      <Query>
+        <DataSourceName>NewRcsHryDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DATE">
+          <DataField>DATE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="HEARINGDATE">
+          <DataField>HEARINGDATE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OFFICERCODE">
+          <DataField>OFFICERCODE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="STATUS">
+          <DataField>STATUS</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="REMARKS">
+          <DataField>REMARKS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MAINOBJECT1">
+          <DataField>MAINOBJECT1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SOCIETYNAME">
+          <DataField>SOCIETYNAME</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ADDRESS1">
+          <DataField>ADDRESS1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ADDRESS2">
+          <DataField>ADDRESS2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ARCSAddress1">
+          <DataField>ARCSAddress1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>NewRcsHryDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Project For Report 23 July\RCSHaryana\RCSHaryana\NewRcsHryDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>GetInspectorInfoFormG</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetInspectorInfoFormGTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>57a6e17f-3a44-4f4c-b9e8-a78cf219ebc2</rd:ReportID>
+</Report>

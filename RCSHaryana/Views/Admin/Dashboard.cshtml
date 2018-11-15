@@ -1,0 +1,92 @@
+﻿<section>
+    <div class="section-body cus-section-tabs">
+        <div class="row">
+            <!-- BEGIN ALERT - REVENUE -->
+            <div class="col-md-6 col-sm-6">
+            <a href="">
+                <div class="card">
+                    <div class="card-body no-padding">
+                        <div class="alert alert-callout alert-info no-margin">
+                            @*<strong class="pull-right text-success text-lg">0,38% <i class="md md-trending-up"></i></strong>*@
+                            <strong class="text-xl">@ViewBag.ARCSaccount</strong><br />
+                            <span class="opacity-50">ARCS officer's Account</span>
+                            <div class="stick-bottom-left-right">
+                                <div class="progress progress-hairline no-margin">
+                                    <div class="progress-bar progress-bar-warning" style="width:43%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end .card-body -->
+                </div></a><!--end .card -->
+            </div><!--end .col -->
+            <!-- END ALERT - REVENUE -->
+            <!-- BEGIN ALERT - VISITS -->
+            <!--end .col -->
+            <!-- END ALERT - VISITS -->
+            <!-- BEGIN ALERT - BOUNCE RATES -->
+            <div class="col-md-6 col-sm-6">
+                <div class="card">
+                    <a href="">
+                        <div class="card-body no-padding">
+                            <div class="alert alert-callout alert-danger no-margin">
+                                @*<strong class="pull-right text-danger text-lg">0,18% <i class="md md-trending-down"></i></strong>*@
+                                <strong class="text-xl">@ViewBag.inspectoraccount</strong><br />
+                                <input type="hidden" id="Role" value="2" />
+                                <span class="opacity-50">Inspectors Account</span>
+                                <div class="stick-bottom-left-right">
+                                    <div class="progress progress-hairline no-margin">
+                                        <div class="progress-bar progress-bar-danger" style="width:43%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></a>
+</div><!--end .card -->
+            </div><!--end .col -->
+            <div class="col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body no-padding">
+                        <div class="alert alert-callout alert-warning no-margin">
+                            @*<strong class="pull-right text-danger text-lg">0,18% <i class="md md-trending-down"></i></strong>*@
+                            <strong class="text-xl">@ViewBag.Totalaccounts</strong><br />
+                            <span class="opacity-50">Total no. Of accounts</span>
+                            <div class="stick-bottom-left-right">
+                                <div class="progress progress-hairline no-margin">
+                                    <div class="progress-bar progress-bar-warning" style="width:43%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end .card-body -->
+                </div><!--end .card -->
+            </div>
+            @*  <div class="col-md-6 col-sm-6">
+                    <div class="card">
+                        <div class="card-body no-padding">
+                            <div class="alert alert-callout alert-dismissable no-margin">
+                                <strong class="pull-right text-danger text-lg">0,18% <i class="md md-trending-down"></i></strong>
+                                <strong class="text-xl"></strong><br />
+                                <span class="opacity-50"></span>
+                                <div class="stick-bottom-left-right">
+                                    <div class="progress progress-hairline no-margin">
+                                        <div class="progress-bar progress-bar-accent-dark" style="width:43%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end .card-body -->
+                    </div><!--end .card -->
+                </div>*@
+
+        </div><!--end .row -->
+    </div><!--end .section-body -->
+    @Html.Partial("~/Views/Shared/_MenubarAdmin.cshtml")
+
+
+</section>
+
+
+
+<style>
+    .cus-modal-div .modal-dialog {
+        width: 70% !important;
+    }
+</style>
+

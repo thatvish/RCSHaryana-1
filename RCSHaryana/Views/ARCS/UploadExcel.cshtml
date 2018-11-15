@@ -1,0 +1,103 @@
+﻿<script src="~/scripts/js/ListOfManagingCommitteeMembersForOfficers.js"></script>
+@Model
+@*<style>
+        table {
+            counter-reset: Serial;
+        }
+
+            table tr {
+                counter-increment: Serial;
+            }
+
+                table tr td:first-child::before {
+                    content: counter(Serial);
+                    min-width: 1em;
+                    margin-right: 0.5em;
+                }
+    </style>*@
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Approved Society</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <div class="card tabs-left style-default-light">
+            <!-- BEGIN SEARCH BAR -->
+
+            <section>
+                <div class="section-header">
+                    <ol class="breadcrumb">
+                        <li class="active">Import Excel</li>
+                    </ol>
+                </div>
+                <div class="section-body contain-lg">
+                    <h4>@ViewBag.Result</h4>
+                    @using (Html.BeginForm("UploadExcel", "ARCS", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @*@Html.TextBoxFor(m => m.file, new { type = "file" })
+                            <button id="submitButton" type="submit">Submit</button>
+                            @Html.ValidationMessageFor(model => model.file)*@
+
+                        <input type="file" name="postedFile" id="files_10" class="form-control" />
+
+                        <br />
+                        <br />
+                        <input type="submit" class="btn btn-primary"  value="Import" id="clicked" />
+
+                    }
+                    <br />
+
+                </div>
+            </section>
+
+        </div>
+        
+    </div>
+
+
+</section>
+<script>
+
+    //$('#clicked').on("click", function () {
+    //    debugger;
+
+    //});
+
+    $(document).ready(function () {
+        if ('@ViewBag.IsException' == 'Yes') {
+            alert("Some of data which is not in proper format or invalid couldn't be displayed. Please try again")
+        }
+
+        if ('@ViewBag.IsPendingExist' == 'Yes') {
+            alert("Some of data which is not in proper format or invalid couldn't be displayed. Please try again")
+        }
+        if ('@ViewBag.IsPendingExist' == 'Yes') {
+            alert("Some of data which is not in proper format or invalid couldn't be displayed. Please try again")
+        }
+        if ('@ViewBag.SaveData' == 'Yes')
+        {          
+              window.location.href = '@Url.Action("GeneratePassword", "ARCS")';
+        }
+
+
+        @*if ('@ViewBag.PendingData' != null || '@ViewBag.PendingData' != "")
+        {*@
+            //$.each(result.getRecord, function (key, item) {
+            //    i = i + 1;
+            //    html += '<tr>';
+            //    html += '<td hidden="hidden">' + item.MemberSNo + '</td>';
+            //    html += '<td>' + i + '</td>';
+            //    html += '<td><img src="' + item.fullpath + '"/></td>';
+            //    html += '<td>' + item.MemberName + '</td>';
+            //    html += '<td>' + item.FatherName + '</td>';
+            //    html += '<td>' + item.Mobile + '</td>';
+            //    html += '<td>' + item.NomineeName + '</td>';
+            //    html += '<td><a href="#" onclick="return getbySocietyMemberID(' + item.MemberSNo + ')">Edit</a> | <a href="#" onclick="Delele(' + item.MemberSNo + ')">Delete</a></td>';
+            //    html += '</tr>';
+            //});
+            //$('.tbody1').html(html);
+        //}
+
+    });
+</script>

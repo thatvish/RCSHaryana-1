@@ -6,19 +6,6 @@
         </ol>
     </div>
     <div class="section-body contain-lg">
-        <!-- BEGIN INTRO -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="text-primary">FORM ‘A’</h2>
-                <h5>Forwarding Letter</h5>
-            </div><!--end .col -->
-            <div class="col-lg-12">
-                <article class="margin-bottom-lg">
-                    <p class="lead">
-                    </p>
-                </article>
-            </div><!--end .col -->
-        </div><!--end .row -->
         @if (ViewBag.result == "1")
         {
             <div class="alert alert-success" role="alert">
@@ -32,241 +19,170 @@
             </div>
         }
         <div class="card tabs-right style-default-light">
-            <div id="print-content">
-                <form>
-                    <div class="card-body tab-content style-default-bright">
-                        <p>
-                            To<br />
-                            The Assistant Registrar,<br />
-                            Co-operative Societies, @ViewBag.SocietyName <Mas_dis. DisName>
-                                <br />
-                                Through, Proper Channel<br />
-                                <br />
-                                <br />
-                                Subject:	Application for Registration<br />
-                                <br />
-                                Sir,<br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                Please find herewith our application in the prescribed form along with three copies of the proposed bye laws for
-                                registration of a Co-operative Society named as @ViewBag.SocietyName
-                                (Mas_Dis.District )
-                                ( SocietyTransTbl_Log.Address of Society, Post Office)
-                                (Mas_Tehsil.Tehsil Name)
-                                (Mas_Dis.District Name)
-                                . It is requested that same be registered under the provision of section 8 of The Haryana Co-operative Societies Act 1984.
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="card-body tab-content style-default-bright">
+                <div class="tab-pane active" id="first6">
+                    <div id="print-content">
 
-                                Yours faithfully,
-                                <br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                President/Secretary
-                        </p>
-                        <p>
-                            Rs  (FeesDepositTbl.Total)(if any)<br />
-                            Date:(SocietyTransTbl_Log.DateofApplicationReceived)<br />
-
-                            No.<br />
-                            Dated<br />
+                        <div class="card-body tab-content style-default-bright">
+                            <p align="center">
+                                Form “A”<br />
+                                Forwarding Letter
+                            </p>
+                            <div>
+                                To<br />
+                                The Assistant Registrar,<br />
+                                Co-operative Societies, @ViewBag.APRDistrictName
+                            </div>
+                            <br />
+                            Through Proper Channel<br />
+                            <br />
+                            <br />
+                            <span style="font-weight: bold">Subject:	Application for Registration<br /></span>
+                            <br />
                             Sir,<br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your application for registration of a co-operative society at _______________ tehsil ____________________ has been received by post in the office on _________________ against diary No. ________________________________ by hand
-                            (Check out which is inapplicable)
-                            The same shall be forwarded to Assistant Registrar, Co-operative Societies _____________________ alongwith my report with a fortnight from the date of its receipt in my office.
-                            The same is being returned to you herewith as it is incomplete in as much as the following documents are wanting:-<br />
-                            1.<br />
 
-                            2.<br />
+                            Please find herewith our application in the prescribed form along with three copies of the proposed bye laws for
+                            registration of a Co-operative Society named as @ViewBag.SocietyName
+                            @ViewBag.Address1
+                            <span>District</span>                           
+                            @ViewBag.Address2
+                            <span>Post Office </span>
+                            @ViewBag.PostOffice
+                            . It is requested that same be registered under the provision of Section 8 of The Haryana Co-operative Societies Act, 1984.
+                            <br />
+                            <br />
 
-                            3.<br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="col-lg-offset-10">
+                                <p align="right">
+                                    Yours faithfully,
+                                </p>
+                            </div>
 
+                            <div class="col-lg-offset-10">
+                                <p align="right">
+                                    President/Secretary
+                                </p>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a href="@Url.Action("Report", "Society",new {id= "PDF",value="ApprovedReport"})" class="btn btn btn-primary" target="_blank">Print & Download</a>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <span style="font-weight: bold">Enclosures:</span><br />
+                            <br />
 
-                            Yoursfaithfully,
-
-
-
+                            <form action="@Url.Action("Upload", "Society")" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                1.	Application for Registration Alongwith list of promoter members (Form B)
+                                <br />
+                                <input type="file" name="files" id="files_0" dirname="files_0" class="form-control" accept="application/pdf" onchange="validation(this)" required />
+                                <br />'
+                                2.	Copy of Resolution adopted by promoters(Form C)
+                                <br />
+                                <input type="file" name="files" id="files_1" class="form-control" accept="application/pdf" onchange="validation(this)" required />
+                                <br />
+                                3.	Receipt of Cashier(Form D)
+                                <br />
+                                <input type="file" name="files" id="files_2" class="form-control" accept="application/pdf" onchange="validation(this)" required />
+                                <br />
+                                4. Receipt of Custodian(Form E)
+                                <br />
+                                <input type="file" name="files" id="files_3" class="form-control" accept="application/pdf" onchange="validation(this)" required />
+                                <br />
+                                5.	Copies of proposed Bye-Laws
+                                <br />
+                                <input type="file" name="files" id="files_4" class="form-control" accept="application/pdf" onchange="validation(this)" required />
+                                <br />
+                                6.	Receipt of Central Cooperative Bank
+                                <br />
+                                <input type="file" class="form-control" name="files" id="files_5" accept="application/pdf" onchange="validation(this)" required />
+                                <br />
+                                <input id="btnUpload" type="submit" value="Upload" class="btn btn-primary" />
+                            </form>
+                        </div>
                     </div>
-                    <input type="button" onclick="printDiv('print-content')" value="Print The Form" />
-                    
-                </form>
+                </div>
             </div>
-            </div>
-    </div><!--end .card -->
-    
+        </div>
+    </div>
+   
+    @*<input type="button" onclick="printDiv('print-content')" value="Print The Form" class="btn btn-primary" />*@
     <!--end .section-body -->
 </section>
 <script type="text/javascript">
-     $(document).ready(function () {
-        $("#District").change(function () {
-            var dID = $(this).val();
-            var e = document.getElementById("District");
-            var value = e.options[e.selectedIndex].text;
-            $("#AreaofOperation").val(value);
-            $.getJSON("/Account/BindARCSOffice", { DistrictCode: dID },
-                   function (data) {
-                       var select = $("#ARCSOffice");
-                       select.empty();
-                       select.append($('<option/>', {
-                           value: 0,
-                           text: "Select"
-                       }));
-                       $.each(data, function (index, itemData) {
-                           select.append($('<option/>', {
-                               value: itemData.Value,
-                               text: itemData.Text
-                           }));
-                       });
-                   });
-        });
-
-        var e = document.getElementById("ARCSOffice");
-        var value = e.options[e.selectedIndex].text;
-        if (value == "Select") {
-            var e = document.getElementById("District");
-            var DistrictValue = e.options[e.selectedIndex].value;
-            $.getJSON("/Account/BindARCSOffice", { DistrictCode: DistrictValue },
-            function (data) {
-                var select = $("#ARCSOffice");
-                select.empty();
-                select.append($('<option/>', {
-                    value: 0,
-                    text: "Select"
-                }));
-                $.each(data, function (index, itemData) {
-                    select.append($('<option/>', {
-                        value: itemData.Value,
-                        text: itemData.Text
-                    }));
-                });
-            });
-        }
-    });
-
-    $(document).ready(function () {
-        $("#ClassofSocietyandLiability").change(function () {
-            var dID = $(this).val();
-            $.getJSON("/Society/BindSubClassOfSociety", { SocietySubClassCode: dID },
-                   function (data) {
-                       var select = $("#SubClassOfSociety");
-                       select.empty();
-                       select.append($('<option/>', {
-                           value: 0,
-                           text: "Select"
-                       }));
-                       $.each(data, function (index, itemData) {
-                           select.append($('<option/>', {
-                               value: itemData.Value,
-                               text: itemData.Text
-                           }));
-                       });
-                   });
-        });
-    });
-
-    $(document).ready(function () {
-        $('input.checkbox').on('change', function () {
-            $('input.checkbox').not(this).prop('checked', false);
-        });
-    });
-
-    function isChecked(checkbox, sub1) {
-        var button = document.getElementById(sub1);
-        if (checkbox.checked === true) {
-            Save.disabled = "";
-            $("#showNotification").hide();
-        } else {
-            Save.disabled = "disabled";
-        }
-    }
-
-    function isChecked(checkbox, sub1) {
-        Save.disabled = "disabled";
-        document.getElementById(sub1).disabled = !checkbox.checked;
-    }
-
-    $(document).ready(function () {
-        var number = parseInt(@ViewBag.tabResult); //Accessing the number from the ViewBag
-        if (number != "NaN") {
-            if (number == 0) {
-                $('#mytabs a[href="#first6"]').tab('show');
-            }
-            if (number == 1) {
-                $('#mytabs a[href="#second6"]').tab('show');
-            }
-            if (number == 2) {
-                $('#mytabs a[href="#third6"]').tab('show');
-            }
-        }
-    });
-
-    function ValidateAadharCard(textAadharCard, btnStatus) {
-        debugger;
-        var AadharCard = $(this).val();
-        var button = document.getElementById(sub1);
-        $.getJSON("/Society/ValidateAadharCard", { AadharCard: AadharCard },
-               function (data) {
-                   if (data == true) {
-                       Save.disabled = "";
-                   }
-                   else {
-                       Save.disabled = "disabled";
-                   }
-                   alert(data);
-               });
-    }
-
-
-    function printDiv(divName)
-    {
-
+    function printDiv(divName) {
         var printContents = document.getElementById(divName).innerHTML;
-        w=window.open();
+        w = window.open();
         w.document.write(printContents);
         w.print();
         w.close();
     }
+    function validation(abc) {
+        var id = abc.id;
+        var selectedFile = document.getElementById(id).files;
+        var a = abc.files[0].size / 1024;
+        if (a < 1000) {
+            //Check File is not Empty
+            if (selectedFile.length > 0) {
+                //debugger;
+                var re = /(\.pdf)$/i;
+                var fname = (document.getElementById(id).value).substring(12);
+                var res = fname.split(".");
+                var count = res.length;
+                if (count > 2) {
+                    document.getElementById(id).value = null;
+                    alert("File not supported! Kindly select pdf file only");
+                    return false;
+                }
+                if (re.exec(fname)) {
+                    var extenstion = (document.getElementById(id).value).substring(12);
+                    // Select the very first file from list
+                    var fileToLoad = selectedFile[0];
+                    // FileReader function for read the file.
+                    var fileReader = new FileReader();
+                    var base64;
+                    var filesubstring;
+                    // Onload of file read the file content
+                    fileReader.onload = function (fileLoadedEvent) {
+                        base64 = fileLoadedEvent.target.result;
+                        substring = "JVBER";
+                        if (base64.includes(substring)) {
+                        }
+                        else {
+                            document.getElementById(id).value = null;
+                            alert("File not supported! Kindly select pdf file only");
+                        }
+                        //console.log(base64);
+                    };
+                    // Convert data to base64
+                    fileReader.readAsDataURL(fileToLoad);
+                }
+                else {
+                    document.getElementById(id).value = null;
+                    alert("File not supported! Kindly select pdf file only");
+                }
+            }
+        }
+        else {
+            document.getElementById(id).value = null;
+            alert("File size is not exceed 500 kb");
+        }
+    }
+
+    $(document).ready(function () {
+        var number1 = parseInt(@ViewBag.SocietyStatus);
+        if (number1 != "NaN") {
+            if (number1 != 0) {
+                $('#message').show();
+                alert("This application has been forwarded to ARCS for approval and can't be changed.");
+                $('#btnUpload').attr('disabled', 'disabled');
+            }
+            if (number1 == 0) {
+                $('#message').hide();
+            }
+        }
+    });
 </script>

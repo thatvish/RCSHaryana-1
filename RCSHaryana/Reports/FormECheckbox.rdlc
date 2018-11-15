@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="NewRcsHryFormE">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>add8506d-6e88-4b3d-9a98-43fcba2be58d</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="NewRcsHryDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>aa85d761-fa6d-41cc-a980-bd4ef6dd09b3</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="ReportFormE">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>ae5d4451-10c7-4fd5-ba0f-03e4ab9f996e</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>NewRcsHryDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="SocietyMemberName">
+          <DataField>SocietyMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RelationshipName">
+          <DataField>RelationshipName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RelationshipMemberName">
+          <DataField>RelationshipMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HouseNo">
+          <DataField>HouseNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SectorStreet">
+          <DataField>SectorStreet</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DisName">
+          <DataField>DisName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SocietyName">
+          <DataField>SocietyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>NewRcsHryDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Project For Report 23 July\RCSHaryana\RCSHaryana\NewRcsHryDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>GetDetailsForFormD</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetDetailsForFormDTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Query>
+        <DataSourceName>NewRcsHryFormE</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SocietyTransId">
+          <DataField>SocietyTransId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProceedingBook">
+          <DataField>ProceedingBook</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="CashBook">
+          <DataField>CashBook</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="LedgerBook">
+          <DataField>LedgerBook</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="MemberRegister">
+          <DataField>MemberRegister</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="ActandRule">
+          <DataField>ActandRule</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Byelawsofsociety">
+          <DataField>Byelawsofsociety</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Appsformembership">
+          <DataField>Appsformembership</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>NewRcsHryFormE</rd:DataSetName>
+        <rd:SchemaPath>D:\Project For Report 23 July\RCSHaryana\RCSHaryana\NewRcsHryFormE.xsd</rd:SchemaPath>
+        <rd:TableName>GetReportE</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetReportETableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSet3">
+      <Query>
+        <DataSourceName>ReportFormE</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="SocietyMemberName">
+          <DataField>SocietyMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RelationshipName">
+          <DataField>RelationshipName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address1">
+          <DataField>Address1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address2">
+          <DataField>Address2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Custodian_SocietyMemberName">
+          <DataField>Custodian_SocietyMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Custodian_FatherName">
+          <DataField>Custodian_FatherName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PostOffice">
+          <DataField>PostOffice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DisName">
+          <DataField>DisName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SocietyName">
+          <DataField>SocietyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ReportFormE</rd:DataSetName>
+        <rd:SchemaPath>E:\ss\RCSHaryana\RCSHaryana\ReportFormE.xsd</rd:SchemaPath>
+        <rd:TableName>GetDetailsForFormE</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetDetailsForFormETableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve">                                                           </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>                Form 'E'
+
+                                                           Receipt of Custodian of Books</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>
+
+I </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Custodian_SocietyMemberName.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!RelationshipName.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Custodian_FatherName.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>  resident of  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Address1.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> House No  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Address2.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>  District  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!DisName.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> of Society </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!SocietyName.Value, "DataSet1")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> a do hereby certify that I have taken over the charge of the below listed books of  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!SocietyName.Value, "DataSet1")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> today </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=CDate(Today()).ToString("MMM dd,yyyy")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> and I undertake that I shall produce them on demand to any of the persons duly authorised in this behalf under the Haryana Cooperative Societies Act, Rules framed thereunder and the Bye-laws of the society in the manner as has been laid down in the said Act, Rules and the bye-laws.
+
+(List of books alongwith pages to be given)
+
+1.	Proceeding Book	                                                                         
+2.	Cash Book	                                                            
+3.	Ledger Book	                                                         
+4.	Member Register	                                                  
+5.	Act &amp; Rule	                                                             
+6.	Bye-laws of society	                                               
+7.	Applications for membership	                                 
+8.	Other	                                                                  </Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>
+                                                                             Signature or thumb impression of the custodian of the books
+
+ 
+Signature of the witnesses                                       Address of the witnesses
+1.                                                                          1.
+
+2.                                                                          2.
+
+                                                                                                                                               Countersigned
+
+                                                                                                                                               (President)
+
+Place__________________
+
+Date __________________
+
+(NOTE :- Name and full address of the witnesses should be given. Any two promoter members of the society can act as witness )</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>0.36724cm</Top>
+            <Left>0.63182cm</Left>
+            <Height>16.68667cm</Height>
+            <Width>18.08396cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="Image1">
+            <Source>Embedded</Source>
+            <Value>CHECK3png</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>4.99745cm</Top>
+            <Left>10.13037cm</Left>
+            <Height>2.92875cm</Height>
+            <Width>0.78562cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+        </ReportItems>
+        <Height>6.90625in</Height>
+        <Style />
+      </Body>
+      <Width>7.36842in</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="img_332582">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAA9QAAAMCCAMAAAC/bX6EAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAHVQTFRF/////v7+a2trlJSUampqAAAAAQEBk5OTkpKSkZGRkJCQiIiIh4eHhoaGhYWFhISEg4ODgoKCgYGBgICAd3d3dnZ2dXV1dHR0c3NzcnJycXFxcHBwaGhoZ2dnZmZmZWVl/f39ZGRklZWVf39/Y2Nji4uL////jlKw7wAAAAF0Uk5TAEDm2GYAAAABYktHRACIBR1IAAAACXBIWXMAAABIAAAASABGyWs+AAAVPklEQVR42u3ViZrcxpGFUWk8oJf2Au+bZNFuz/u/4lCUxKUZ0YVCAciMzHOeIBG3/q+++gp40Nf/87PWTwAO9PX/Lm9UDeN41/SiahjH+6ZVDcP4sel3Vf+89VOAA3xoWtUwhE+aVjUM4LOmVQ3lvWha1VDcF02/q/oXrR8F7BY0rWooLGxa1VBW0rSqoai0aVVDSa80/a7qX7Z+HnCnV5tWNZRzo2lVQzE3m1Y1lLKhaVVDIZuaVjWUsbHpd1X/qvVTgQ02N61qKOGOplUNBdzV9DtPrR8MvOreplUNfbu/6WX5detHA6k9Tasa+rWvaVVDr/Y2rWro0/6mVQ09eqTpZflN6+cDLzzWtKqhN482rWroy+NNqxp6ckTTqoZ+HNO0qqEXRzW9LL9t/SnAV0c2rWrowZFNqxraO7ZpVUNrRzetamjr+KaX5XetPwomdkbTqoZ2zmla1dDKWU2rGto4r2lVQwtnNq1quN65TS/L2voDYTJnN61quNb5TasarnRF06qG61zTtKrhKlc1vSy/b/2pMIXrmlY1XOHKplUN57u2aVXD2a5uWtVwruubXpY/tP5oGFiLplUN52nTtKrhLK2aVjWco13TqoYztGxa
+1XC8tk0vyx9bHwAG07ppVcOx2jetajhSD02rGo7TR9OqhqP00vSy/Kn1KWAI/TStajhCT02rGh7XV9Oqhkf11rSq4TH9Na1qeESPTS/Ln1ufBcrqs2lVw169Nq1q2KffplUNe/TctKrhfn03rWq4V+9NL8tfWp8ISum/aVXDPSo0rWrYrkbTqoatqjStatimTtPL8tfWx4ICKjWtaritVtOqhluqNa1qeF29plUNr6nYtKohV7PpZflb68NBp6o2rWqI1W1a1RCp3LSq4Uu1m1Y1vFS96WX5e+sTQlfqN61q+NQITasaPhqjaVXDT0ZpWtXwg3GaXpZ/tD4mdGCkplUNozWtahitaVUzu/GaVjVzG7FpVTOzMZteln+2Piw0MmrTqmZW4zatauY0ctOqZkZjN/2u6q9bXxiuNXrTqmY24zetauYyQ9PL8o2qmcYcTS/Lt6pmErM0rWpmMU/TqmYOMzWtamYwV9OqZnyzNb0s/1I1Q5uvaVUzthmbVjUjm7NpVTOuWZtWNaOat2lVM6aZm16W71TNcOZuWtWMZ/amVc1oNK1qxqLp7333tvUOcBRN/0DVjELTP1E1Y9D0R6pmBJr+1L/ftt4DHqXpz6ma6jT9kqqpTdNfUjWVaTqiaur6+tvW/fTpm9bDwE7+p2Nv/tN6GdhH0zFNU5WmY5qmKk3HNE1Vmo5pmqo0HdM0VWk6pmmq0nRM01Sl6ZimqUrTMU1TlaZjmqYqTcc0TVWajmmaqjQde/Oz1svAPpqOaZqqNB3TNFVpOqZpqtJ0TNNUpemYpqlK0zFNU5WmY5qmKk3HNE1Vmo5pmqo0HdM0VWk6pmmq0nRM01Sl6ZimqUrTMU1TlaZjmqYqTcc0TVWajmmaqjQd0zRVaTqmaarSdEzTVKXpmKapStMxTVOVpmOapipNxzRNVZqOaZqqNB3TNFVpOqZpqtJ0TNNUpemYpqlK0zFNU5WmY5qmKk3HNE1Vmo5pmqo0HdM0VWk6
+pmmq0nRM01Sl6ZimqUrTMU1TlaZjmqYqTcc0TVWajmmaqjQd0zRVaTqmaarSdEzTVKXpmKapStMxTVOVpmOapipNx978vPUysI+mY5qmKk3HNE1Vmo5pmqo0HdM0VWk6pmmq0nRM01Sl6ZimqUrTMU1TlaZjmqYqTcc0TVWajmmaqjQd0zRVaTqmaarSdEzTVKXpmKapStMxTVOVpmOapipNxzRNVZqOaZqqNB3TNFVpOqZpqtJ0TNNUpemYpqlK0zFNU5WmY5qmKk3HNE1Vmo5pmqo0HdM0VWk6pmmq0nRM01Sl6ZimqUrTMU1TlaZjmqYqTcc0TVWajmmaqjQd0zRVaTqmaarSdEzTVKXpmKapStMxTVOVpmOapipNxzRNVZqOaZqqNB3TNFVpOqZpqtJ0TNNUpemYpqlK07E3v2i9DOyj6ZimqUrTMU1TlaZjmqYqTcc0TVWajmmaqjQd0zRVaTqmaarSdEzTVKXpmKapStMxTVOVpmOapipNxzRNVZqOaZqqNB3TNFVpOqZpqtJ0TNNUpemYpqlK0zFNU5WmY5qmKk3HNE1Vmo5pmqo0HdM0VWk6pmmq0nRM01Sl6ZimqUrTMU1TlaZjmqYqTcc0TVWajmmaqjQd03Ti+U+tX8ANmo5pOvG8LKrum6Zjmk48f38dVfdM0zFNJ55/uI+q+6XpmKYTzz9dSNW90nRM04nnjzdSdZ80HdN04vnTK6m6R5qOaTrx/PmdVN0fTcc0nXh+eSlV90bTMU0nnr+8lar7oumYphPP0bVU3RNNxzSdeI7vpep+aDqm6cRzdjFV90LTMU0nnvOb/bn123hP0zFNJ55fu5qqe6DpmKYTz6/fTdXtaTqm6cTzrcupujVNxzSduNm0qlvTdEzTiQ1Nq7otTcfe/LL1Mp3a1LSqW9J0TNOJjU2ruh1NxzSd2Ny0qlvRdEzTiTuaVnUbmo5pOnFX06puQdMxTSfubFrV19N0TNOJu5tW9dU0HdN0
+YkfTqr6WpmOaTuxqWtVX0nRM04mdTav6OpqOaTqxu+ll+Uvrt09C0zFNJx5oWtXX0HRM04mHmlb1FTQd03TiwaZVfT5NxzSdeLhpVZ9N0zFNJw5oWtXn0nRM04lDmlb1mTQd03TioKZVfR5NxzSdOKxpVZ9F0zFNJw5sWtXn0HRM04lDm1b1GTQd03Ti4KZVfTxNxzSdOLxpVR9N0zFNJ05oWtXH0nRM04lTmlb1kTQd03TipKZVfRxNxzSdOK3pZflr628bhKZjmk6c2LSqj6HpmKYTpzat6iNoOqbpxMlNq/pxmo5pOnF606p+lKZjmk5c0LSqH6PpmKYTlzSt6kdoOqbpxEVNq3o/Tcc0nbisaVXvpemYphMXNq3qfTQd03Ti0qZVvYemY5pOXNy0qu+n6ZimE5c3rep7aTqm6USDplV9H03HNJ1o0rSq76HpmKYTjZpW9Xaajmk60azpZflb628vQtMxTScaNq3qbTQd03SiadOq3kLTMU0nGjet6ts0HdN0onnTqr5F0zFNJzpoWtWv03Tsza9aL9OpLppW9Ws0HdN0opOmVZ3TdEzTiW6aVnVG0zFNJzpqWtUxTcc0neiqaVVHNB3TdKKzplX9JU3HNJ3ormlVv6TpmKYTHTat6s9pOqbpRJdNq/pTmo5pOtFp06r+SNMxTSe6bXpZ/t76Np3QdEzTiY6bVvUPNB3TdKLrplX9PU3HNJ3ovGlVazqj6UT3Tata0zFNJwo0PXvVmo5pOlGi6bmr1nRM04kiTc9ctaZjmk6UaXreqjUd03SiUNOzVq3pmKYTpZqes2pNxzSdKNb0jFVrOvHUeplOlWt6vqo1ndB0rGDTs1Wt6YSmYyWbnqtqTSc0HSva9ExVazqh6VjZppflH61vdxFNJzQdK9z0LFVrOqHpWOmm56ha0wlNx4o3PUPVmk5oOla+6fGr1nRC07EBmh69ak0nNB0boumxq9Z0QtOxQZoeuWpNJzQdG6bpcavW
+dELTsYGaHrVqTSc0HRuq6TGr1nRC07HBmh6xak0nNB0brunxqtZ0QtOxAZserWpNJzQdG7LpsarWdELTsUGbHqlqTSc0HRu26WX5Z+vbHkTTCU3HBm56lKo1ndB0bOimx6ha0wlNxwZveoSqNZ3QdGz4putXremEpmMTNF29ak0nNB2bounaVWs68evWy3RqkqYrV63phKZj0zRdt2pNJzQdm6jpqlVrOqHp2FRN16xa0wlNxyZrumLVmk5oOjZd0/Wq1nRC07EJm65WtaYTmo5N2XStqjWd0HRs0qYrVa3phKZj0zb9ruqvWx9/G00nNB2buOkqVWs6oenY1E3XqFrTCU3HJm+6QtWaTmg6Nn3T/Vet6YSmY5peeq9a0wlNxzT9Xs9Vazqh6Zimf9Rv1ZpOaDqm6Q++6bRqTSc0HdP0J77tsmpNJzQd0/Rneqxa0wlNxzT9Qn9Vazqh6Zimv9Bb1ZpOaDqm6UBfVWs6oemYpkM9Va3phKYTT62X6VQ/VWs6oemUqmO9VK3phKZfoepYH1VrOqHpV6k61kPVmk5o+gZVx9pXremEpm9Sdax11ZpOaHoDVcfaVq3phKY3UXWsZdWaTmh6I1XH2lWt6YSmN1N1rFXVmk5o+g6qjv2rSdWaTmj6LqqOtaha0wlN30nVseur1nRC03dTdezqqjWd0PQOqo5dW7WmE5reRdWxK6vWdELTO6k6dl3Vmk5oejdVx66qWtMJTT9A1bFrqtZ0QtMPUXXsiqo1ndD0g1QdO79qTSc0/TBVx86uWtMJTR9A1bFzq9Z0QtOHUHXszKo1nfhN6xpGoerYeVVrOqHpw6g6dlbVmk5o+kCqjn13StWaTmj6UKqOnVG1phOaPpiqY8dXremEpg+n6tjRVWs6oekTqDp2bNWaTmj6FKqOHVm1phOaPomqY8dVremEpk+j6thRVWs6oekTqTp2TNWaTmj6VKqOHVG1phOaPpmqY49XremEpk+n6tijVWs6
+oekLqDr2WNWaTmj6EqqOPVK1phOavoiqY/ur1nRC05dRdey7t/vuqemEpi+k6ti+qjWd0PSlVB3bU7WmE5q+mKpj91et6YSmL6fq2L1Vazqh6QZUHbuvak0nNN2EqmP3VK3phKYbUXVse9WaTmi6GVXHtlat6YSmG1J17N9vt1xP0wlNN6Xq2JaqNZ3QdGOqjt2uWtMJTTen6titqjWd0HQHVB17vWpNJzTdBVXHXqta0wlNd0LVsbxqTSc03Q1Vx7KqNZ3QdEdUHYur1nRC011RdSyqWtMJTXdG1bEvq9Z0QtPdUXXsZdWaTmi6Q6qOfV61phOa7pKqY59WremEpjul6tjHqjWd0HS3VB37qWpNJzTdMVXH/vv2++toOqHprqk69n3Vmk5ounOqjv33raYTmu7ec+vfSKe+/bb1Czr1f61/sdzmv5o7+J8uQdVspukiVM1Gv239W2UrVbOJpgtRNRtouhRVc5Omi1E1N2i6HFXzKk0XpGpeoemSVE1K00WpmoSmy1I1IU0XpmoCmi5N1XxB08Wpmhc0XZ6q+YymB6BqPqHpIaiaDzQ9CFXzI00PQ9W8p+mBqJpF04NRNZoejaqnp+nhqHpymh6Qqqem6SGpemKaHpSqp6XpYal6UpoemKqnpOmhqXpCmh6cqqej6eGpejKanoCqp6LpKah6IpqehKqnoelpqHoSmp6Iqqeg6amoegKanoyqh6fp6ah6cJqekKqHpukpqXpgmp6Uqoel6WmpelCanpiqh6Tpqal6QJqenKqHo+npqXowmkbVY9E0X6l6KJrmPVUP43etf0v0QtWD0DQfqHoImuYTqh6ApvmMqsvTNC+oujhN8wVVl6ZpAqouTNOEVF2WpkmouihNk1J1SZrmFaouSNO8StXlaJobVF2MprlJ1aVomg1UXYim2UTVZWiajVRdhKbZTNUlaJo7qLoATXMXVXdP09xJ1Z3TNHdTddc0zQ6q7pim2UXV3dI0O6m6U5pm
+N1V3SdM8QNUd0jQPUXV3NM2DVN0ZTfMwVXdF0xxA1R3RNIdQdTc0zUFU3QlNcxhVd0HTHEjVHdA0h1J1c5rmYKpuTNMcTtVNaZoTqLohTXMKVTejaU6i6kY0zWlU3YSmOZGqG9A0p1L15TTNyVR9MU1zOlVfStNcQNUX0jSXUPVlNM1FVH2RtfXSzEPVl1hb78xMVH2BtfXKzEXVp1tbb8xsVH2ytfXCzEfVp1pb78uMVH2itfW6zEnVp1lbb8usVH2StfWyzEvVp1hb78rMVH2CtfWqzE3Vh1tbb8rsVH2wtfWioOpDra33BFUfam29JnxP1YdZW28JP1D1QdbWS8JPVH2ItfWO8JGqD7C2XhE+peqHra03hM+p+kFr6wXhJVU/ZG29H3xJ1Q9YW68HEVXvtrbeDmKq3mltvRxkVL3L2no3yKl6h7X1avAaVd9tbb0ZvE7Vd1pbLwa3qPoua+u94DZV32FtvRZsoerN1tZbwTaq3mhtvRRspepN1tY7wXaq3mBtvRLcQ9U3ra03gvuo+oa19UJwL1W/am29D9xP1a9YW68De6g6tbbeBvZRdWJtvQzsperQ2noX2E/VgbX1KvAIVX9hbb0JPEbVL6ytF4FHqfoza+s94HGq/sTaeg04gqo/WFtvAcdQ9Y9+33oJOIqq39M0A1H1omkGo2pNM5rpq9Y0w5m8ak0zoKmr1jRDmrhqTTOoaavWNMOatGpNM7Apq9Y0Q5uwak0zuOmq1jTDm6xqTTOBqarWNFOYqGpNM4lpqtY005ikak0zkSmq1jRTmaBqTTOZ4avWNNMZvGpNM6Ghq9Y0Uxq4ak0zqWGr1jTTGrRqTTOxIavWNFMbsGpNM7nhqtY00xusak3DWFVrGr4aqmpNw3vDVK1p+NEgVWsaPhiiak3DJwaoWtPwmfJVaxpeKF61puELpavWNAQKV61pCJWtWtOQKFq1piFVsmpNwysKVq1peFW5qjUNNxSrWtNwU6mqNQ0b
+FKpa07BJmao1DRsVqfoPre8EdZSoWtNwhwJVaxru0n3VmoY7dV61puFuXVetadih46o1Dbt0W7WmYadOq9Y07NZl1ZqGB3RYtabhId1VrWl4UGdVaxoe1lXVmoYDdFS1puEQ3VStaThIJ1VrGg7TRdWahgN1ULWm4VDNq9Y0HKxx1ZqGwzWtWtNwgoZVaxpO0axqTcNJGlWtaThNk6o1DSdqULWm4VSXV61pONnFVWsaTndp1ZqGC1xYtabhEpdVrWm4yEVVaxouc0nVmoYLXVC1puFSp1etabjYyVVrGi53atWahgZOrFrT0MRpVWsaGjmpak1DM6dUrWlo6ISqNQ1NHV61pqGxg6vWNDR3aNWahg4cWLWmoQuHVa1p6MRBVf+x9XcAPzmkak1DRw6oWtPQlYer1jR05sGqNQ3deahqTUOHHqha09Cl3VVrGjq1s2pNQ7d2Va1p6NiOqjUNXbu7ak1D5+6sWtPQvbuq1jQUcEfVmoYSNletaShiY9WahjI2Va1pKGRD1ZqGUm5WrWko5knTMJgnTcNgnjQNg3nSNAzmSdMwmCdNw2CeNA2DedI0DOZJ0zCYJ03DYJ40DYN50jQM5knTMJgnTcNgnjQNg3l+bv0CJvT/al1RkbMHwaAAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDYtMTJUMDM6MzQ6MDArMDg6MDBqDQbmAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE2LTA0LTE2VDE1OjU2OjQ2KzA4OjAwms2P+QAAAFR0RVh0c3ZnOmJhc2UtdXJpAGZpbGU6Ly8vaG9tZS9kYi9zdmdfaW5mby9zdmcvMjYvYmQvMjZiZDUwMWZiZWNkYzIzNDBlZTRiYTNhZmY1YWRlZDkuc3ZnG4aSNwAAAABJRU5ErkJggg==</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="check1">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAD4AAADKCAIAAAByoGQcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUQSURBVHhe7d3BK21fGMZxV0kppUSU4k/gTzIwMTExMzIwMDExMTBhgKQoSYqiKIokir9DKSnc55793N/v7M5d56z9rnevtdT7qdt1nLXP/t7bHT27e2/Xd5bu7++7moyNjfGNJjmm397eMrnJyMgI3/4ru/Tr62vGthgaGuKhhrzSLy8vmenAcw0ZpZ+fnzPQjUcbckk/PT1lndvr6ytPN2SRfnx8zDq3t7c3nv4rffrh4SHr3N7f33m6Sez0nZ2dpaUlvvj+3t/fZ53bx8cHT5eppS8sLPCrttCNmuLr3d3dIq6Nz8/P4nArnfT5+fniTnztYWtrq7ikDR51UEifm5vjrRr43bY2NjZ42o1H3ULTZ2dneasmfM9hfX2d59x4tK2g9JmZGd6qBU+0WFtb4wk3Hu1Enj49Pc1bOfBck9XVVb7nxqMe5Ombm5u8mxuPNqysrPC7bjzqR54O29vbvKfb19cXTi4vL/O1W/GZ/oLSYW9vj3d2W1xc5FcO3d3d/LgqQtPh4OCACSI9PT38oIoU0uHo6IghFfX29vIjqtNJh5OTE+Z46+vr48UiaulwdnbGKA/9/f28TEozHS4uLpjW1sDAAC8IoJwOV1dXDHQYHBzk0TD66XBzc8PMFsPDwzwUrJZ0uLu7Y2yT0dFRvq2hrnR4eHhgcsM/F6wQNabD09NT0T0+Ps5v6ak3HV5eXiYnJ/lC1S/8KH5jfpxu/vwDZZ2OP2xTU1N80ar4c5Ohx8fHonBiYoLfKss03R4NxGWPBuKyRwNx2aOBmtmjgT900u3RQAmPuoWm26OBEh7tRJ5ujwZKeNSPPB3s0YA9GpCxRwPVqKWDPRrwpZwO9migs1rS4Wc/Ggj3/PzcZuDON902x7hs
+c4zLNse4bHOMyzbHALY5lvCog0K6bY4lPNpWULptjiU86kGebpvj/4rP9BeUDrY5Siikg22O1ailg22OvpTTwTbHzmpJ12LDXVw23MVlw11cNtzFZcNdzWy4+0Mn3Ya7Eh51C0234a6ERzuRp9twV8KjfuTpYMOdDXcyNtxVo5YONtz5Uk4HG+46qyUd7N8RaKfG9EDtt1LINL3jVgo5pvtspZBduudWCnml+2+lkFF6pa0UckmvupVCFumCrRTSp8u2UkicLt5KIWq64lYKOunxt1JQSE+ylUJoeqqtFILSE26lIE9Pu5WCMD35VgrC9ORbKQjTIe1WCvJ0SLiVQlA6pNpKITQdkmyloJAO8bdS0EmHyFspqKVDzK0UNNMh2lYKyukQZysF/XSIsJVCLenhOg6OkGO6z+AI2aV7Do6QV7r/4AgZpVcaHCGX9KqDI2SRLhgcIX26bHCExOniwRFSpocMjhAvXXdwBIX0JIMjhKanGhwhKD3h4Ajy9LSDIwjTkw+OIEnPYXAESXoOgyNIroHkgyMIL4O0gyPI0yHh4AhB6ZBqcITQdEgyOIJCOsQfHEEnHSIPjqCWDjEHR9BMh2iDIyinQ5zBEfTTw/kMjpBduufgCHml+w+OkFF6pcERckmvOjhCFumCwRHSp8sGR0icLh4cIWV6yOAIydIDB0eIlK4+OEJoeqrBEYLSEw6OIE9POziCMD354AiS9BwGR6h8QSaDI1S+JpPBESSX5TA4gvDK5IMjyH/RaQdHkKdDwsERgtIh1eAIoemQZHAEhXSIPziCTjpEHhxBLR1iDo6gmQ7RBkdQToe6/zb4f+w/Oo+vq+s3pYqoG9QznlsAAAAASUVORK5CYII=</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="CHECK3png">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAEAAAADoCAIAAADQRHUKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUySURBVHhe7ZpPK31hEMd/KSmllIhS3oK3ZGFjY2NnZWFhY2NjYcMCSVGSFEVRFElZeB1KSXF/k/td3Jvz3PvMPHPOjJrP6v6Zec587rln823+tf44IWBNCFgTAtaEgDUhYE0IWGMv8PT09K+D6elpfJGHscDDwwMG72BychJfZ2ApcHd3h5F/MT4+jqJ+mAnc3Nxg2ASo64eNwNXVFcZMg9J+GAhcXFxgxjRvb2+o7kfTAmdnZ5gxzfv7O6ozaFTg5OQEM6b5+PhAdR41Cuzv76+uruJNq3V0dIQZ03x+fqI6G4nA8vIyXvWEpqeZ2q8PDg7aI/bg6+urXcyCLbC0tNS+Ht5nsLu7227pAUr58DoXFxdxwR/waU+2t7dRnQalIhjNCwsLuGAH+C7B1tYW6tKgVEpu//z8PC74C1T8YnNzExVpUFpA1hFzc3O4YALUdbCxsYHv0qC0jKxTdnZ2cM00KP1hfX0dn6ZBaTG5B+3t7eHKab6/v6lybW0N79O0z1SBcdbh4SGun2ZlZQWvEgwMDOA4JXg/xvHxMQYRMTg4iIP0YN/N09NTjMNkaGgIR6gi+Tuen59jqGyGh4fRrI3webq8vMRoGYyMjKCtBoQCxPX1NQbsyejoKBrqQS5A3N7eYswEY2NjKK2NIgHi/v4ew/5iYmICRXVSKkA8Pj5i5A6mpqbwdc0oCBDPz88Y/AduulaCjgDx8vLSnn5mZgYfNYKaAPH6+jo7O4s3TaEpYIIXAXFG7UKgJKO2FyjMqI0FyjNqSwGVjNpMQCujthFQzKgNBHQz6toF6s6o5QJOMmqhgJ+MWtLjKqNmt3nLqHmdDjNqRrPPjJrR7zOj5h3hMKNmn+Ito5b8DK4yauF99JNRy/+I
+TjLqoifJQ0ZdJECYZ9SlAoRtRq0gQBhm1DoChFVGrSZAmGTUmgJE8xm1sgDRcEatL9AwIWCNC4GSBXZ7gcIFdmOB8gV2SwGVBXYzAa0FdhsBxQV2AwHdBfamBdQX2OsVaGCBXSjgZ4FdIuBqgZ3d5m2BndfpcIGd0exzgT233+0Ce+4RbhfYGaf4XGDnHeRwgZ39S3hbYJfcSlcL7ML/op8FdvnD5GSBXS5AeFhgLxIgzBfYSwUI2wV2BQHCcIFdR4CwWmBXEyBMFtg1BYjmF9iVBZrHhUCk03ZEOm0nEOk0MBCIdLqLegUine6PRCDS6QpQyofXGel0BSiVktsf6XQFKC2DcUqk0yDS6S4ktzLSaU3kD1Ok0zoUCRCRTpeiIEBEOi1HTaCEiBbtiGjRTiCiRWAgENFiF/UKRLTYH4lARIsVoJQPrzOixQpQKiW3P6LFClBaBuOUiBZBRItdSG5lRIuayB+miBZ1KBIgIlosRUGAiGhRjpoAEYuvEpQFmseFQKTTdkQ6bScQ6TQwEIh0uot6BSKd7o9EINLpClDKh9cZ6XQFKJWS2x/pdAUoLYNxSqTTINLpLiS3MtJpTeQPU6TTOhQJEJFOl6IgQEQ6LUdNgIh0WoKygICSZJcwFihMdglLgfJklzATUEl2CRsBrWSXMBBQTHaJpgV0k12iUQH1ZJeoUaCBZJeQCPhJdgm2gKtkl+B1ekt2CUazw2SXyO33mewSWUe4TXaJrFPcJrtE7kE+k12CcZbDZJfg/Rjekl2CfTddJbuE5O/oJ9klhM+Tk2SXEAoQHpJdQi5AmCe7RJEAYZvsEqUChGGySygIEFbJLqEjQJgku4SaANF8sktoCpgQAtaEgDUhYE0IWBMC1vxxgVbrP6GBF0mrbp25AAAAAElFTkSuQmCC</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>853efd81-a7f5-4cd6-ae48-2392bfb90caa</rd:ReportID>
+</Report>

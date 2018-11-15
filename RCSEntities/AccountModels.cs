@@ -22,16 +22,32 @@ namespace RCSEntities
     public class LoginUserDetails
     {
         public string Salt { get; set; }
-        public string Role { get; set; }
+        public int Role { get; set; }
         public int UserType { get; set; }
         public int UserId { get; set; }
         public string Name { get; set; }
+        public string UserName { get; set; }
+        public int ARCSCode { get; set; }
+        public string SocietyTransId { get; set; }
+        public int SocietyStatus { get; set; }
+        public int StatusEditable { get; set; }
+        public int FormE { get; set; }
+        public int Total { get; set; }
+        public int BackLogResetStatus { get; set; }
     }
 
     public class SecurityQuestionsModels
     {
         public int QuestionId { get; set; }
         public string SecurityQuestion { get; set; }
+    }
+
+    public class LoginAttemptsModels
+    {
+        public int LoginId { get; set; }
+        public int LoginAttempts { get; set; }
+        public int IntervalPending { get; set; }
+        public string UserId { get; set; }
     }
 
     public class ResgirationModels
@@ -59,7 +75,7 @@ namespace RCSEntities
         public string TransferRecordModifiedBy { get; set; }
         public string SecurityQuestionCode { get; set; }
         public string SecurityAnswer { get; set; }
-        public string Role { get; set; }
+        public int Role { get; set; }
         public string Hash { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -75,30 +91,4 @@ namespace RCSEntities
         public string SocietyStatus { get; set; }
         public string SocietyRegistrationNo { get; set; }
     }
-
-    //public class UserRegistration
-    //{
-    //    [Required]
-    //    [Display(Name = "User name")]
-    //    [Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
-    //    [ServerSideRemote("Account", "doesUserNameExistGet")]
-    //    public string UserName { get; set; }
-
-    //    [Required]
-    //    [DataType(DataType.EmailAddress)]
-    //    [Display(Name = "Email address")]
-    //    public string Email { get; set; }
-
-    //    [Required]
-    //    [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-    //    [DataType(DataType.Password)]
-    //    [Display(Name = "Password")]
-    //    public string Password { get; set; }
-
-    //    [DataType(DataType.Password)]
-    //    [Display(Name = "Confirm password")]
-    //    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-    //    public string ConfirmPassword { get; set; }
-
-    //}
 }

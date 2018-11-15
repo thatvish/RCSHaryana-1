@@ -1,0 +1,308 @@
+﻿<script src="~/scripts/js/ListOfManagingCommitteeMembersForOfficers.js"></script>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Society Details</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <div class="card tabs-left style-default-light">
+            <!-- BEGIN SEARCH BAR -->
+            <div class="card-body style-primary no-y-padding">
+                <form class="form form-inverse" accept-charset="utf-8" method="post">
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-content">
+                                <div class="form-control-line"></div>
+                                <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" autocomplete="off" class="form-control" id="SocietyRegistrationNo" name="SocietyRegistrationNo" required>
+                                <label for="PostOffice">Society Registration No.<span style="color:red;"><strong>*</strong></span></label>
+                            </div>
+                            <div class="input-group-btn">
+                                <button id="btnSearch" class="btn btn-floating-action btn-default-bright" onclick="BindAllSocietyDetailsForOfficers();" type="button"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <ul class="card-head nav nav-tabs tabs-accent" data-toggle="tabs">
+                <li class="active"><a href="#SoceityDetails">Soceity Details</a></li>
+                <li><a href="#ListofMembers">List of Members</a></li>
+                <li><a href="#ByLaws">Docs</a></li>
+                <li><a href="#Forward">Remarks</a></li>
+                <li><a href="#Certificate">Certificate</a></li>
+            </ul>
+            <div id="mytabs" class="card-body tab-content style-default-bright">
+                @if (ViewBag.result == "1")
+                {
+                    <div class="alert alert-success" role="alert">
+                        @ViewBag.show
+                    </div>
+                }
+                @if (ViewBag.result == "0")
+                {
+                    <div class="alert alert-warning" role="alert">
+                        @ViewBag.show
+                    </div>
+                }
+                <div class="tab-pane active" id="SoceityDetails">
+                    @Html.Partial("~/Views/Shared/_SocietyDetailsForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="CommitteeMembers">
+                    @Html.Partial("~/Views/Shared/_ListandDetailsOfCommitteeMembersForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="ListofMembers">
+                    @Html.Partial("~/Views/Shared/_listOfSocietyMembersForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="ByLaws">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Docs Name
+                                                </th>
+                                                <th>
+                                                    View
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tbody">
+                                            <tr>
+                                                <td>
+                                                    Form L
+                                                </td>
+                                                <td>
+                                                    <a href="~/ViewPDF.aspx?FormType=1" target="_blank">View</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Form C
+                                                </td>
+                                                <td>
+                                                    <a href="~/ViewPDF.aspx?FormType=2" target="_blank">View</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Form D
+                                                </td>
+                                                <td>
+                                                    <a href="~/ViewPDF.aspx?FormType=3" target="_blank">View</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Form E
+                                                </td>
+                                                <td>
+                                                    <a href="~/ViewPDF.aspx?FormType=4" target="_blank">View</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Form F
+                                                </td>
+                                                <td>
+                                                    <a href="~/ViewPDF.aspx?FormType=6" target="_blank">View</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Form G
+                                                </td>
+                                                <td>
+                                                    <a href="~/ViewPDF.aspx?FormType=7" target="_blank">View</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Bye-Laws
+                                                </td>
+                                                <td>
+                                                    <a href="~/ViewPDF.aspx?FormType=10" target="_blank">View</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Bank Receipt
+                                                </td>
+                                                <td>
+                                                    <a href="~/ViewPDF.aspx?FormType=5" target="_blank">View</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--end .table-responsive -->
+                            </div><!--end .card-body -->
+                        </div><!--end .card -->
+                    </div>
+                </div>
+                <div class="tab-pane" id="Forward">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Remark By Inspector
+                                                </th>
+                                                <th>
+                                                    Remark Date
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tblBindRemark"></tbody>
+                                    </table>
+                                </div><!--end .table-responsive -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="Certificate">
+                    <div class="card card-underline">
+                        <div class="card-body">
+                            <div class="card tabs-right style-default-light">
+                                <div class="card-body tab-content style-default-bright">
+                                    <div class="tab-pane active" id="first6">
+                                        <div id="print-content">
+                                            <div class="col-lg-12">
+                                                <h5 align="center" class="Bold">FORM II</h5>
+                                                <p align="center">(See Rule 7)</p>
+                                                <h5 align="center" class="Bold">CERTIFICATE OF REGISTRATION</h5>
+                                            </div>
+                                            <div class="col-lg-2"><p>&nbsp;</p></div>
+                                            <div class="col-lg-8">
+                                                <p>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    I, hereby certify that pursunant to the provisions of the Haryana Cooperative
+                                                    Societies Act, 1984, The @ViewBag.SocietyName @ViewBag.Address1 @ViewBag.Address2
+                                                    @ViewBag.District has this day been registered at No. @ViewBag.SocietyTransID .
+                                                </p>
+                                            </div>
+                                            <div class="col-lg-12" align="center">
+                                                <p class="midtext" align="center">Given under my hand and seal this @ViewBag.DateofApprovalbyARCS</p>
+
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                                <div class="col-lg-4">
+                                                    <p class="col-md-6">1. Signature :</p>
+                                                </div>
+                                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                                <div class="col-lg-4">
+                                                    <p class="col-md-6">sign</p>
+                                                </div>
+
+                                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                                <div class="col-lg-6">
+                                                    <p class="col-md-6">2. Name of the Registering Authority :</p>
+                                                </div>
+
+                                                <div class="col-lg-4">
+                                                    <p class="col-md-6">name</p>
+                                                </div>
+
+                                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                                <div class="col-lg-4">
+                                                    <p class="col-md-6">3. Rank :</p>
+                                                </div>
+                                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                                <div class="col-lg-4">
+                                                    <p class="col-md-6">Assistant Registrar Cooperative Societies @ViewBag.District</p>
+                                                </div>
+
+                                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                                <div class="col-lg-4">
+                                                    <p class="col-md-6">4. Address :</p>
+                                                </div>
+                                                <div class="col-lg-2"><p>&nbsp;</p></div>
+                                                <div class="col-lg-4">
+                                                    <p class="col-md-6"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--end .card -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $('.datepicker').datepicker();
+    var e = document.getElementById("Action");
+    var SocietyTransID = e.options[e.selectedIndex].value;
+    $(document).ready(function () {
+        $("#Action").change(function () {
+            var dID = $(this).val();
+            if (dID == 7) {
+                //document.getElementById("datetime").disabled = false;
+            }
+            else {
+                //document.getElementById("datetime").disabled = true;
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        var number = parseInt(@ViewBag.tabResult); //Accessing the number from the ViewBag
+        if (number != "NaN") {
+            if (number == 5) {
+                alert("Hello");
+                $('#mytabs a[href="#Forward"]').tab('show');
+            }
+        }
+    });
+
+</script>
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+    $('#btnSearch').click(function () {
+        loadremark();
+    });
+    function loadremark() {
+        var e = document.getElementById("SocietyList");
+        var SocietyTransID = e.options[e.selectedIndex].value;
+        $.ajax({
+            url: "/ARCS/SocietyMemberRemark/",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: { SocietyTransID },
+            success: function (result) {
+                var html = '';
+                $.each(result, function (key, item) {
+                    var getDate = item.Date
+                    var date = new Date(parseInt(getDate.substr(6)));
+                    var month = date.getMonth() + 1;
+                    html += '<tr>';
+                    html += '<td>' + item.Remarks + '</td>';
+                    html += '<td>' + date.getDate() + '/' + month + '/' + date.getFullYear() + '</td>';
+                    html += '</tr>';
+                });
+                $('.tblBindRemark').html(html);
+            },
+            error: function (errormessage) {
+                //alert(errormessage.responseText);
+            }
+        });
+    }
+</script>
+

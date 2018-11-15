@@ -1,0 +1,281 @@
+﻿<style>
+    .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .col-md-6 {
+        font-weight: normal;
+    }
+    #dvLoading {
+        background: #000 url('../../images/giphy.gif') no-repeat center center;
+        height: 100px;
+        width: 100px;
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        margin: -25px 0 0 -25px;
+    }
+
+</style>
+<script src="~/scripts/js/Backlog.js"></script>
+
+<script src="~/scripts/js/BackLogManagingcommitteMembers.js"></script>
+<section>
+    <div class="row" style="margin-top: 94px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-5 form-group">
+                    <br />
+                    <input type="text" class="form-control" id="ElectionDatetime" name="ElectionDate" autocomplete="off" required readonly>
+                    <label for="Address"> 1. Date of Election of Managing Committee</label>
+                </div>
+                @*<div class="col-md-5 form-group">
+                        <br />
+                        <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" class="form-control" id="BearerDetail" name="BearerDetail" autocomplete="off" required>
+                        <label for="Address"> 2. Enter Existing Official Bearer Details </label>
+                    </div>*@
+                <div class="col-md-2 form-group text-right">
+                    <br />
+                    <input type="button" value="Submit" class="btn btn-primary" id="SubmitDate" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-xs-12 text-right">
+                    <button id="AddManagingCommitteMembersBck" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBoxOfManagingCommitteMember();">Add Existing Managing Committee Members</button><br /><br />
+                </div>
+                <div class="row">
+                    @{
+                        var first = Convert.ToString(Session["NoOfMembers"]);
+                        var second = Convert.ToString(Session["AddedMember"]);
+                        if (string.IsNullOrEmpty(first))
+                        {
+                            first = "0";
+                        }
+                        if (string.IsNullOrEmpty(second))
+                        {
+                            second = "0";
+                        }
+                    }
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                @*<em id="msgCommitteMember">you can't Add/edit your committe members, becuase your request sent to ARCS officer.</em>*@
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th hidden="hidden">
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                @*<th>
+                                                        Relationship
+                                                    </th>*@
+                                                <th>
+                                                    Guardian's/ Father's /Husband's Name
+                                                </th>
+                                                <th>
+                                                    Designation
+                                                </th>
+                                                <th id="tblactionCommitteMember">
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tbody"></tbody>
+                                    </table>
+                                </div><!--end .table-responsive -->
+                            </div><!--end .card-body -->
+
+                        </div><!--end .card -->
+                    </div>
+                    <div class="modal fade cus-modal-div" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <form class="form form-validate" novalidate="novalidate" accept-charset="utf-8" method="post">
+                                        <div class="row">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="col-md-6 form-group">
+                                                        <input type="hidden" value="0" id="offdelete" />
+                                                        <input type="hidden" class="form-control" id="SocietyMemberID" name="SocietyMemberID">
+                                                        <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="SocietyMemberName" name="SocietyMemberName" required>
+                                                        <label for="SocietyMemberName">1. Society Member Name <span style="color:red;"><strong>*</strong></span></label>
+                                                    </div>
+
+                                                    <div class="col-md-6 form-group">
+                                                        <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="RelationshipMemberName" name="RelationshipMemberName" required>
+                                                        <label for="RelationshipMemberName">2. Guardian's/ Father's /Husband's Name <span style="color:red;"><strong>*</strong></span></label>
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        @Html.DropDownList("SocietyMemberDesignation", new SelectList(ViewBag.MemberCommDesignation as System.Collections.IEnumerable, "Value", "Text"),
+                                                 "Select", new { id = "SocietyMemberDesignation", @class = "form-control", required = "required" })
+                                                        <label for="SocietyMemberDesignation">3. Society Member Designation <span style="color:red;"><strong>*</strong></span></label>
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        @Html.DropDownList("BckManagingRelationshipName", new SelectList(ViewBag.Relationship as System.Collections.IEnumerable, "Value", "Text"),
+                                                                             "Select", new { id = "BckManagingRelationshipName", @class = "form-control", required = "required" })
+                                                        <label for="BckManagingRelationshipName">4. Relationship Name <span style="color:red;"><strong>*</strong></span></label>
+                                                    </div>
+                                                    @*<div class="col-md-6 form-group">
+                                                            @Html.DropDownList("RelationshipCode", new SelectList(ViewBag.Relationship as System.Collections.IEnumerable, "Value", "Text"),
+                                                                             "Select", new { id = "RelationshipCode", @class = "form-control", required = "required" })
+                                                            <label for="RelationshipCode">3.1 Relationship with Committee Member <span style="color:red;"><strong>*</strong></span></label>
+                                                        </div>*@
+                                                    @*<div class="col-md-6 form-group">
+                                                            <input type="text" autocomplete="off" class="form-control" id="Address" name="Address" required>
+                                                            <label for="Address">4. Address</label>
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <input type="text" autocomplete="off" class="form-control" id="HouseNo" name="HouseNo" required>
+                                                            <label for="HouseNo">4.1 House No.</label>
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <input type="text" autocomplete="off" class="form-control" id="SectorStreet" name="SectorStreet{i}" required>
+                                                            <label for="SectorStreet">4.2 Sector/Street</label>
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            @Html.DropDownList("CommitteMemberDistrict", new SelectList(ViewBag.CommitteMemberDistrict as System.Collections.IEnumerable, "Value", "Text"),
+                                                                             "Select", new { id = "CommitteMemberDistrict", @class = "form-control", required = "required" })
+                                                            <label for="District">4.3 District</label>
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <input type="text" autocomplete="off" class="form-control" id="MobileNumber" name="MobileNumber" data-rule-digits="true" maxlength="10" minlength="10" required>
+                                                            <label for="Mobile">5. Mobile</label>
+                                                            <p class="help-block">10 digit mobile no</p>
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <input type="email" autocomplete="off" class="form-control" id="Email" name="Email" required>
+                                                            <label for="Email">5.1 Email</label>
+                                                            <p class="help-block">example@example.com</p>
+                                                        </div>
+                                                        <div id="divAadharNo" class="col-md-6 form-group">
+                                                            <input type="text" autocomplete="off" class="form-control AadharNo" id="AadharNo" name="AadharNo" data-rule-digits="true" maxlength="12" minlength="12">
+                                                            <label id="result" for="AadharNo">6. AadharNo</label>
+                                                            <p class="help-block">12 aadhar no</p>
+                                                        </div>
+                                                        <div hidden="hidden" class="col-md-6 form-group">
+                                                            <div class="checkbox checkbox-styled">
+                                                                <label>
+                                                                    <input type="checkbox" class="checkbox checkbox-inline checkbox-styled" id="IsPresident" name="IsPresident" onchange="isChecked(this, 'Save')">
+                                                                    <label for="IsPriesdent"><span>Check any one person’s details for further correspondence</span></label>
+                                                                </label>
+                                                            </div>
+                                                        </div>*@
+                                                </div>
+
+                                            </div>
+                                            @*<div class="col-xs-6 text-center">
+                                                    <button class="btn btn-primary btn-success" id="Save" type="submit" disabled="disabled">Save As Draft</button>
+                                                    &nbsp;&nbsp;&nbsp; <label class="small info">kindly select persident then button will be enable</label>
+                                                </div>*@
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddManagingCommitteMember();">Add</button>
+                                                <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="UpdateManagingCommitteMember();">Update</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dvLoading" style="display:none"></div>
+</section>
+<style>
+    .cus-modal-div .modal-dialog {
+        width: 70% !important;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+          if (@Convert.ToInt16(Session["SocietyStatus"]) != 0)
+            {
+             $('#SubmitDate').attr('disabled', 'disabled');
+             $('#btnUpdate').attr('disabled', 'disabled');
+             $('#AddManagingCommitteMembersBck').attr('disabled', 'disabled');
+             $("#offdelete").val(1);
+            }
+        $(function () {
+            $("#ElectionDatetime").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '-100:+100',
+                dateFormat: 'dd-mm-yy',
+                maxDate: 0,
+                showOn: 'focus',
+                showButtonPanel: true,
+                closeText: 'Clear', // Text to show for "close" button
+                onClose: function () {
+                    var event = arguments.callee.caller.caller.arguments[0];
+                    // If "Clear" gets clicked, then really clear it
+                    if ($(event.delegateTarget).hasClass('ui-datepicker-close')) {
+                        $(this).val('');
+                    }
+                }
+            });
+        });
+        $("#ElectionDatetime").val('@ViewBag.GetElectionDate');
+
+        $("#SubmitDate").click(function () {
+            if ($("#ElectionDatetime").val() == "") {
+                alert("Fill the Election Date First");
+                $('#ElectionDatetime').css('border-color', 'Red');
+                return false;
+
+            }
+            else {
+                $('#ElectionDatetime').css('border-color', 'green');
+                AddElectionDate();
+            }
+
+        });
+
+
+    });
+
+        $('#AddManagingCommitteMembersBck').click(function () {
+            $("#result").html("<span style='color:#333'>6. AadharNo</span>");
+        });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

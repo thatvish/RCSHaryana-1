@@ -1,0 +1,302 @@
+﻿<title> Form ‘C’</title>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Copy of Resolution Adopted by the Promoters</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary">Form C</h2>
+                <h5>Copy of Resolution Adopted by the Promoters</h5>
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <article class="margin-bottom-lg">
+                    <p class="lead">
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        <div class="card tabs-right style-default-light">
+            <div id="print-content">
+                <p align="center">FORM C</p>
+                <p align="center">Copy of Resolution Adopted by the Promoters</p>
+
+                <div class="card-body tab-content style-default-bright">
+                    &nbsp;&nbsp;&nbsp;A general meeting of persons interested in organizing a Co-operative Society under the purview of the
+                    Haryana Co-operative Societies Act, 1984 is held on dated _____________________
+                    @ViewBag.Address1 <span style="font-weight: bold" ;> House No. </span>  @ViewBag.Address2
+                    <span style="font-weight: bold" ;> Post Office  </span>
+                    @ViewBag.Postoffice
+                    <span style="font-weight: bold" ;> District </span>
+                    @ViewBag.District
+                    @ViewBag.Pin
+                    under the chairpersonship of Shri/Smt. :-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                        }
+                    }
+                    and it is resolved: -<p></p>
+                    <p></p>
+                    1.	That Shri/Smt.
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Secretary")
+                        {
+
+                        }
+                    }
+                    ………………………. is appointed as Secretary for recording minutes of to-day’s meeting.<p></p>
+                    2.	That the Assistant Registrar, Co-opertive Societies,
+                    @ViewBag.ARCSName
+                    , should be approached to get a co-operative society registered under the following name and style:<p></p>
+                    <span style="font-weight: bold" ;>@ViewBag.SocietyName</span>,
+                    <span> District </span>
+                    @ViewBag.District
+                    ,
+                    @ViewBag.Address1 <span>House No. </span> @ViewBag.Address2 ,<span> Post Office </span>  @ViewBag.PostOffice
+                    .<p></p>
+                    3.	That the registered office of the proposed society shall be at <span> Post Office </span>  @ViewBag.PostOffice
+                    <span> District</span>  @ViewBag.District, @ViewBag.Pin
+                    Haryana
+                    <p></p>
+                    4.  That the area of operation of the proposed society will be @ViewBag.District
+                    .<p></p>
+                    5.  That the enclosed Byelaws of the Society which we have carefully studied and know, are hereby adopted and<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    1.
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberDesignationName</span>
+                            <span>@item.SocietyMemberName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipName</span>
+
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    and<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Vice President")
+                        {
+                            <span>@item.SocietyMemberDesignationName</span>
+                            <span>@item.SocietyMemberName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    are authorized to sign on them (Bye Laws) on behalf of all of us.<p></p>
+                    6.  That the first managing committee of the Society shall consist of the following: -<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.  President:-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.SocietyMemberDesignationName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    <p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.  Vice-President :-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Vice President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    <p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.  Cashier:- :-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Cashier")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    <p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.  Member Committee :-
+                    <p></p>
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "MemberCommittee")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    7.   That the society should seek affiliation with the following Co-operative Institutions: -<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.<p></p>
+                    8.  That the maximum credit limits of the promoting members was fixed as follows: - (where applicable)<p></p>
+                    9.  That the maximum credit limit of the society is fixed at Rs ______________________<p></p>
+                    10. Interest shall be charged on loans to members at the rate of _____________________<p></p>
+                    11. That Shri
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Cashier")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    is appointed as Cashier of the Society and
+                    handed over Rs …………………… in cash sum of Rs @ViewBag.ShareMoney as share money, admission fee and Rs. @ViewBag.AdminssionFee having received this amount and deposit the same in the
+                    Central Co-operative Bank Ltd., ______________________, ___________________ and attach the original receipt of the bank alongwith the application for registration.<p></p>
+                    12. That Shri
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    is appointed as Custodian of the Books of the Society. He should be required to
+                    furnish a receipt in the form E.<p></p>
+                    13. That the Cashier and the Custodian of books shall on all occasions on demand produce the cash and the record including account books of the
+                    society to persons duly authorized in this behalf under the Co-operative Societies Act or rules framed there under or as required under Bye-laws
+                    of the society.<p></p>
+                    14. That Shri
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.RelationshipName</span>
+                            <span>s/o d/o w/o c/o</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    President/Secretary of the Society should approach the Assistant Registrar,
+                    Co-operative Societies @ViewBag.ARCSName
+                    on our behalf for the
+                    Registration of the society. He is also authorized to sign cuttings
+                    and omissions, if any, on the application for Registration or copies of the proposed Bye-laws and also to furnish any other
+                    information as may be required by the Registrar in this connection.<p></p>
+                    <p class="col-lg-8">(Please give below list of all signatories)</p><p class="col-lg-4"></p>
+                    <p class="col-lg-8">
+                        “Certified that it is true copy of such entry and the book containing the entry is still in the custody of the Society.”
+                    </p>
+                    <p class="col-lg-4"></p>
+                    <div class="col-lg-6">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;Place_________________
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="col-lg-offset-8" align="right">
+                            Secretary
+
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;Date________________
+
+                        </p>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-6">
+                <input class="btn btn btn-primary" type="button" value="Print" onclick="exportpdf();" />
+                @*<input type="button" class="btn btn btn-primary " onclick="printDiv('print-content')" value="Print The Form" />*@
+            </div>
+            <div class="col-lg-6 text-right">
+                @*@using (Html.BeginForm("Export", "Society", FormMethod.Post))
+                    {
+                        <input type="hidden" name="GridHtml" />
+                        <input type="hidden" name="FormName" />
+                        <input class="btn btn btn-primary" type="submit" id="btnSubmit" value="Download" />
+                    }*@
+                <input class="btn btn btn-primary" type="button" value="Download" onclick="demoFromHTML();" />
+
+            </div>
+        </div>
+    </div>
+    <!--end .section-body -->
+</section>
+
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w = window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+
+    function exportpdf() {
+        $("#print-content").print();
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("input[name='GridHtml']").val($("#print-content").html());
+            $("input[name='FormName']").val("FormC");
+        });
+    });
+</script>`
+<style>
+    p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+</style>
+<script>
+    function demoFromHTML() {
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#print-content')[0];
+        specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 550
+        };
+        pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+            function (dispose) {
+                pdf.save('FormC.pdf');
+            }, margins
+        );
+    }
+</script>

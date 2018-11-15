@@ -2,7 +2,115 @@
     Layout = null;
 }
 <!DOCTYPE html>
+<style>
+    .ui-widget-header, .ui-state-default, ui-button {
+        background: #b9cd6d;
+        border: 1px solid #b9cd6d;
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+
+    .cus-modal-div .modal-dialog {
+        width: 70% !important;
+        margin-top: 350px;
+    }
+
+    .cellContainer {
+        width: 78%;
+        float: left;
+    }
+
+    #mycounter {
+        background-color: #004A7F;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        border: none;
+        color: #FFFFFF;
+        display: none;
+        cursor: pointer;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        -webkit-animation: glowing 1500ms infinite;
+        -moz-animation: glowing 1500ms infinite;
+        -o-animation: glowing 1500ms infinite;
+        animation: glowing 1500ms infinite;
+    }
+
+    @@-webkit-keyframes glowing {
+        0% {
+            background-color: #FF8541;
+            -webkit-box-shadow: 0 0 3px #FF8541;
+        }
+
+        50% {
+            background-color: #FF0000;
+            -webkit-box-shadow: 0 0 40px #FF0000;
+        }
+
+        100% {
+            background-color: #FF8541;
+            -webkit-box-shadow: 0 0 3px #FF8541;
+        }
+    }
+
+    @@-moz-keyframes glowing {
+        0% {
+            background-color: #FF8541;
+            -moz-box-shadow: 0 0 3px #FF8541;
+        }
+
+        50% {
+            background-color: #FF0000;
+            -moz-box-shadow: 0 0 40px #FF0000;
+        }
+
+        100% {
+            background-color: #FF8541;
+            -moz-box-shadow: 0 0 3px #FF8541;
+        }
+    }
+
+    @@-o-keyframes glowing {
+        0% {
+            background-color: #FF8541;
+            box-shadow: 0 0 3px #FF8541;
+        }
+
+        50% {
+            background-color: #FF0000;
+            box-shadow: 0 0 40px #FF0000;
+        }
+
+        100% {
+            background-color: #FF8541;
+            box-shadow: 0 0 3px #FF8541;
+        }
+    }
+
+    @@keyframes glowing {
+        0% {
+            background-color: #FF8541;
+            box-shadow: 0 0 3px #FF8541;
+        }
+
+        50% {
+            background-color: #FF0000;
+            box-shadow: 0 0 40px #FF0000;
+        }
+
+        100% {
+            background-color: #FF8541;
+            box-shadow: 0 0 3px #FF8541;
+        }
+    }
+</style>
+
 <html lang="en">
+
 <head>
     <title>RCS - Login</title>
     <!-- BEGIN META -->
@@ -10,46 +118,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="your,keywords">
     <meta name="description" content="Short explanation about this website">
-    <!-- END META -->
-    <!-- BEGIN STYLESHEETS -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css' />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+
     <link type="text/css" rel="stylesheet" href="/content/assets/css/theme-default/bootstrap.css?1422792965" />
     <link type="text/css" rel="stylesheet" href="/content/assets/css/theme-default/materialadmin.css?1425466319" />
     <link type="text/css" rel="stylesheet" href="/content/assets/css/theme-default/font-awesome.min.css?1422529194" />
     <link type="text/css" rel="stylesheet" href="/content/assets/css/theme-default/material-design-iconic-font.min.css?1421434286" />
-    <!-- END STYLESHEETS -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    @*[if lt IE 9]>
-        <script type="text/javascript" src="/content/assets/js/libs/utils/html5shiv.js?1403934957"></script>
-        <script type="text/javascript" src="/content/assets/js/libs/utils/respond.min.js?1403934956"></script>
-        <![endif]*@
-    <style type="text/css">
-        .form-group.captcha-reply {
-            margin: 0 !important;
-            padding: 0 !important;
-        }
 
-        .section.section-account {
-            padding: 0 !important;
-        }
 
-        .captcha-reply img#CaptchaImage {
-            width: 125px;
-        }
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-        .captcha-reply input#CaptchaInputText {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid;
-            border-color: rgba(12, 12, 12, 0.12);
-        }
-    </style>
+
+    <script src="~/Content/assets/js/libs/jquery/jquery-min.js"></script>
+    <script src="/Content/assets/js/libs/jquery/jquery-ui.js"></script>
+    <script src="/Content/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/content/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
 </head>
-<body class="menubar-hoverable header-fixed ">
+<body class="menubar-hoverable header-fixed" style="background-color:#B7B8B8;">
     <!-- BEGIN LOGIN SECTION -->
     <section class="section-account" style="padding: 0;">
-
         <div class="container card style-transparent">
             <div class="card-body" style="padding: 0;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cus-outer-div">
@@ -62,6 +155,7 @@
                                 <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
                                 <li data-target="#bs-carousel" data-slide-to="1"></li>
                                 <li data-target="#bs-carousel" data-slide-to="2"></li>
+                                <li data-target="#bs-carousel" data-slide-to="3"></li>
                             </ol>
 
                             <!-- Wrapper for slides -->
@@ -72,17 +166,14 @@
                                         <hgroup>
                                             <h1>CO-OPERATION DEPARTMENT</h1>
                                             <h2>Government of Haryana</h2>
-                                            <h2 class="cus-sep"></h2>
-                                            <h3>The Objective and the role of Co-operation Department is to see that genuine Co-operatives are organized and managed on sound lines as per basic principles of Co-operation for the promotion of the economic interests, social betterment and welfare of the people and to render guidance and assistance for the development in the state.</h3>
                                         </hgroup>
-
                                     </div>
                                 </div>
                                 <div class="item slides">
-                                    <div class="slide-2"></div>
+                                    <div class="slide-3"></div>
                                 </div>
                                 <div class="item slides">
-                                    <div class="slide-3"></div>
+                                    <div class="slide-4"></div>
                                     <div class="hero text-center cus-slider-content" style="padding: 20px;">
                                         <hgroup>
                                             <h1>CO-OPERATION DEPARTMENT</h1>
@@ -99,78 +190,469 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 cus-login-div">
-                        <h3>Sign In to continue</h3>
-                        <form class="form floating-label" action="@Url.Action("Login", "Account")" accept-charset="utf-8" method="post">
-                            @Html.AntiForgeryToken()
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="username" name="username" required>
-                                <label for="username">Username</label>
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password" name="password" required>
-                                <label for="password">Password</label>
-                                @*<p class="help-block"><a href="#">Forgotten?</a></p>*@
-                            </div>
-                            <div id="captcha_content2">
-                                @{Html.RenderPartial("_Captcha");}
-                                <p style="font-weight:bold;color:red;">@ViewBag.ErrMessage</p>
-                            </div>
-                            @*<div class="form-group">
-                                   <p id="math-captcha"></p>
-                                </div>
+                        <h3 style="font-family:Georgia;font-weight:bold;color:#066265">Sign In to continue</h3>
+                        <p style="color:red; text-align:center;" id="ViewbagMessageId">@ViewBag.Err</p>
+                        <form id="frmLogin" class="form form-validate" autocomplete="off" action="@Url.Action("Login", "Account")" accept-charset="utf-8" method="post">
+                            @*@Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()*@
 
-                                <div class="form-group">
-                                    <label for="password"><img src="/Home/ShowCaptchaImage" title="Captcha" /></label>
-                                    <br />
-                                    <input type="text" name="clientCaptcha" class="form-control" placeholder="Write above text exactly" required />
-                                    <br />
-                                    <p style="font-weight:bold;color:red;">@ViewBag.CaptchaError</p>
-                                </div>*@
-
-                            <div class="row">
-                                <div class="col-xs-6 text-left">
-                                    <div class="checkbox checkbox-inline checkbox-styled">
-                                        <label>
-                                            <input type="checkbox"><span>Remember me</span>
-                                        </label>
+                            <label id="mycounter"></label>
+                            <div class="form-group mainDiv">
+                                <input type="text" class="form-control" id="username" name="username" onblur="encrptUsername(this);" autocomplete="off" required>
+                                <label for="username" style="font-family:Georgia;font-weight:bold;">UserName</label>
+                            </div>
+                            <div class="form-group newDiv" style="display:none">
+                                <br />
+                                <input type="text" placeholder="Enter UserName" class="form-control " id="frgtusername" name="frgtusername" onblur="FrgtencrptUsername(this);" autocomplete="off">
+                                <input type="text" title="enter Answer" placeholder="Enter Answer" style="display:none" class="form-control" id="enterSecurityAns" name="enterSecurityAns" autocomplete="off">
+                                <input pattern="[0-9]{4}" type="text" title="Enter OTP Here" style="display:none" placeholder="Enter OTP Pin" onkeydown="AllowNumbersOnly(event,this)" class="form-control" id="enterPinValue" maxlength="4" data-rule-number="true" minlength="4" data-rule-digits="true" name="enterPinValue" autocomplete="off">
+                                <p class="help-block" id="validOTP" style="display:none; font-size:medium; font-style:italic; font-weight:bold">Please Enter Valid OTP</p>
+                                <div class="form-group newPasswordDiv" style="display:none">
+                                    <div id="frgtdivPassword">
+                                        <br />
+                                        <input type="password" class="form-control" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Must contain at least 1 number and 1 uppercase and lowercase letter and 1 special char, and at least 8" id="frgtPassword" name="frgtPassword" minlength="8" value="" autocomplete="off" onkeyup="ForgetcheckPasswordMatch();" />
+                                        <label id="frgtresultPassword" for="Password" style="font-family:Georgia;font-weight:bold;color:#066265">New Password <span style="color:red;"><strong>*</strong></span></label>
+                                        <p class="help-block" id="passvwordlength">Password should be minimum 8 characters long</p>
+                                        <span id="frgtpasswordstatus"></span>
                                     </div>
-                                </div><!--end .col -->
-                                <div class="col-xs-6 text-right">
-                                    <button class="btn btn-primary btn-raised" type="submit">Login</button>
-                                </div><!--end .col -->
-                            </div><!--end .row -->
+                                </div>
+                                <div class="form-group newPasswordDiv" style="display:none">
+                                    <div id="frgtdivConfirmPassword">
+                                        <br />
+                                        <input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Must contain at least 1 number and 1 uppercase and lowercase letter and 1 special char, and at least 8" class="form-control" id="frgtConfirmPassword" name="frgtConfirmPassword" maxlength="15" autocomplete="off" onkeyup="ForgetcheckPasswordMatch();" minlength="8" />
+                                        <label id="frgtdivCheckPasswordMatch" for="frgtConfirmPassword"> Confirm New Password <span style="color:red;"><strong>*</strong></span></label>
+                                        <p class="help-block" id="passvwordlength">Password should be minimum 8 characters long</p>
+                                        <span id="frgtConfirmPasswordstatus"></span>
+                                    </div>
+                                </div>
+                                <label for="username" id="labelchangable">Please Enter User Name First</label>
+                            </div>
+                            <div class="form-group mainDiv">
+                                <input type="password" class="form-control password" id="password" name="password" onblur="encrptPassword(this);" autocomplete="off" required>
+                                <input type="password" ID="txthidPwd" runat="server" ClientIDMode="Static" TextMode="Password" style="display:none;">
+                                <label for="password" style="font-family:Georgia;font-weight:bold;color:#066265">Password</label>
+                            </div>
+                            @* <div class="form-group">
+                 @Html.Partial("~/Views/Shared/_Captcha.cshtml")
+            </div>*@
+                            <div class="mainDiv">
+                                <img src="/Account/GetCaptchaImage" title="Captcha" />&nbsp;<a href="/Account/Login">refresh</a>
+                                <br />
+                                <input type="text" name="clientCaptcha" placeholder="Write above text exactly" required />
+                                <p style="font-weight:bold;color:red;">@ViewBag.CaptchaError</p>
+                            </div>
+                            <div class="row mainDiv">
+                                <div class="col-xs-3 cellContainer">
+                                    <button class="btn btn-primary btn-raised ink-reaction btn-primary-dark" type="submit">Login</button>
+
+                                </div><!--end .col -->&nbsp;&nbsp;&nbsp;
+                                <div class="col-md-3 cellContainer">
+                                    <input type="button" id="opener-2" class="btn btn-primary btn-raised ink-reaction btn-danger" style="display:none" value="Forget Password" />
+                                </div><!--end .row -->
+                            </div>
+
+
+                            <div class="row newDiv" style="display:none">
+                                <div class="col-xs-3 cellContainer center">
+                                    <input type="button" class="btn btn-primary btn-raised btnTextChange" id="submitBtnId1" value="Submit" />
+                                </div>
+                            </div>
                         </form>
+                        <h4 class="text-light cus-no-acc" style="display:none;" >
+                            <a href="@Url.Action("GetPdf", "Society", new { fileName = "PDF", Value = "HelpGuide" })" target="_blank">
+                                Help For Entering Old Society Data <i class="glyphicon glyphicon-question-sign"></i>
+                            </a>
+                        </h4>
+                        <a class="btn btn-block btn-raised btn-primary cus-singup-bttn" href="~/Account/LogIn" id="showLogIn" style="display:none">Back To LogIn</a>
                         <h3 class="text-light cus-no-acc">
                             No account yet?
                         </h3>
                         <a class="btn btn-block btn-raised btn-primary cus-singup-bttn" href="~/Account/Registration">Sign up here</a>
+
                     </div><!--end .col -->
                 </div><!--end .row -->
             </div><!--end .card-body -->
         </div><!--end .card -->
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cus-footer">
-            <p>website is Designed and Developed by <span style="color: #ff6000;">NIC Haryana</span></p>
+            <p>
+                website is Designed and Developed by
+                <span style="color: #ff6000;">NIC Haryana</span>
+            </p>
         </div>
     </section>
     <!-- END LOGIN SECTION -->
     <!-- BEGIN JAVASCRIPT -->
-    <script src="/content/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
-    <script src="/content/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/Content/assets/js/libs/jquery/md5.js"></script>
     <script src="/content/assets/js/libs/bootstrap/bootstrap.min.js"></script>
-    <script src="/content/assets/js/libs/spin.js/spin.min.js"></script>
-    <script src="/content/assets/js/libs/autosize/jquery.autosize.min.js"></script>
-    <script src="/content/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
-    <script src="/content/assets/js/core/source/App.js"></script>
-    <script src="/content/assets/js/core/source/AppNavigation.js"></script>
-    <script src="/content/assets/js/core/source/AppOffcanvas.js"></script>
-    <script src="/content/assets/js/core/source/AppCard.js"></script>
-    <script src="/content/assets/js/core/source/AppForm.js"></script>
-    <script src="/content/assets/js/core/source/AppNavSearch.js"></script>
-    <script src="/content/assets/js/core/source/AppVendor.js"></script>
-    <script src="/content/assets/js/core/demo/Demo.js"></script>
-    <script src="~/scripts/custom.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <!-- END JAVASCRIPT -->
-
+    <script src="/content/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
 </body>
 </html>
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+    $(document).ready(function () {
+        if ('@ViewBag.SuccessMessage' == "Registered") {
+            alert("User has been Registered Successfully.")
+        }
+    });
+</script>
+<script>
+    function encrptPassword(password) {
+        var value = $("#password").val();
+        if (value.length >= 1) {
+            var url = "/Account/EncrptPWD";
+            $.get(url, function (data) {
+                $('#password').val(hex_hmac_md5(data, value))
+            });
+        }
+    }
+    function encrptUsername(Username) {
+        var value = $("#username").val();
+        if (value.length >= 1) {
+            var url = "/Account/GetUserNameEncrpted";
+            var UserName = $('#UserName').val();
+            $.get(url, function (data) {
+                $('#username').val(hex_hmac_md5(data, value));
+            });
+        }
+    }
+    function FrgtencrptUsername(Username) {
+        var value = $("#frgtusername").val();
+        if (value.length >= 1) {
+            var url = "/Account/GetUserNameEncrpted";
+            var UserName = $('#frgtusername').val();
+            $.get(url, function (data) {
+                $('#frgtusername').val(hex_hmac_md5(data, value));
+            });
+        }
+        else {
+            return false;
+        }
+    }
+    $(window).load(function () {
+        $('#username').val('');
+    });
+
+    $('#password').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            var value = $("#password").val();
+            if (value.length >= 1) {
+                var url = "/Account/EncrptPWD";
+                $.get(url, function (data) {
+                    $('#password').val(hex_hmac_md5(data, value))
+                });
+            }
+        }
+    });
+</script>
+<script language="javascript" type="text/javascript">
+    function myFunction5() {
+        var tb = document.getElementById("txthidPwd");
+        var str = Math.random();
+        tb.value = hex_md5(str);
+    }
+</script>
+<script>
+    //New Code
+    $("#opener-2").click(function () {
+
+
+        $('#ViewbagMessageId').css("display", "none");
+        $('.mainDiv').css("display", "none");
+        $('.mainDiv2').css("display", "none");
+        $('.newDiv').css("display", "block");
+        $('#enterSecurityAns').val('');
+        $('#showLogIn').css("display", "block");
+        $('#frgtusername').val('');
+        $('#enterPinValue').val('');
+        $('#frgtConfirmPassword').val('');
+        $('#frgtPassword').val('');
+    });
+    $("#submitBtnId1").click(function () {
+        if ($("#submitBtnId1").val() == "Submit Answer") {
+            var userVal = sessionStorage.getItem("frgtval");
+            CheckSecurityAns($('#enterSecurityAns').val());
+        }
+        else if ($("#submitBtnId1").val() == "Submit Pin") {
+            CheckPinMatch($('#enterPinValue').val())
+        }
+        else if ($("#submitBtnId1").val() == "Change Password") {
+            F5CheckPasswordMatch();
+        }
+        else {
+            CheckUserNameExist($('#frgtusername').val());
+        }
+
+    });
+    function CheckUserNameExist(frgtValue) {
+        var dataToSend = frgtValue;
+        sessionStorage.setItem("frgtval", dataToSend);
+        if (dataToSend == "")
+        {
+            $("#validOTP").css("display", "block");
+            $("#validOTP").html("<span style='color:#B22222'>UserName is Mandatory</span>");
+            alert("Please Enter User Name First");
+            return false;
+        }
+        $.ajax({
+            url: "/Account/CheckExistUserName",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: { dataToSend },
+            success: function (result) {
+                var QuestionId = result.QuestionId;
+                if (QuestionId == 0) {
+                    alert("UserName doesn't Exist. Please Enter Correct UserName.");
+                    $("#validOTP").css("display", "block");
+                    $("#validOTP").html("<span style='color:#B22222'>Invalid UserName</span>");
+                    $('#frgtusername').val('');
+                    return false;
+                }
+                if (QuestionId == 1) {
+                    var q1 = "What is the last name of the teacher who gave you your first failing grade?";
+                }
+                else if (QuestionId == 2) {
+                    var q1 = "What was the name of your elementary / primary school?";
+                }
+                else if (QuestionId == 3) {
+                    var q1 = "In what city or town does your nearest sibling live?";
+                }
+                document.getElementById('labelchangable').innerHTML = q1;
+                $('.btnTextChange').val("Submit Answer");
+                $('#frgtusername').css('display', 'none');
+                $('#enterPinValue').css('display', 'none');
+                $('#enterSecurityAns').css('display', 'block');
+                $("#validOTP").css("display", "none");
+            },
+            error: function (errormessage) {
+            }
+        });
+    }
+    function CheckSecurityAns(securityAns) {
+        if (securityAns == "") {
+            alert("Please Enter Answer First");
+            $("#validOTP").css("display", "block");
+            $("#validOTP").html("<span style='color:#B22222'>Answer is Mandatory</span>");
+            return false;
+        }
+        var dataToSend = sessionStorage.getItem("frgtval");
+        $.ajax({
+            url: "/Account/checkSecurityAns",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: { dataToSend, securityAns },
+            success: function (result) {
+                var QuestionAns = result.QuestionAns;
+                var MobileNo = result.MobileNo;
+                if (QuestionAns == "NotMatch") {
+                    alert("Security Answer doesn't Match. Please Enter Correct Answer.");
+                    $("#validOTP").css("display", "block");
+                    $("#validOTP").html("<span style='color:#B22222'>Incorrect Answer</span>");
+                    $('#enterSecurityAns').val('');
+                    $('#enterPinValue').val('');
+                    $('#frgtConfirmPassword').val('');
+                    $('#frgtPassword').val('');
+                    return false;
+                }
+                if (QuestionAns == "SomethingWrong") {
+                    alert("Something Went Wrong.Try again later");
+                    $('#enterSecurityAns').val('');
+                    $("#validOTP").css("display", "none");
+                    $('#frgtusername').val('');
+                    $('#enterPinValue').val('');
+                    $('#frgtConfirmPassword').val('');
+                    $('#frgtPassword').val('');
+                      window.location.href = '@Url.Action("LogIn", "Account")';
+                }
+                $('#enterSecurityAns').val('')
+                var getLast = MobileNo;
+                var lastThree = getLast.substr(getLast.length - 3);
+                $('#labelchangable').html("OTP has been sent to your Registered Mobile No. " + "*******" + lastThree);
+                $('#enterSecurityAns').css("display", "none");
+                $("#validOTP").css("display", "none");
+                $('#enterPinValue').css('display', 'block');
+                $('#mycounter').css('display', 'block');
+                $('.btnTextChange').val("Submit Pin");
+                onTimer();
+            },
+            error: function (errormessage) {
+            }
+        });
+    }
+    function CheckPinMatch(PinValue)
+    {
+        if (PinValue == "") {
+            $("#validOTP").css("display", "block");
+            $("#validOTP").html("<span style='color:#B22222'>Please Enter OTP First</span>");
+            return false;
+        }
+        var dataToSend = $('#frgtusername').val();
+        $.ajax({
+            url: "/Account/CheckPinValue",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: { dataToSend, PinValue },
+            success: function (result) {
+                var Status = result.Status;
+                var MobileNo = result.MobileNo;
+                if (Status == "NotMatch") {
+                    $("#validOTP").css("display", "block");
+                    $("#validOTP").html("<span style='color:#B22222'>OTP is not Valid</span>");
+                    $('#enterSecurityAns').val('');
+                    $('#enterPinValue').val('');
+                    $('#frgtConfirmPassword').val('');
+                    $('#frgtPassword').val('');
+                    return false;
+                }
+                if (Status == "SomethingWrong") {
+                    alert("Something Went Wrong.Try again later");
+                    $('#enterSecurityAns').val('');
+                    $('#enterPinValue').val('');
+                    $('#frgtusername').val('');
+                    $('#frgtConfirmPassword').val('');
+                    $('#frgtPassword').val('');
+                   window.location.href = '@Url.Action("LogIn", "Account")';
+                }
+                $('#mycounter').css('display', 'none');
+                $("#validOTP").css("display", "none");
+                $('#labelchangable').css('display', 'none');
+                $('.newPasswordDiv').css('display', 'block');
+                $('#enterPinValue').css('display', 'none');
+                myStopFunction();
+                $('.btnTextChange').val("Change Password");
+                $('.newDiv').removeClass("form-group");
+                document.getElementById("submitBtnId1").disabled = true;
+            },
+            error: function (errormessage) {
+            }
+        });
+    }
+    function ForgetcheckPasswordMatch() {
+        var frgtpassword = $("#frgtPassword").val();
+        var frgtconfirmPassword = $("#frgtConfirmPassword").val();
+        var frgtConfirmPasswordLength = $("#frgtConfirmPassword").val().length;
+        var frgtPasswordLength = $("#frgtPassword").val().length;
+        if (frgtpassword == frgtconfirmPassword & frgtConfirmPasswordLength >= 8 & frgtPasswordLength >= 8) {
+            $("#frgtdivCheckPasswordMatch").html("<span style='color:#228B22'>Password match.</span>");
+            $("#frgtresultPassword").html("<span style='color:#228B22'>Password match.</span>");
+            document.getElementById("submitBtnId1").disabled = false;
+            $("#frgtinfo").html("<span></span>");
+            $("#frgtdivPassword").addClass("has-success has-feedback");
+            $("#frgtpasswordstatus").addClass("glyphicon glyphicon-ok form-control-feedback");
+            $("#frgtdivConfirmPassword").addClass("has-success has-feedback");
+            $("#frgtConfirmPasswordstatus").addClass("glyphicon glyphicon-ok form-control-feedback");
+
+            var url = "/Account/encrptPWD";
+            $.get(url, function (data) {
+                $('#frgtPassword').val(hex_hmac_md5(data, frgtpassword))
+                $('#frgtConfirmPassword').val(hex_hmac_md5(data, frgtconfirmPassword))
+                $('#frgtPassword').removeAttr("pattern");
+                $('#frgtConfirmPassword').removeAttr("pattern");
+            });
+
+        }
+        else {
+            if (frgtConfirmPasswordLength >= 8 & frgtPasswordLength >= 8) {
+                $("#frgtdivCheckPasswordMatch").html("<span style='color:#B22222'>Passwords do not match!</span>");
+                $("#frgtresultPassword").html("<span style='color:#B22222'>Passwords do not match!</span>");
+                document.getElementById("submitBtnId1").disabled = true;
+                $("#frgtinfo").html("<span style='color:#B22222'>create button disable because password not matched.</span>");
+                $("#frgtdivPassword").removeClass();
+                $("#frgtdivPassword").addClass("has-error has-feedback");
+                $("#frgtpasswordstatus").removeClass();
+                $("#frgtdivConfirmPassword").removeClass();
+                $("#frgtdivConfirmPassword").addClass("has-error has-feedback");
+                $("#frgtConfirmPasswordstatus").removeClass();
+
+            }
+            else {
+                document.getElementById("submitBtnId1").disabled = true;
+                $("#frgtdivCheckPasswordMatch").html("<span style='color:#B22222'>Passwords do not match!</span>");
+                $("#frgtresultPassword").html("<span style='color:#B22222'>Passwords do not match!</span>");
+                $("#frgtinfo").html("<span style='color:#B22222'>password should be 8 char long</span>");
+                $("#frgtdivPassword").removeClass();
+                $("#frgtdivPassword").addClass("has-error has-feedback");
+                $("#frgtpasswordstatus").removeClass();
+                $("#frgtdivConfirmPassword").removeClass();
+                $("#frgtdivConfirmPassword").addClass("has-error has-feedback");
+                $("#frgtConfirmPasswordstatus").removeClass();
+            }
+        }
+    }
+    function F5CheckPasswordMatch()
+    {
+        var savePassword = $("#frgtPassword").val();
+        var userName = sessionStorage.getItem("frgtval");
+        $.ajax({
+            url: "/Account/SaveForgetPassword",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: { savePassword, userName },
+            success: function (result) {
+                var Status = result.Status;
+                if (Status == "1") {
+                    alert("Password has  been changed Successfully.");
+                    $('#enterSecurityAns').val('');
+                    $('#frgtusername').val('');
+                    $('#enterPinValue').val('');
+                    $('#frgtConfirmPassword').val('');
+                    $('#frgtPassword').val('');
+                    sessionStorage.clear();
+                    window.location.href = '@Url.Action("LogIn", "Account")';
+                }
+                else {
+                    alert("Something Went Wrong.Try again later");
+                    $('#enterSecurityAns').val('');
+                    $('#frgtusername').val('');
+                    $('#enterPinValue').val('');
+                    $('#frgtConfirmPassword').val('');
+                    $('#frgtPassword').val('');
+                     window.location.href = '@Url.Action("LogIn", "Account")';
+                    return false;
+                }
+            },
+            error: function (errormessage) {
+            }
+        });
+    }
+    var i = 60;
+    function onTimer() {
+        document.getElementById('mycounter').innerHTML = "OTP will be expired in " + i +" second";
+        $("#mycounter").css("color","white");
+
+        i--;
+        if (i < 0) {
+            alert('OTP has been expired. Try again');
+            window.location.href = '@Url.Action("LogIn", "Account")';
+        }
+        else {
+            var timer = setTimeout(onTimer, 1000);
+            sessionStorage.setItem("timerVal", timer);
+        }
+    }
+    function myStopFunction() {
+        var timerVal = sessionStorage.getItem("timerVal");
+        clearTimeout(timerVal);
+    }
+    function AllowNumbersOnly(e, el) {
+        var key = e.which || e.keyCode;
+        if (key == 8 || key == 9 || key == 46 || (e.keyCode >= 35 && e.keyCode <= 39)) return true;
+        if (e.shiftKey) e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        var value1 = el.value;
+        if (key >= 48 && key <= 57 || key >= 96 && key <= 105) return true;
+        else {
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return false;
+        }
+    }
+</script>

@@ -1,0 +1,291 @@
+﻿<style>
+    .cus-modal-div .modal-dialog {
+        width: 70% !important;
+    }
+
+    .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .col-md-6 {
+        font-weight: normal;
+    }
+</style>
+<script src="~/scripts/js/BackLogApprovedFormARCS.js"></script>
+@*<script src="~/scripts/js/Backlog.js"></script>
+<script src="~/scripts/js/BackLogCommitteMembers.js"></script>
+<script src="~/scripts/js/BackLogManagingcommitteMembers.js"></script>*@
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                @*<em id="msgCommitteMember">you can't Add/edit your committe members, becuase your request sent to ARCS officer.</em>*@
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th hidden="hidden">
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    S.No
+                                                </th>
+                                                <th>
+                                                    Image
+                                                </th>
+                                                <th>
+                                                    Member Name
+                                                </th>
+                                                <th>
+                                                    Father Name
+                                                </th>
+                                                <th>
+                                                    Mobile
+                                                </th>
+                                                <th>
+                                                    Nominee Name
+                                                </th>
+                                                <th>
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="Bck_Approved_tblBindMembers"></tbody>
+                                    </table>
+                                </div><!--end .table-responsive -->
+                            </div><!--end .card-body -->
+
+                        </div><!--end .card -->
+                    </div>
+                    <div class="modal fade cus-modal-div" id="myModalApprovedLForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <form class="form form-validate" novalidate="novalidate" accept-charset="utf-8" method="post">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="col-md-6 form-group">
+                                                    <input type="hidden" value="0" id="offdelete" />
+                                                    @*<input type="file" name="files_10" id="files_10" class="form-control" onchange="validationForMemberImage(this)" />*@
+                                                    <input type="file" name="files_10L" id="files_10L" required class="form-control" onchange="validationForMemberImage11(this)" />
+                                                    <label for="MemberName">1.1 Member Photo <span style="color:red;"><strong>*</strong></span></label>
+                                                    <p class="help-block">photo size should be 150 kb</p>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <img id="img" height="100">
+                                                    <p id="b64" hidden="hidden"></p>
+                                                    <label for="MemberName"> Member Photo</label>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <input type="hidden" class="form-control" id="MemberSNo" name="MemberSNo">
+                                                    <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="MemberName" name="MemberName" required>
+                                                    <label for="MemberName">1.2 Member Name <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="FatherName" name="FatherName" required>
+                                                    <label for="FatherName">2. Guardian's/Father's/Husband's Name <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    @Html.DropDownList("BckManagingMemberRelationship", new SelectList(ViewBag.Relationship as System.Collections.IEnumerable, "Value", "Text"),
+                                                                         "Select", new { id = "BckManagingMemberRelationship", @class = "form-control", required = "required" })
+                                                    <label for="ManagingMemberRelationship">3. Relationship With Member <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    @Html.DropDownList("GenderOfSocietyMember", new List<SelectListItem>
+                                                 { new SelectListItem { Text = "Male", Value = "Male"},
+                                                   new SelectListItem { Text = "Female", Value = "Female"},
+                                                   new SelectListItem { Text = "Trans Gender", Value = "Trans Gender"}
+                                                   }, "Select Gender", new { id = "GenderOfSocietyMember", @class = "form-control", required = "required" })
+                                                    <label for="SelectGender">4. Select Gender <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" autocomplete="off" id="datepicker1" name="datepicker1" readonly>
+                                                    <label for="datepicker">5. Date of Birth</label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" autocomplete="off" id="Age" name="Age" required data-rule-range="[18,100]" data-rule-digits="true">
+                                                    <label for="Age">6. Age <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" autocomplete="off" id="MobileNumberOfSocietyMember" name="MobileNumberOfSocietyMember" data-rule-digits="true" maxlength="10" minlength="10" required>
+                                                    <label for="Mobile">7. Mobile <span style="color:red;"><strong>*</strong></span></label>
+                                                    <p class="help-block">10 digit mobile no</p>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="email" class="form-control" autocomplete="off" id="EmailId" name="EmailId">
+                                                    <label for="EmailId">8 Email</label>
+                                                    <p class="help-block">example@example.com</p>
+                                                </div>
+                                                <div id="divAadharNo1" class="col-md-6 form-group">
+                                                    <input type="text" class="form-control AadharNo1" autocomplete="off" id="AadharNo1" name="AadharNo1" onkeydown="AllowNumbersOnly(event,this)" data-rule-digits="true" maxlength="12" minlength="12">
+                                                    <label id="result1" for="AadharNo">9. Aadhaar No</label>
+                                                    <p class="help-block">12 aadhaar no</p>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input pattern="[a-zA-Z0-9\s]+" type="text" class="form-control" autocomplete="off" id="OccupationOfMember" name="OccupationOfMember" required>
+                                                    @*@Html.DropDownList("OccupationOfMember", new SelectList(ViewBag.Occupations as System.Collections.IEnumerable, "Value", "Text"),
+            "Select", new { id = "OccupationOfMember", @class = "form-control", required = "required" })*@
+                                                    <label for="Occupationofmembers">10. Occupation of members <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" autocomplete="off" id="NoofSharesSubscribed" name="NoofSharesSubscribed" data-rule-digits="true" required>
+                                                    <label for="NoofSharesSubscribed">11. No. of Shares Subscribed <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input pattern="[a-zA-Z0-9\s]+" type="text" class="form-control" autocomplete="off" id="NameofNominee" name="NameofNominee" required>
+                                                    <label for="NameofNominee">12. Name of Nominee <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" autocomplete="off" id="NomineeAge" name="NomineeAge" required data-rule-range="[1,100]" data-rule-digits="true">
+                                                    <label for="NomineeAge">13. Nominee Age <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    @Html.DropDownList("RelationshipCodeOfSocietyMember", new SelectList(ViewBag.Relationship as System.Collections.IEnumerable, "Value", "Text"),
+                          "Select", new { id = "RelationshipCodeOfSocietyMember", @class = "form-control", required = "required" })
+                                                    <label for="RelationshipCode">14. Relationship with Nominee <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" class="form-control" autocomplete="off" id="Address1" name="Address1" required>
+                                                    <label for="RegisteredAddress">15 Registered Address <span style="color:red;"><strong>*</strong></span></label>
+                                                    <p class="help-block">House No. /Sector No. /Road</p>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    @Html.DropDownList("DistrictOfMember", new SelectList(ViewBag.District as System.Collections.IEnumerable, "Value", "Text"),
+                          "Select", new { id = "DistrictOfMember", @class = "form-control", required = "required" })
+                                                    <label for="District">15.1 District <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" class="form-control" autocomplete="off" id="PostOfficeOfSocietyMember" name="PostOfficeOfSocietyMember" required>
+                                                    <label for="PostOffice">15.2 Post Office <span style="color:red;"><strong>*</strong></span></label>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" autocomplete="off" id="PostalCodeOfSocietyMember" name="PostalCodeOfSocietyMember" onkeydown="AllowNumbersOnly(event,this)" data-rule-number="true" maxlength="6" minlength="6" pattern="[0-9]{6}" data-rule-digits="true" required>
+                                                    <label for="PostalCode">15.3 Postal Code <span style="color:red;"><strong>*</strong></span></label>
+                                                    <p class="help-block">Six digit zip code</p>
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input pattern="[a-zA-Z0-9/(),.-\s]+" type="text" class="form-control" autocomplete="off" id="Address2" name="Address2" required>
+                                                    <label for="HouseNoSectorNoRoad">15.4 LandMark<span style="color:red;"><strong>*</strong></span></label>
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="btnUpdateLForm" onclick="LFormUpdatebyARCS();">Update</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<script>
+    $(document).ready(function () {
+        if (@Convert.ToInt16(Session["SocietyStatus"]) == 12) {
+            $('#btnUpdateLForm').attr('disabled', 'disabled');
+        }
+    });
+       
+    $("#datepicker1").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-100:+100',
+        dateFormat: 'dd-mm-yy',
+        maxDate: 0,
+        showOn: 'focus',
+        showButtonPanel: true,
+        closeText: 'Clear', // Text to show for "close" button
+        onClose: function () {
+            var event = arguments.callee.caller.caller.arguments[0];
+            // If "Clear" gets clicked, then really clear it
+            if ($(event.delegateTarget).hasClass('ui-datepicker-close')) {
+                $(this).val('');
+            }
+        }
+    });   
+    function AllowNumbersOnly(e, el) {
+        //debugger;
+        var key = e.which || e.keyCode;
+        if (key == 8 || key == 9 || key == 46 || (e.keyCode >= 35 && e.keyCode <= 39)) return true;
+        if (e.shiftKey) e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        var value1 = el.value;
+        if (key >= 48 && key <= 57 || key >= 96 && key <= 105) return true;
+        else {
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return false;
+        }
+    }
+    function validationForMemberImage11(abc) {
+        debugger;
+        var id = abc.id;
+        $formData = new FormData();
+        var selectedFile = document.getElementById(id).files;
+        //Check File is not Empty
+        var a = abc.files[0].size / 1024;
+        if (a < 100) {
+            if (selectedFile.length > 0) {
+                var re = /(\.png)$/i;
+                var re1 = /(\.jpeg)$/i;
+                var re2 = /(\.jpg)$/i;
+                var fname = (document.getElementById(id).value).substring(12);
+                if (re.exec(fname) || re1.exec(fname) || re2.exec(fname)) {
+                    if (abc.files && abc.files[0]) {
+                        var fr = new FileReader();
+                        fr.addEventListener("load", function (e) {
+                            ///debugger;
+                            if (window.FormData !== undefined) {
+
+                                var fileUpload = $("#files_10L").get(0);
+                                var files = fileUpload.files;
+
+                                // Create FormData object
+                                var fileData = new FormData();
+
+                                // Looping over all files and add it to FormData object
+                                for (var i = 0; i < files.length; i++) {
+                                    fileData.append(files[i].name, files[i]);
+                                }
+
+                                // Adding one more key to FormData object
+                                //fileData.append('username', ‘Manas’);
+                                $.ajax({
+                                    url: '/Society/ImageSave',
+                                    type: "POST",
+                                    contentType: false, // Not to set any content header
+                                    processData: false, // Not to process data
+                                    data: fileData,
+                                    success: function (imagepath) {
+                                        //debugger;
+                                        //var url = getRootUrl();
+                                        //alert(url);
+                                        //debugger;
+                                        $("#img").attr("src", imagepath);
+                                    },
+                                    error: function (err) {
+                                        alert(err.statusText);
+                                    }
+                                });
+                            } else {
+                                alert("FormData is not supported.");
+                            }
+                            //document.getelementbyid("img").src = e.target.result;
+
+                            //document.getelementbyid("b64").innerhtml = e.target.result;
+                        });
+                        fr.readAsDataURL(abc.files[0]);
+                    }
+                }
+                else {
+                    document.getElementById(id).value = null;
+                    alert("file not supported! kindly select png or jpeg file only");
+                }
+            }
+        }
+        else {
+            document.getElementById(id).value = null;
+            alert("file size is not exceed 150 kb");
+        }
+    }  
+</script>

@@ -1,0 +1,119 @@
+﻿@*<div id="divCommitteMembers" class="row">
+</div>*@
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th hidden="hidden">
+                                ID
+                            </th>
+                            <th>
+                                Member Name
+                            </th>
+                            <th>
+                                Designation
+                            </th>
+                            <th>
+                                Relationship Member Name
+                            </th>
+                            <th>
+                                Relationship Name
+                            </th>
+                            <th>
+                               Action
+                            </th>
+                        </tr>
+                    </thead>
+                <tbody class="tblBindCommitteMembers"></tbody>
+                </table>
+            </div><!--end .table-responsive -->
+        </div><!--end .card-body -->
+    </div><!--end .card -->
+</div>
+<div class="modal fade cus-modal-div" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">View Managing Committe Members</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-6 form-group">
+                                    <input type="hidden" class="form-control" id="SocietyMemberID" name="SocietyMemberID">
+                                    <input readonly type="text" autocomplete="off" class="form-control" id="SocietyMemberName" name="SocietyMemberName" required>
+                                    <label for="SocietyMemberName">1. Society Member Name</label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" autocomplete="off" class="form-control" id="SocietyMemberDesignation" name="SocietyMemberDesignation" required>
+                                    <label for="SocietyMemberDesignation">2. Society Member Designation</label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input readonly type="text" autocomplete="off" class="form-control" id="RelationshipMemberName" name="RelationshipMemberName" required>
+                                    <label for="RelationshipMemberName">3. Guardian's/ Father's /Husband's Name</label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input readonly type="text" autocomplete="off" class="form-control" id="RelationshipCode" name="RelationshipCode" required>
+                                    <label for="RelationshipCode">3.1 Relationship with Committee Member</label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input readonly type="text" autocomplete="off" class="form-control" id="Address" name="Address" required>
+                                    <label for="Address">4. Address</label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input readonly type="text" autocomplete="off" class="form-control" id="HouseNo" name="HouseNo" required>
+                                    <label for="HouseNo">4.1 House No.</label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input readonly type="text" autocomplete="off" class="form-control" id="SectorStreet" name="SectorStreet" required>
+                                    <label for="SectorStreet">4.2 Sector/Street</label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" autocomplete="off" class="form-control" id="CommitteMemberDistrict" name="CommitteMemberDistrict" required>
+                                    <label for="District">4.3 District</label>
+
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input readonly type="text" autocomplete="off" class="form-control" id="MobileNumber" name="MobileNumber" data-rule-digits="true" maxlength="10" minlength="10" required>
+                                    <label for="Mobile">5. Mobile</label>
+                                    <p class="help-block">10 digit mobile no</p>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input readonly type="email" autocomplete="off" class="form-control" id="Email" name="Email" required>
+                                    <label for="Email">5.1 Email</label>
+                                    <p class="help-block">example@example.com</p>
+                                </div>
+                                <div id="divAadharNo" class="col-md-6 form-group">
+                                    <input readonly type="text" autocomplete="off" class="form-control AadharNo" id="AadharNo" name="AadharNo" data-rule-digits="true" maxlength="12" minlength="12">
+                                    <label id="result" for="AadharNo">6. AadharNo</label>
+                                    <p class="help-block">12 aadhar no</p>
+                                </div>
+                                <div hidden="hidden" class="col-md-6 form-group">
+                                    <div class="checkbox checkbox-styled">
+                                        <label>
+                                            <input type="checkbox" class="checkbox checkbox-inline checkbox-styled" id="IsPresident" name="IsPresident" onchange="isChecked(this, 'Save')">
+                                            <label for="IsPriesdent"><span>Check any one person’s details for further correspondence</span></label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>               
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cus-modal-div .modal-dialog {
+        width: 70% !important;
+    }
+    .form-group .form-control {
+    margin-top: 10px;
+    padding-left: 0px;
+}
+</style>

@@ -1,0 +1,446 @@
+﻿<title>FORM ‘G’</title>
+<section>
+    <div>
+        <p align="center">Report of Co-operative Inspector</p>
+        <form class="form form-validate" novalidate="novalidate" action="@Url.Action("FormG", "Inspector")" accept-charset="utf-8" method="post">
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-lg-12">
+                            Name :- The Co-operative Inspector in whose jurisdiction the registered office of the proposed society falls, must forward the application for registration,
+                            alongwith his own report in the following forms, to be concerned Assistant Registrar, within 15 days from the date of receipt of the application in his office.
+                            <p>&nbsp;</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>&nbsp;</p>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input readonly type="text" autocomplete="off" class="form-control" id="Dateofapplication" name="Dateofapplication">
+                            <label for="Dateofapplication">1. Date on which the application for registration was received in your office.</label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <input readonly type="text" autocomplete="off" class="form-control" id="statesociety" name="statesociety">
+                            <label for="statesociety">
+                                2. State whether this application has been received in your office direct from the promoters or from the Sub-Inspector, Co-operative Societies or from the Co-operative Societies or any other office.
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @*<input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="NameofProposedSociety" name="NameofProposedSociety">*@
+                            <input readonly type="text" autocomplete="off" class="form-control" id="address" name="address">
+                            <label for="address">3. Name and address of the proposed society.   </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <input type="text" autocomplete="off" class="form-control" id="organised" name="organised">
+                            <label for="organised">4. Has the society been organised by the promoters at their own initiative or as a result of persuasion by some official?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <input type="radio" id="5r1" name="nameproposed" value="Yes">Yes  <input type="radio" id="5r2" name="nameproposed" value="No">No
+                            @*<input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="nameproposed" name="nameproposed">*@
+                            <label for="nameproposed">5. Is the name proposed by the promoters for the society suitable?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <input type="radio" id="6r1" name="specificPrjct" value="Yes">Yes  <input type="radio" id="6r2" name="specificPrjct" value="No" checked="checked">No
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="specificPrjct" name="specificPrjct">
+                            <label for="specificPrjct">6. Has the society been organised under any specific project or scheme of Government? If so, name that scheme.  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="Mainobjects" name="Mainobjects">
+                            <label for="Mainobjects">7. What are the main objects of the proposed society?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <input type="radio" id="8r1" name="consonance" value="Yes" checked="checked">Yes  <input type="radio" id="8r2" name="consonance" value="No">No
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="consonance" name="consonance">
+                            <label for="consonance">8. Are the above objects in consonance with the Co-operative principles?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <br />
+                            <input type="radio" id="9r1" name="formulated" value="Yes" checked="checked">Yes  <input type="radio" id="9r2" name="formulated" value="No">No
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="formulated" name="formulated">
+                            <label for="formulated">
+                                9. Have the Promoters adopted model bye-laws suggested and approved by Registrar, or have they proposed different bye-laws.
+                                If they have formulated their own bye-laws, have the same been formally approved by the Registrar.
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <BR />
+                            @*<input type="radio" id="10r1" name="rate" value="Yes">Yes  <input type="radio" id="10r2" name="rate" value="No">No*@
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="deviations" name="deviations">
+                            <label for="deviations">10. State what, if any, are the deviations from the model bye-laws, in the bye-laws proposed by the promoters.  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br /><br />
+                            <input type="radio" id="11r1" name="promoter" value="Yes" checked="checked">Yes  <input type="radio" id="11r2" name="promoter" value="No">No
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="promoter" name="promoter">
+                            <label for="promoter">
+                                11. Do all the promoter members fulfil the conditions and qualifications of membership as laid down in the bye-laws of society? Name such members,
+                                if any, who do not fulfil the conditions and qualifications of membership.
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br /><br />
+                            <input type="radio" id="12r1" name="commoninterest" value="Yes" checked="checked">Yes  <input type="radio" id="12r2" name="commoninterest" value="No">No
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="commoninterest" name="commoninterest">
+                            <label for="commoninterest">
+                                12.	State if all the promoter members have a common interest and whether there is scope for success of the proposed society.
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="verifiedB" name="verifiedB">
+                            <label for="verifiedB">13. Have you verified the correctness of the particulars supplied by promoters under list of membership in form “B”?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="Uprequest" name="Uprequest">
+                            <label for="Uprequest">14.Have you checked up that the application is complete in all respects?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" onkeydown="AllowNumbersOnly(event,this)" class="form-control" id="promotermembers" name="promotermembers">
+                            <label for="promotermembers">15. What is the number of promoter members in the proposed society?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="Areaoperation" name="Areaoperation">
+                            <label for="Areaoperation">16. What is the area of the operation of the proposed society?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="population" name="population">
+                            <label for="population">17. What is the total population in the area of operation and state what is scope for further increase in membership?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="subscribed" name="subscribed">
+                            <label for="subscribed">18. State number and paid up value of share subscribed by the promoter members.  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="contributed" name="contributed">
+                            <label for="contributed">19. If the above share money or any of its part has been contributed in kind has the same been unanimously accepted by all the promoter members?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="obligations" name="obligations">
+                            <label for="obligations">20. Have you explained to the promoters the contents of the bye-laws and more particularly their duties and obligations towards society?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <BR />
+                            <BR />
+                            <input type="radio" id="21r1" name="similar" value="Yes">Yes  <input type="radio" id="21r2" name="similar" value="No" checked="checked">No
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="similar" name="similar">
+                            <label for="similar">
+                                21. Is there any other Co-operative Society (s) with similar aims and objects in the same village or at any other place in the area of operation of the proposed society?
+                                If so, give their name and address.
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br><br />
+                            @*<BR /><BR /><br />
+                                <input type="radio" id="22r1" name="rate" value="Yes">Yes  <input type="radio" id="22r2" name="rate" value="No">No*@
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="embraced" name="embraced">
+                            <label for="embraced">
+                                22. Why the promoters of the proposed society have not embraced membership in the already existing Co-operative society/societies with the same objects in that area.
+                                What are the reasons for organising for the same purpose in that area?
+                            </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <br />
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="adversely" name="adversely">
+                            <label for="adversely">23. Will registration of the proposed society, if any, adversely effect the working of any existing co-operative in that area?  </label>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input pattern="[a-zA-Z0-9\s]+" type="text" autocomplete="off" class="form-control" id="recommendations" name="recommendations">
+                            <label for="recommendations">24. Concluding remarks and recommendations :   </label>
+                        </div>
+                        <br />
+                        <div class="col-md-12 form-group">
+                            @Html.DropDownList("Remarks", new List<SelectListItem>
+                                                 { new SelectListItem { Text = "Positive", Value = "Positive"},
+                                                   new SelectListItem { Text = "Negative", Value = "Negative"},
+                                                   }, "Select Remarks", new { id = "Remarks", @class = "form-control", required = "required" })
+                            <label for="recommendations">25. Remarks   </label>
+                        </div>
+                        <br />
+                        <label for="Note" style="font:bold">Note: - The reporting office should mention here all other important points and information that he may like to bring to notice of the registering authority and clearly state whether he recommends the registration of the proposed co-operative society or not )  </label>
+
+                    </div>
+                </div>
+                <div class="col-xs-12 text-right">
+                </div>
+            </div>
+        </form>
+    </div>
+    <input type="hidden" value="@ViewBag.Remarks" id="remarkvalue" />
+    <div class="row">
+        <input class="btn btn btn-primary" type="button" id="saveId" value="Save" onclick="return AddData();" />
+    </div>
+</section>
+<script type="text/javascript">
+    function validateRemark() {
+        //debugger;
+        if ($("Select#Remarks").val() == "") {
+           // alert($("Select#Remarks").val());
+            return false;
+        }
+    }
+
+    $(document).ready(function () {
+        $("#Dateofapplication").val('@ViewBag.DateOfSubmittionByInspector');
+        $("#address").val('@ViewBag.SocietyFullAddress');
+        $("#statesociety").val('ARCS' + '@ViewBag.ArscAddress');
+        $("#organised").val('@ViewBag.SocietyOrganizedByOwnInitiative');
+        $("#formulated").val('@ViewBag.AdoptedModalByeLaws_Details');
+        $("#adversely").val('@ViewBag.AdverselyEffectOthers');
+        $("#population").val('@ViewBag.AreaPopulation');
+        $("#recommendations").val('@ViewBag.ConcludingRemark');
+        $("#Uprequest").val('@ViewBag.CorrectnessAllRespects');
+        $("#deviations").val('@ViewBag.DeviationsModalByeLaws_Details');
+        $("#obligations").val('@ViewBag.ExplanationToPromoters');
+        $("#Mainobjects").val('@ViewBag.MainObjectsOfProposedSociety');
+        $("#promotermembers").val('@ViewBag.NoOfPromoters');
+        $("#subscribed").val('@ViewBag.NumberAndPaidUpValue');
+        $("#consonance").val('@ViewBag.ObjectConsonanceWithCooperativePrinciples_Details');
+        $("#similar").val('@ViewBag.OtherCoopSocietyWithSameObjects_Details');
+        $("#commoninterest").val('@ViewBag.PromoterMembers_CommonInterest_Details');
+        $("#promoter").val('@ViewBag.QualificationsMembership_Details');
+        $("#contributed").val('@ViewBag.ShareInKind');
+        $("#embraced").val('@ViewBag.ReasonForNotJoining');
+        $("#specificPrjct").val('@ViewBag.SocietyOrganizedUnderProjectScheme_Details');
+        $("#verifiedB").val('@ViewBag.VerifiedFormB');
+        $("#contributed").val('@ViewBag.ShareInKind');
+        $("#Areaoperation").val('@ViewBag.AreaOfOperation');
+        $("#Reamkrs").val('@ViewBag.Reamkrs');
+        // $("#contributed").val('@ViewBag.ShareInKind');
+        //debugger;
+        if ('@ViewBag.NameOfSocietyProposed_Suitable' == 'False') {
+            $('#5r2').attr("checked", "checked")
+        }
+        else {
+            $('#5r1').attr("checked", "checked")
+        }
+        if ('@ViewBag.SocietyOrganizedUnderProjectScheme' == 'False') {
+            $('#6r2').attr("checked", "checked")
+        }
+        else {
+            $('#6r1').attr("checked", "checked")
+        }
+
+        if ('@ViewBag.ObjectConsonanceWithCooperativePrinciples' == 'False') {
+            $('#8r2').attr("checked", "checked")
+        }
+        else {
+            $('#8r1').attr("checked", "checked")
+        }
+        if ('@ViewBag.AdoptedModalByeLaws' == 'False') {
+
+            $('#9r2').attr("checked", "checked")
+        }
+        else {
+            $('#9r1').attr("checked", "checked")
+        }
+        if ('@ViewBag.QualificationsMembership' == 'False') {
+
+            $('#11r2').attr("checked", "checked")
+        }
+        else {
+            $('#11r1').attr("checked", "checked")
+        }
+        if ('@ViewBag.PromoterMembers_CommonInterest' == 'False') {
+
+            $('#12r2').attr("checked", "checked")
+        }
+        else {
+            $('#12r1').attr("checked", "checked")
+        }
+        if ('@ViewBag.OtherCoopSocietyWithSameObjects' == 'False') {
+
+            $('#21r2').attr("checked", "checked")
+        }
+        else {
+            $('#21r1').attr("checked", "checked")
+        }
+    });
+
+
+    $(function () {
+        $("#btnSubmit1").click(function () {
+            $("input[name='GridHtml1']").val($("#print-content1").html());
+            $("input[name='FormName1']").val("FormG");
+        });
+    });
+</script>
+<script type="text/javascript">
+    function AllowNumbersOnly(e, el) {
+        //debugger;
+        var key = e.which || e.keyCode;
+        if (key == 8 || key == 9 || key == 46 || (e.keyCode >= 35 && e.keyCode <= 39)) return true;
+        if (e.shiftKey) e.preventDefault ? e.preventDefault() : e.returnValue = false;
+        var value1 = el.value;
+        if (key >= 48 && key <= 57 || key >= 96 && key <= 105) return true;
+        else {
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            return false;
+        }
+    }
+</script>
+
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+</script>
+<script>
+    function demoFromHTML() {
+        //debugger;
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#print-content')[0];
+        specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 550
+        };
+        pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+            function (dispose) {
+                pdf.save('FormG.pdf');
+            }, margins
+        );
+    }
+    function AddData() {
+        validateRemark();
+        var res = validateRemark();
+        if (res == false)
+        {
+            alert("Please Select Remark First");
+            return false
+        }
+        //debugger;
+        if (document.getElementById('5r1').checked) {
+            var NameOfSocietyProposed_Suitable = true;
+        }
+        else {
+            NameOfSocietyProposed_Suitable = false
+        }
+        if (document.getElementById('6r1').checked) {
+            var SocietyOrganizedUnderProjectScheme = true;
+        }
+        else {
+            SocietyOrganizedUnderProjectScheme = false;
+        }
+        if (document.getElementById('8r1').checked) {
+            var ObjectConsonanceWithCooperativePrinciples = true
+        }
+        else {
+            ObjectConsonanceWithCooperativePrinciples = false
+        }
+        if (document.getElementById('9r1').checked) {
+            var AdoptedModalByeLaws = true
+        }
+        else {
+            AdoptedModalByeLaws = false
+        }
+        if (document.getElementById('11r1').checked) {
+            var QualificationsMembership = true
+        }
+        else {
+            QualificationsMembership = false
+        }
+        if (document.getElementById('12r1').checked) {
+            var PromoterMembers_CommonInterest = true
+        }
+        else {
+            PromoterMembers_CommonInterest = false
+        }
+        if (document.getElementById('21r1').checked) {
+            var OtherCoopSocietyWithSameObjects = true
+        }
+        else {
+            OtherCoopSocietyWithSameObjects = false
+        }
+        // alert(prposed_suitable);
+        //var res = validate();
+        var objFGM = {
+            DateOfSubmittionByInspector: $('#Dateofapplication').val(),
+            ModeOfApplicationReceived: $('#statesociety').val(),
+            SocietyName: $('#address').val(),
+            SocietyOrganizedByOwnInitiative: $('#organised').val(),
+            NameOfSocietyProposed_Suitable: NameOfSocietyProposed_Suitable,
+            // NameOfSocietyProposed_Suitable_Detail: $('#nameproposed').val(),
+            SocietyOrganizedUnderProjectScheme: SocietyOrganizedUnderProjectScheme,
+            SocietyOrganizedUnderProjectScheme_Details: $('#specificPrjct').val(),
+            MainObjectsOfProposedSociety: $('#Mainobjects').val(),
+            ObjectConsonanceWithCooperativePrinciples: ObjectConsonanceWithCooperativePrinciples,
+            ObjectConsonanceWithCooperativePrinciples_Details: $('#consonance').val(),
+            AdoptedModalByeLaws: AdoptedModalByeLaws,
+            AdoptedModalByeLaws_Details: $('#formulated').val(),
+            DeviationsModalByeLaws_Details: $('#deviations').val(),
+            QualificationsMembership: QualificationsMembership,
+            QualificationsMembership_Details: $('#promoter').val(),
+            PromoterMembers_CommonInterest: PromoterMembers_CommonInterest,
+            PromoterMembers_CommonInterest_Details: $('#commoninterest').val(),
+            VerifiedFormB: $('#verifiedB').val(),
+            CorrectnessAllRespects: $('#Uprequest').val(),
+            NoOfPromoters: $('#promotermembers').val(),
+            AreaOfOperation: $('#Areaoperation').val(),
+            AreaPopulation: $('#population').val(),
+            NumberAndPaidUpValue: $('#subscribed').val(),
+            ShareInKind: $('#contributed').val(),
+            ExplanationToPromoters: $('#obligations').val(),
+            OtherCoopSocietyWithSameObjects: OtherCoopSocietyWithSameObjects,
+            OtherCoopSocietyWithSameObjects_Details: $('#similar').val(),
+            ReasonForNotJoining: $('#embraced').val(),
+            AdverselyEffectOthers: $('#adversely').val(),
+            ConcludingRemark: $('#recommendations').val(),
+            Remarks: $('Select#Remarks').val(),
+        };
+       // debugger;
+        //alert(objFGM.VerifiedFormB);
+        $.ajax({
+            url: "/Inspector/FormG",
+            data: JSON.stringify(objFGM),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (i)
+            {
+                if (i == 1) {
+                    alert("FormG has been saved successfully")
+                    $('#saveId').attr('disabled', 'disabled');
+
+                }
+                else if (i == 0) {
+                    alert("Kindly select any society");
+                }
+                else if (i >=2) {
+                    alert("Form has been successfully saved.");
+                }
+                // loadData();
+                // alert()
+                //clearTextBox();
+                //$('#myModal1').modal('hide');
+            },
+            error: function (errormessage) {
+                //alert(errormessage.responseText);
+            }
+        });
+    }
+
+</script>

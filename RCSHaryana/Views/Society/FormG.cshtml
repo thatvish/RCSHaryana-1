@@ -1,0 +1,265 @@
+﻿<title>FORM ‘G’</title>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Forwarding Letter</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <!-- BEGIN INTRO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-primary">FORM G</h2>
+                
+            </div><!--end .col -->
+            <div class="col-lg-12">
+                <article class="margin-bottom-lg">
+                    <p class="lead">
+                    </p>
+                </article>
+            </div><!--end .col -->
+        </div><!--end .row -->
+        @if (ViewBag.result == "1")
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        @if (ViewBag.result == "0")
+        {
+            <div class="alert alert-warning" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        <div class="card tabs-right style-default-light">
+
+
+
+            <div class="card-body tab-content style-default-bright">
+                <div class="tab-pane active" id="first6">
+                    <div id="print-content">
+
+                        <div class="card-body tab-content style-default-bright">
+                            
+                          <p align="center">Report of Co-operative Inspector</p>
+                            <div class="col-lg-12">
+                                
+                                Name :- The Co-operative Inspector in whose jurisdiction the registered office of the proposed society falls, must forward the application for registration, 
+                                alongwith his own report in the following forms, to be concerned Assistant Registrar, within 15 days from the date of receipt of the application in his office.
+                                <br /><br />
+                            </div>
+                            <div class="col-lg-6">
+                                Name of Proposed Societies:
+                                @Html.DropDownList("SocietyList", new SelectList(ViewBag.lstSL as System.Collections.IEnumerable, "Value", "Text"),
+                                       "Select", new { id = "SocietyList", @class = "form-control", required = "required" })
+                               
+                                        <ReportInspectorTbl .SocietyTransID><br /><br />
+                            </div>
+                            <div class="col-lg-12">
+                                <table border="1">
+                                    <tr>
+                                        <td class="col-lg-1">1.</td>
+                                        <td class="col-lg-6">Date on which the application for registration was received in your office.</td>
+                                        <td>@ViewBag.DateOfSubmittionByInspector <ReportInspectorTbl.DateOfSubmittionByInspector></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">2.</td>
+                                        <td class="col-lg-6">State whether this application has been received 
+                                            in your office direct from the promoters or from 
+                                            the Sub-Inspector, Co-operative Societies or from 
+                                            the Co-operative Societies or any other office.
+                                        </td>
+                                        <td class="col-lg-4"><input type="text" class="form-control" id="ModeOfApplicationReceived" name="ModeOfApplicationReceived" required >
+                                            <ReportInspectorTbl.ModeOfApplicationReceived>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">3.</td>
+                                        <td class="col-lg-6">Name and address of the proposed society.</td>
+                                        <td class="col-lg-4">@ViewBag.SocietyName<SocietyTransTbl_Log.SocietyName></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">4.</td>
+                                        <td class="col-lg-6">Has the society been organised by the promoters at their 
+                                            own initiative or as a result of persuasion by some official?</td>
+                                        <td class="col-lg-4">@ViewBag.SocietyOrganizedByOwnInitiative<ReportInspectorTbl. . SocietyOrganizedByOwnInitiative></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">5.</td>
+                                        <td class="col-lg-6">Is the name proposed by the promoters for the society suitable?</td>
+                                        <td class="col-lg-4">@ViewBag.NameOfSocietyProposed_Suitable<ReportInspectorTbl. NameOfSocietyProposed_Suitable> Yes/no </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">6.</td>
+                                        <td class="col-lg-6">Has the society been organised under any specific project or scheme of Government? If so, name that scheme.</td>
+                                        <td class="col-lg-4">@ViewBag.SocietyOrganizedUnderProjectScheme 
+                                            <ReportInspectorTbl. SocietyOrganizedUnderProjectScheme>
+                                            If Yes Then @ViewBag.SocietyOrganizedUnderProjectScheme_Details<ReportInspectorTbl. SocietyOrganizedUnderProjectScheme_Details>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">7.</td>
+                                        <td class="col-lg-6">What are the main objects of the proposed society?</td>
+                                        <td class="col-lg-4">@ViewBag.MainObjectsOfProposedSociety<ReportInspectorTbl. MainObjectsOfProposedSociety></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">8.</td>
+                                        <td class="col-lg-6">Are the above objects in consonance with the Co-operative principles?</td>
+                                        <td class="col-lg-4">@ViewBag.ObjectConsonanceWithCooperativePrinciples <ReportInspectorTbl. ObjectConsonanceWithCooperativePrinciples>, 
+                                            If No then @ViewBag.ObjectConsonanceWithCooperativePrinciples_Details<ReportInspectorTbl. ObjectConsonanceWithCooperativePrinciples_Details>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">9.</td>
+                                        <td class="col-lg-6">Have the Promoters adopted model bylaws suggested and approved by 
+                                            Registrar, or have they proposed different byelaws. If they have 
+                                            formulated their own byelaws, have the same been formally approved by the Registrar.
+                                        </td>
+                                        <td class="col-lg-4">@ViewBag.AdoptedModalByeLaws
+                                            <ReportInspectorTbl. AdoptedModalByeLaws>
+                                                , If No then @ViewBag.AdoptedModalByeLaws_Details
+                                                <ReportInspectorTbl. AdoptedModalByeLaws_Details>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">10.</td>
+                                        <td class="col-lg-6">State what, if any, are the deviations from the model byelaws, in the byelaws proposed by the promoters.</td>
+                                        <td class="col-lg-4">@ViewBag.DeviationsModalByeLaws<ReportInspectorTbl. DeviationsModalByeLaws>,
+                                             If No then @ViewBag.DeviationsModalByeLaws_Details<ReportInspectorTbl. DeviationsModalByeLaws_Details></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">11.</td>
+                                        <td class="col-lg-6">Do all the promoter members fulfil the conditions and qualifications of membership as laid 
+                                            down in the byelaws of society? Name such members, if any, who do not fulfil the conditions and qualifications of membership.</td>
+                                        <td class="col-lg-4"> @ViewBag.QualificationsMembership
+                                            <ReportInspectorTbl. QualificationsMembership>
+                                                , If No then @ViewBag.QualificationsMembership_Details
+                                                <ReportInspectorTbl. QualificationsMembership_Details>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">12.</td>
+                                        <td class="col-lg-6">State if all the promoter members have a common interest and whether there is scope for success of the proposed society.</td>
+                                        <td class="col-lg-4">@ViewBag.PromoterMembers_CommonInterest
+                                            <ReportInspectorTbl. PromoterMembers_CommonInterest>
+                                                , If Yes then @ViewBag.PromoterMembers_CommonInterest_Details
+                                                <ReportInspectorTbl. PromoterMembers_CommonInterest_Details>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">13.</td>
+                                        <td class="col-lg-6">Have you verified the correctness of the particulars supplied by promoters under list of membership in form “B” with their---------------</td>
+                                        <td class="col-lg-4">@ViewBag.VerifiedFormB<ReportInspectorTbl. VerifiedFormB></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">14.</td>
+                                        <td class="col-lg-6">-----------------up that the application is complete in all respects?</td>
+                                        <td class="col-lg-4">@ViewBag.CorrectnessAllRespects<ReportInspectorTbl. CorrectnessAllRespects></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">15.</td>
+                                        <td class="col-lg-6">What is the number of promoter members in the proposed society?</td>
+                                        <td class="col-lg-4">@ViewBag.NoOfPromoters <ReportInspectorTbl. NoOfPromoters></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">16.</td>
+                                        <td class="col-lg-6">What is the area of the operation of the proposed society?</td>
+                                        <td class="col-lg-4">@ViewBag.AreaOfOperation<SocietyTransTbl_Log. AreaOfOperation></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">17.</td>
+                                        <td class="col-lg-6">What is the total population in the area of operation and state what is scope for further increase in membership?</td>
+                                        <td class="col-lg-4">@ViewBag.AreaPopulation<ReportInspectorTbl. AreaPopulation></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">18.</td>
+                                        <td class="col-lg-6">State number and paid up value of share subscribed by the promoter members.</td>
+                                        <td class="col-lg-4">@ViewBag.NumberAndPaidUpValue<ReportInspectorTbl. NumberAndPaidUpValue></td="col-lg-4">
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">19.</td>
+                                        <td class="col-lg-6">If the above share money or any of its part has been contributed in kind has the same been unanimously accepted by all the promoter members?</td>
+                                        <td class="col-lg-4">@ViewBag.ShareInKind<ReportInspectorTbl. ShareInKind></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">20.</td>
+                                        <td class="col-lg-6">Have you explained to the promoters the contents of the bylaws and more particularly their duties and obligations towards society?</td>
+                                        <td class="col-lg-4">@ViewBag.ExplanationToPromoters<ReportInspectorTbl. ExplanationToPromoters></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">21.</td>
+                                        <td class="col-lg-6">Is there any other Co-operative Society (s) with similar aims and objects in the same village or at any other place in the area of operation of the proposed society? If so, give their name and address.</td>
+                                        <td class="col-lg-4">@ViewBag.OtherCoopSocietyWithSameObjects<ReportInspectorTbl. OtherCoopSocietyWithSameObjects>,
+                                             If Yes then @ViewBag.OtherCoopSocietyWithSameObjects_Details<ReportInspectorTbl. OtherCoopSocietyWithSameObjects_Details></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">22.</td>
+                                        <td class="col-lg-6">Why the promoters of the proposed society have not embraced membership in the already existing Co-operative society/societies with the same objects in that area. What are the reasons for organising for the same purpose in that area?</tdclass="col-lg-6">
+                                        <td class="col-lg-4">@ViewBag.OtherCoopSocietyWithSameObjects
+                                            <ReportInspectorTbl. OtherCoopSocietyWithSameObjects>
+                                                , If Yes then @ViewBag.ReasonForNotJoining
+                                                <ReportInspectorTbl. ReasonForNotJoining>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">23.</td>
+                                        <td class="col-lg-6">Will registration of the proposed society, if any, adversely effect the working of any existing co-operative in that area?</td>
+                                        <td class="col-lg-4">@ViewBag.AdverselyEffectOthers
+                                            <ReportInspectorTbl. AdverselyEffectOthers>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-1">24.</td>
+                                        <td class="col-lg-6">Concluding remarks and recommendations :-</td>
+                                        <td class="col-lg-4">@ViewBag.ConcludingRemark<ReportInspectorTbl. ConcludingRemark></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="col-lg-6">Note: - The reporting office should mention here all other important points and information that he may like to bring to notice of the registering authority and clearly state whether he recommends the registration of the proposed co-operative society or not )</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-lg-12">
+                                <p align="right">
+                                  <br /><br />  Signatures
+                                </p>
+                                <p>
+                                    Place
+                                </p>
+
+                            </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div><!--end .card -->
+    <input type="button" onclick="printDiv('print-content')" value="Print The Form" class="btn btn-primary" />
+
+
+
+
+
+
+    <!--end .section-body -->
+</section>
+<script type="text/javascript">
+
+    function printDiv(divName)
+    {
+
+        var printContents = document.getElementById(divName).innerHTML;
+        w=window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+</script>

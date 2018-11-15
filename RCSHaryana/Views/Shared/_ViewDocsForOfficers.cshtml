@@ -1,0 +1,94 @@
+﻿<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span style="font-weight: bold" ;>  Docs Name</span>
+                            </th>
+                            <th>
+                                <span style="font-weight: bold" ;> File</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        @{
+                            if (string.IsNullOrEmpty(Convert.ToString(Session["SocietyTransID"])))
+                            {
+                             
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        Form L
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Report", "Society",new {id= "PDF",value="FormL"})" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Form C
+                                    </td>
+                                    <td>
+                                        @*<a href="~/ViewPDF.aspx?FormType=2" target="_blank">View</a>*@
+                                        <a href="@Url.Action("Report", "Society", new { id="PDF",value="FormC" })" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Form D
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Report", "Society", new { id="PDF",value="FormD" })" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Form E
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Report", "Society", new { id="PDF",value="FormE" })" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Bye-Laws
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("GetPdf", "ARCS", new {fileName="PDF",Value="ByeLaws"})" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Bank Receipt
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("GetPdf", "ARCS", new {fileName="PDF",Value= "BankReceipt" })" target="_blank">View</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                       
+                    </tbody>
+                </table>
+            </div><!--end .table-responsive -->
+        </div><!--end .card-body -->
+    </div><!--end .card -->
+</div>
+@*<script>
+    var blink = function() {
+        $($('a[id*="blinktext"]')).animate({
+        opacity: '0'
+    }, function(){
+        $(this).animate({
+            opacity: '0'
+        }, blink);
+    });
+
+    }
+    blink();
+</script>*@

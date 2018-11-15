@@ -1,0 +1,326 @@
+﻿<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Registration For New ARCS Officer</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <form class="form form-validate" novalidate="novalidate" action="@Url.Action("CreateARCSAccount", "Admin")" accept-charset="utf-8" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+           <div class="row">
+                <div class="card">
+                    <div class="card">
+                        <div class="card-head style-primary">
+                            <br />
+                            <header>Create an Account For ARCS Officer</header>
+                        </div>
+                        <div class="card-body">
+                            <div id="divUserName" class="col-md-12 form-group">
+                                <input type="text" class="form-control" value="" id="UserName" name="UserName" required minlength="5" maxlength="12" autocomplete="off" onfocus="decrptUsername(this)" onblur="encrptUsername(this);">
+                                <label id="result" for="UserName">1. User Name</label>
+                                <span id="status"></span>
+                            </div>
+                            <div id="divPassword" class="col-md-6 form-group">
+                                <input type="password" class="form-control" id="Password" name="Password" minlength="8" onkeyup="checkPasswordMatch();" required>
+                                <label id="resultPassword" for="Password">2. Password</label>
+                                <span id="passwordstatus"></span>
+                                @*pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"*@
+                            </div>
+                            <div id="divConfirmPassword" class="col-md-6 form-group">
+                                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" onkeyup="checkPasswordMatch();" required minlength="8">
+                                <label id="divCheckPasswordMatch" for="ConfirmPassword">2.1 Confirm Password</label>
+                                <span id="ConfirmPasswordstatus"></span>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" id="Name" name="Name" required>
+                                <label for="Name">3. Name</label>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" id="Mobile" name="Mobile" required data-rule-digits="true" maxlength="10" minlength="10">
+                                <label for="Mobile">4. Mobile</label>
+                                <p class="help-block">10 digit mobile no</p>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="email" class="form-control" id="Email" name="Email" required>
+                                <label for="Email">5. Email</label>
+                                <p class="help-block">example@example.com</p>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                @Html.DropDownList("Gender", new List<SelectListItem>
+                                                 { new SelectListItem { Text = "Male", Value = "Male"},
+                                                   new SelectListItem { Text = "Female", Value = "Female"},
+                                                   new SelectListItem { Text = "Trans Gender", Value = "Trans Gender"}
+                                                   }, "Select Gender", new { id = "Gender", @class = "form-control", required = "required" })
+                                <label for="SelectGender">6. Select Gender</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                @Html.DropDownList("SecurityQuestions", new SelectList(ViewBag.SecurityQuestions as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "SecurityQuestions", @class = "form-control", required = "required" })
+                                <label for="SecurityQuestions">7. Select Questions</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" id="Anwser" name="Anwser" autocomplete="off" required>
+                                <label for="PostOffice">3.2 Anwser</label>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                @Html.DropDownList("DRCSName", new SelectList(ViewBag.DRCSName as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "DRCSName", @class = "form-control", required = "required" })
+                                <label for="DRCSName">8. Select DRCSName</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                @Html.DropDownList("District", new SelectList(ViewBag.District as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "District", @class = "form-control", required = "required" })
+                                <label for="district">9. Select District</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                @Html.DropDownList("ARCSOffice", new SelectList(Enumerable.Empty<SelectListItem>(), "ACRSCode", "ACRSName"),
+                                        "Select", new { id = "ARCSOffice", @class = "form-control", required = "required" })
+                                <label for="ARCSOffice">10. ARCS Office</label>
+                            </div>
+                            <div id="divAadharNo1" class="col-md-6 form-group">
+                                <input type="text" class="form-control AadharNo1" autocomplete="off" id="AadharNo1" name="AadharNo1" data-rule-digits="true" maxlength="12" minlength="12">
+                                <label id="result1" for="AadharNo">7. AadharNo</label>
+                                <p class="help-block">11 aadhar no</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card-actionbar">
+                        <div class="card-actionbar-row">
+                            <button id="btnSubmit" type="submit" class="btn btn-flat btn-primary ink-reaction">Create account</button>
+                            <em id="info" class="text-caption"></em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form><!--end .card -->
+    </div><!--end .section-body -->
+    @Html.Partial("~/Views/Shared/_MenubarAdmin.cshtml")
+</section>
+@*<script src="/Content/assets/js/libs/jquery/SHA256.js"></script>*@
+<script src="/Content/assets/js/libs/jquery/md5.js"></script>
+<script type="text/jscript">
+
+    $(document).ready(function () {
+        $("#District").change(function () {
+            var dID = $(this).val();
+            var e = document.getElementById("District");
+            var value = e.options[e.selectedIndex].text;
+            $("#AreaofOperation").val(value);
+            $.getJSON("/Account/BindARCSOffice", { DistrictCode: dID },
+                   function (data) {
+                       var select = $("#ARCSOffice");
+                       select.empty();
+                       select.append($('<option/>', {
+                           value: 0,
+                           text: "Select"
+                       }));
+                       $.each(data, function (index, itemData) {
+                           select.append($('<option/>', {
+                               value: itemData.Value,
+                               text: itemData.Text
+                           }));
+                       });
+                   });
+        });
+        var e = document.getElementById("District");
+        var value = e.options[e.selectedIndex].text;
+        if (value != "Select") {
+            $.getJSON("/Account/BindARCSOffice", { DistrictCode: value },
+            function (data) {
+                var select = $("#ARCSOffice");
+                select.empty();
+                select.append($('<option/>', {
+                    value: 0,
+                    text: "Select"
+                }));
+                $.each(data, function (index, itemData) {
+                    select.append($('<option/>', {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+            });
+        }
+    });
+
+    $(document).ready(function () {
+        $("#ClassofSocietyandLiability").change(function () {
+            //debugger;
+            var dID = $(this).val();
+            $.getJSON("/Society/BindSubClassOfSociety", { SocietySubClassCode: dID },
+                   function (data) {
+                       var select = $("#SubClassOfSociety");
+                       select.empty();
+                       select.append($('<option/>', {
+                           value: 0,
+                           text: "Select"
+                       }));
+                       $.each(data, function (index, itemData) {
+                           select.append($('<option/>', {
+                               value: itemData.Value,
+                               text: itemData.Text
+                           }));
+                       });
+                   });
+        });
+    });
+
+    $('#AddMemberDetails').click(function () {
+        $("#result1").html("<span style='color:#333'>7. AadharNo</span>");
+    });
+
+ $('#UserName').keyup(function () {
+            var name = $('#UserName').val();
+            if (name.length >= 5) {
+                var url = "/Account/CheckUserName";
+                $.get(url, { input: name }, function (data) {
+                    if (data == "Available") {
+                        $("#result").html("<span style='color:#228B22'>user name is available</span>");
+                        $("#UserName").css('background-color', '');
+                        document.getElementById("btnSubmit").disabled = false;
+                        $("#info").html("<span></span>");
+                        $("#divUserName").addClass("form-group has-success has-feedback");
+                        $("#status").addClass("glyphicon glyphicon-ok form-control-feedback");
+                    }
+                    else {
+                        $("#result").html("<span style='color:#B22222'>user name already taken.</span>");
+                        //$("#UserName").css('background-color', '#e97878');
+                        document.getElementById("btnSubmit").disabled = true;
+                        $("#info").html("<span style='color:#B22222'>create button disable because username doesn't exit, kindly choose another user name</span>");
+                        $("#divUserName").removeClass();
+                        $("#divUserName").addClass("form-group has-error has-feedback");
+                        $("#status").removeClass();
+                    }
+                });
+            }
+            else {
+                $("#status").removeClass();
+                $("#divUserName").removeClass();
+                $("#divUserName").addClass("form-group has-error has-feedback");
+                $("#result").html("<span style='color:#0aa89e'>User Name</span>");
+            }
+        })
+
+    function decrptUsername(Username) {
+        var name = $('#UserName').val();
+        var value = $("#result").text();
+        if (name.length >= 5) {
+            //if (value == "user name is available") {
+            var url = "/Account/GetUserName";
+            var UserName = $('#UserName').val();
+            $.get(url, { input: UserName }, function (data) {
+                $('#UserName').val(data);
+                //$('#UserName').setAttribute("maxlength", 12);
+            });
+            //}
+        }
+    }
+
+    function encrptUsername(Username) {
+        var name = $('#UserName').val();
+        if (name.length >= 5) {
+            var url = "/Account/CheckUserName";
+            $.get(url, { input: name }, function (data) {
+                if (data != "Not Available") {
+                    $("#result").html("<span style='color:#228B22'>user name is available</span>");
+                    $("#UserName").css('background-color', '');
+                    document.getElementById("btnSubmit").disabled = false;
+                    $("#info").html("<span></span>");
+                    $("#divUserName").addClass("form-group has-success has-feedback");
+                    $("#status").addClass("glyphicon glyphicon-ok form-control-feedback");
+                    $('#UserName').removeAttr("maxlength");
+                    $('#UserName').val(data);
+                    //var url = "/Account/GetUserName";
+                    //var UserName = $('#UserName').val();
+                    //$.get(url, { input: UserName }, function (data) {
+                    //    $('#UserName').val(data);
+                    //    $('#UserName').removeAttr("maxlength");
+                    //});
+                }
+                else {
+                    $("#result").html("<span style='color:#B22222'>user name already taken.</span>");
+                    //$("#UserName").css('background-color', '#e97878');
+                    document.getElementById("btnSubmit").disabled = true;
+                    $("#info").html("<span style='color:#B22222'>create button disable because username doesn't exit, kindly choose another user name</span>");
+                    $("#divUserName").removeClass();
+                    $("#divUserName").addClass("form-group has-error has-feedback");
+                    $("#status").removeClass();
+                }
+            });
+        }
+        else {
+            $("#status").removeClass();
+            $("#divUserName").removeClass();
+            $("#divUserName").addClass("form-group has-error has-feedback");
+            $("#result").html("<span style='color:#0aa89e'>User Name</span>");
+        }
+
+
+        //var value = $("#result").text();
+        //if (value == "user name is available") {
+        //    var url = "/Account/GetUserName";
+        //    var UserName = $('#UserName').val();
+        //    $.get(url, { input: UserName }, function (data) {
+        //        $('#UserName').val(data);
+        //        $('#UserName').removeAttr("maxlength");
+        //    });
+        //}
+    }
+
+    function changeMaxLenght(Value) {
+        $('#Password').removeAttr("maxlength");
+        $('#ConfirmPassword').removeAttr("maxlength");
+    }
+
+        function checkPasswordMatch() {
+            var password = $("#Password").val();
+            var confirmPassword = $("#ConfirmPassword").val();
+            var ConfirmPasswordLength = $("#ConfirmPassword").val().length;
+            var PasswordLength = $("#Password").val().length;
+            if (password == confirmPassword & ConfirmPasswordLength >= 8 & PasswordLength >= 8) {
+                $("#divCheckPasswordMatch").html("<span style='color:#228B22'>Password match.</span>");
+                $("#resultPassword").html("<span style='color:#228B22'>Password match.</span>");
+                document.getElementById("btnSubmit").disabled = false;
+                $("#info").html("<span></span>");
+                $("#divPassword").addClass("col-md-6 form-group has-success has-feedback");
+                $("#passwordstatus").addClass("glyphicon glyphicon-ok form-control-feedback");
+                $("#divConfirmPassword").addClass("col-md-6 form-group has-success has-feedback");
+                $("#ConfirmPasswordstatus").addClass("glyphicon glyphicon-ok form-control-feedback");
+                var url = "/Account/encrptPWD";
+                $.get(url, { input: password }, function (data) {
+                    $('#Password').val(data);
+                    $('#ConfirmPassword').val(data);
+                });
+            }
+            else {
+                if (ConfirmPasswordLength >= 8 & PasswordLength >= 8) {
+                    $("#divCheckPasswordMatch").html("<span style='color:#B22222'>Passwords do not match!</span>");
+                    $("#resultPassword").html("<span style='color:#B22222'>Passwords do not match!</span>");
+                    document.getElementById("btnSubmit").disabled = true;
+                    $("#info").html("<span style='color:#B22222'>create button disable because password not matched.</span>");
+                    $("#divPassword").removeClass();
+                    $("#divPassword").addClass("col-md-6 form-group has-error has-feedback");
+                    $("#passwordstatus").removeClass();
+                    $("#divConfirmPassword").removeClass();
+                    $("#divConfirmPassword").addClass("col-md-6 form-group has-error has-feedback");
+                    $("#ConfirmPasswordstatus").removeClass();
+                }
+                else {
+                    document.getElementById("btnSubmit").disabled = true;
+                    $("#divCheckPasswordMatch").html("<span style='color:#B22222'>Passwords do not match!</span>");
+                    $("#resultPassword").html("<span style='color:#B22222'>Passwords do not match!</span>");
+                    $("#info").html("<span style='color:#B22222'>password should be 8 char long</span>");
+                    $("#divPassword").removeClass();
+                    $("#divPassword").addClass("col-md-6 form-group has-error has-feedback");
+                    $("#passwordstatus").removeClass();
+                    $("#divConfirmPassword").removeClass();
+                    $("#divConfirmPassword").addClass("col-md-6 form-group has-error has-feedback");
+                    $("#ConfirmPasswordstatus").removeClass();
+                }
+            }
+        }
+</script>

@@ -1,0 +1,119 @@
+﻿<script src="~/scripts/js/ListOfManagingCommitteeMembersForOfficers.js"></script>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Society Details</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <div class="card tabs-left style-default-light">
+            <!-- BEGIN SEARCH BAR -->
+            <div class="card-body style-primary no-y-padding">
+                <form class="form form-inverse" accept-charset="utf-8" method="post">
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-content">
+                                <div class="form-control-line"></div>
+                                @Html.DropDownList("SocietyList", new SelectList(ViewBag.lstSL as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "SocietyList", @class = "form-control", required = "required" })
+                            </div>
+                            <div class="input-group-btn">
+                                <button id="btnSearch" class="btn btn-floating-action btn-default-bright" onclick="BindAllSocietyDetailsForOfficers();" type="button"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <ul class="card-head nav nav-tabs tabs-accent" data-toggle="tabs">
+                <li class="active"><a href="#SoceityDetails">Society Details</a></li>
+                @*<li><a href="#CommitteeMembers">Committee Members</a></li>*@
+                <li><a href="#ListofMembers">List of Members</a></li>
+                <li><a href="#ByLaws" id="ShowViewDocs">Dcouments</a></li>
+                <li><a href="#Forward">Forward</a></li>
+            </ul>
+            <div id="mytabs" class="card-body tab-content style-default-bright">
+                @if (ViewBag.result == "1")
+                {
+                    <div class="alert alert-success" role="alert">
+                        @ViewBag.show
+                    </div>
+                }
+                @if (ViewBag.result == "0")
+                {
+                    <div class="alert alert-warning" role="alert">
+                        @ViewBag.show
+                    </div>
+                }
+                <div class="tab-pane active" id="SoceityDetails">
+                    @Html.Partial("~/Views/Shared/_SocietyDetailsForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="CommitteeMembers">
+                    @Html.Partial("~/Views/Shared/_ListandDetailsOfCommitteeMembersForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="ListofMembers">
+                    @Html.Partial("~/Views/Shared/_listOfSocietyMembersForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="ByLaws">
+                    @Html.Partial("~/Views/Shared/_ViewDocsForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="Forward">
+                    <form class="form form-validate" novalidate="novalidate" action="@Url.Action("SocietyMemberDetails", "ARCS")" accept-charset="utf-8" method="post">
+                       @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col-md-12 form-group">
+                                        <textarea rows="3" class="form-control" id="ARCSRemarks" name="ARCSRemarks" required placeholder="Remarks"></textarea>
+                                    </div>
+                                    <div class="col-md-10 form-group">
+                                        @Html.DropDownList("IncepectorList", new SelectList(ViewBag.lstI as System.Collections.IEnumerable, "Value", "Text"),
+                                            "Select", new { id = "IncepectorList", @class = "form-control", required = "required" })
+                                    </div>
+                                    <div class="col-md-2 form-group">
+                                        <button id="btnForword" class="btn btn-primary" disabled type="submit">Forward</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        var number = parseInt(@ViewBag.tabResult); //Accessing the number from the ViewBag
+        if (number != "NaN") {
+            if (number == 5) {
+                $('#mytabs a[href="#Forward"]').tab('show');
+            }
+        }
+    });
+    $('#ShowViewDocs,#btnSearch').click(function () {      
+        //debugger;
+        $.ajax({
+            url: '/ARCS/ViewFormDocs/',
+            type: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "html",
+            success: function (data) {
+                //alert(JSON.stringify(result));
+                $('#ByLaws').html(data);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    })
+</script>
+<script language="javascript" type="text/javascript">
+        function noBack() { window.history.forward() }
+        noBack();
+        window.onload = noBack;
+        window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+        window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+          history.go(1);
+</script> 

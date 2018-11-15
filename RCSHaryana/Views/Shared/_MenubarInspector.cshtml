@@ -1,0 +1,76 @@
+﻿<script>
+    $(document).ready(function () {
+        var liId = localStorage.getItem("liId");
+        var aId = localStorage.getItem("aId");
+        if (liId !== "undefined" && aId !== "undefined") {
+            $('#' + liId).addClass("active expanded");
+            $('#' + aId).addClass("active");
+        } else {
+            $('#liDashboard').addClass("active expanded");
+            $('#aDashboard').addClass("active");
+            // Sorry! No Web Storage support..
+        }
+    });
+    function liClick(obj) {
+        var liId = $(obj).attr('id');
+        localStorage.setItem("liId", liId);
+    }
+
+    function aClick(obj) {
+        var aId = $(obj).attr('id');
+        localStorage.setItem("aId", aId);
+    }
+</script>
+<div id="menubar" class="menubar-inverse ">
+    <div class="menubar-fixed-panel">
+        <div>
+            <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <div class="expanded">
+            <a href="@Url.Action("Dashboard", "Inspector")">
+                <span class="text-lg text-bold text-primary ">RCS&nbsp;HARYANA</span>
+            </a>
+        </div>
+    </div>
+    <div class="menubar-scroll-panel">
+        <!-- BEGIN MAIN MENU -->
+        <ul id="main-menu" class="gui-controls">
+            <!-- BEGIN DASHBOARD -->
+            <li onClick="return liClick(this);" id="liDashboard">
+                <a id="aDashboard" onClick="return aClick(this);" href="@Url.Action("Dashboard", "Inspector")">
+                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li onClick="return liClick(this);" id="liSocietyMemberDetails">
+                <a id="aSocietyMemberDetails" onClick="return aClick(this);" href="@Url.Action("SocietyMemberDetails", "Inspector")">
+                    <div class="gui-icon"><i class="md md-access-time"></i></div>
+                    <span class="title">Pending Societies</span>
+                </a>
+            </li>
+        </ul><!--end .main-menu -->
+
+        <ul id="backlog-menu" class="gui-controls">
+            <!-- BEGIN DASHBOARD -->
+            <li onClick="return liClick(this);" id="Bck_liARCSDashboard">
+                <a id="Bck_aARCSDashboardBacklog" onClick="return aClick(this);" href="@Url.Action("BackLogDashboardInspector", "BackLogOfficer")">
+                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <span class="title">BackLog Dashboard</span>
+                </a>
+            </li>
+            <li onClick="return liClick(this);" id="Bck_liARCSSocietyMemberDetails">
+                <a id="Bck_aARCSSocietyMemberDetails" onClick="return aClick(this);" href="@Url.Action("BackLogMemberDetail", "BackLogOfficer")">
+                    <div class="gui-icon"><i class="md md-access-time"></i></div>
+                    <span class="title">Pending Societies</span>
+                </a>
+            </li>
+        </ul><!--end .main-menu -->
+        <div class="menubar-foot-panel">
+            <small class="no-linebreak hidden-folded">
+                <span class="opacity-75">Copyright &copy; 2018</span> <strong>NIC</strong>
+            </small>
+        </div>
+    </div><!--end .menubar-scroll-panel-->
+</div>

@@ -1,0 +1,132 @@
+﻿<title>FORM ‘A’</title>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Forwarding Letter</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        @if (ViewBag.result == "1")
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        @if (ViewBag.result == "0")
+        {
+            <div class="alert alert-warning" role="alert">
+                @ViewBag.show
+            </div>
+        }
+        <div class="card tabs-right style-default-light">
+            <div class="card-body tab-content style-default-bright">
+                <div class="tab-pane active" id="first6">
+                    <div id="print-content">
+
+                        <div class="card-body tab-content style-default-bright">                          
+                            <br />
+                            <form action="@Url.Action("UploadFormL", "BackLog")" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()                              
+                                <div class="card-head style-primary">
+                                    <header>Upload Approved L-Form <span class="glyphicon glyphicon-arrow-down"></span></header>
+                                </div>                                           
+                                <br />
+                                <input type="file" name="files" id="files_0" dirname="files_0" class="form-control" required accept="application/pdf" onchange="validation(this)" />
+                                <br />'                              
+                                <input id="btnUpload" type="submit" value="Upload & Send" class="btn btn-primary" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<input type="button" onclick="printDiv('print-content')" value="Print The Form" class="btn btn-primary" />*@
+    <!--end .section-body -->
+</section>
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w = window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+    function validation(abc) {
+        var id = abc.id;
+        var selectedFile = document.getElementById(id).files;
+        var a = abc.files[0].size / 1024;
+        if (a < 1000) {
+            //Check File is not Empty
+            if (selectedFile.length > 0) {
+                //debugger;
+                var re = /(\.pdf)$/i;
+                var fname = (document.getElementById(id).value).substring(12);
+                var res = fname.split(".");
+                var count = res.length;
+                if (count > 2) {
+                    document.getElementById(id).value = null;
+                    alert("File not supported! Kindly select pdf file only");
+                    return false;
+                }
+                if (re.exec(fname)) {
+                    var extenstion = (document.getElementById(id).value).substring(12);
+                    // Select the very first file from list
+                    var fileToLoad = selectedFile[0];
+                    // FileReader function for read the file.
+                    var fileReader = new FileReader();
+                    var base64;
+                    var filesubstring;
+                    // Onload of file read the file content
+                    fileReader.onload = function (fileLoadedEvent) {
+                        base64 = fileLoadedEvent.target.result;
+                        substring = "JVBER";
+                        if (base64.includes(substring)) {
+                        }
+                        else {
+                            document.getElementById(id).value = null;
+                            alert("File not supported! Kindly select pdf file only");
+                        }
+                        //console.log(base64);
+                    };
+                    // Convert data to base64
+                    fileReader.readAsDataURL(fileToLoad);
+                }
+                else {
+                    document.getElementById(id).value = null;
+                    alert("File not supported! Kindly select pdf file only");
+                }
+            }
+        }
+        else {
+            document.getElementById(id).value = null;
+            alert("File size is not exceed 500 kb");
+        }
+    }
+
+    $(document).ready(function () {
+        var number1 = parseInt(@ViewBag.SocietyStatus);
+        if (number1 == 0) {
+            $('#message').hide();
+        }
+        if ('@TempData["CheckField"]' === 'Incomplete') {
+            alert("Approved L Form is not filled completly. Please Complete Detail First.");           
+        }
+        else {
+
+            if (isNaN(@ViewBag.SocietyStatus)) {
+
+            }
+            else {
+
+                if (number1 != 0) {
+                    $('#message').show();
+                    alert("This application has been forwarded to ARCS for approval and can't be changed.");
+                    $('#btnUpload').attr('disabled', 'disabled');
+
+                }
+            }
+        }
+        
+    });
+</script>

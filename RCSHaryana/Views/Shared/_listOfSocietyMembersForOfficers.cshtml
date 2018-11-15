@@ -1,0 +1,145 @@
+﻿@*<div id="divSocietyMemberList" class="row">
+    </div>*@
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th hidden="hidden">
+                                ID
+                            </th>
+                            <th>
+                                Member Name
+                            </th>
+                            <th>
+                                Father's Name
+                            </th>
+                            <th>
+                                Gender
+                            </th>
+                            <th>
+                                Age
+                            </th>
+                            <th>
+                                Mobile
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tblBindMembers"></tbody>
+                </table>
+            </div><!--end .table-responsive -->
+        </div><!--end .card-body -->
+    </div><!--end .card -->
+</div>
+<div class="modal fade cus-modal-div" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">View Members Details</h4>
+            </div>
+            <div class="modal-body">
+              
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-md-6 form-group">
+                                <input type="hidden" class="form-control" id="MemberSNo" name="MemberSNo">
+                                <input type="text" readonly autocomplete="off" class="form-control" id="MemberName" name="MemberName" required>
+                                <label for="MemberName">1. Member Name</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly autocomplete="off" class="form-control" id="FatherName" name="FatherName" required>
+                                <label for="FatherName">2. Father Name</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly autocomplete="off" class="form-control" id="RelationwithMember" name="RelationwithMember" required>
+                                <label for="RelationwithMember">3. Relation With Member </label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly autocomplete="off" class="form-control" id="GenderOfSocietyMember" name="GenderOfSocietyMember" required>
+                                <label for="SelectGender">4. Select Gender</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="Age" name="Age" required data-rule-range="[18,100]" data-rule-digits="true">
+                                <label for="Age">5. Age</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="MobileNumberOfSocietyMember" name="MobileNumberOfSocietyMember" data-rule-digits="true" maxlength="10" minlength="10" required>
+                                <label for="Mobile">6. Mobile</label>
+                                <p class="help-block">10 digit mobile no</p>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="email" readonly class="form-control" autocomplete="off" id="EmailId" name="EmailId" required>
+                                <label for="EmailId">7. Email</label>
+                                <p class="help-block">example@example.com</p>
+                            </div>
+                            <div id="divAadharNo1" class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control AadharNo1" autocomplete="off" id="AadharNo1" name="AadharNo1" data-rule-digits="true" maxlength="12" minlength="12">
+                                <label id="result1" for="AadharNo">8. AadharNo</label>
+                                <p class="help-block">12 aadhar no</p>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control AadharNo1" autocomplete="off" id="OccupationOfMember" name="OccupationOfMember" data-rule-digits="true" maxlength="12" minlength="12">
+                                <label for="Occupationofmembers">9. Occupation of members</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" autocomplete="off" id="NoofSharesSubscribed" name="NoofSharesSubscribed" data-rule-digits="true" required>
+                                <label for="NoofSharesSubscribed">10. No. of Shares Subscribed</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="NameofNominee" name="NameofNominee" required>
+                                <label for="NameofNominee">11. Name of Nominee</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="NomineeAge" name="NomineeAge" required data-rule-range="[1,100]" data-rule-digits="true">
+                                <label for="NomineeAge">12. Nominee Age</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="RelationshipCodeOfSocietyMember" name="RelationshipCodeOfSocietyMember" required>
+                                <label for="RelationshipCode">13. Relationship with Nominee</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="Address1" name="Address1" required>
+                                <label for="RegisteredAddress">14. Place of Residence</label>
+                                <p class="help-block"> (For Ex. House No. /Sector No. /Road)</p>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" autocomplete="off" id="DistrictOfMember" name="DistrictOfMember" readonly required>
+                                <label for="District">14.1 District</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="PostOfficeOfSocietyMember" name="PostOfficeOfSocietyMember" required>
+                                <label for="PostOffice">14.2 Post Office</label>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="PostalCodeOfSocietyMember" name="PostalCodeOfSocietyMember" data-rule-number="true" maxlength="6" minlength="6" pattern="[0-9]{6}" data-rule-digits="true" required>
+                                <label for="PostalCode">14.3 Postal Code</label>
+                                <p class="help-block">Six digit zip code</p>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" readonly class="form-control" autocomplete="off" id="Address2" name="Address2" required>
+                                <label for="HouseNoSectorNoRoad">14.4 LandMark</label>
+                            </div>
+                        </div>
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cus-modal-div .modal-dialog {
+        width: 70% !important;
+    }
+    .form-group .form-control {
+    margin-top: 10px;
+    padding-left: 0px;
+}
+</style>

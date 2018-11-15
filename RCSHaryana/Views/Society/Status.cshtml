@@ -1,0 +1,43 @@
+﻿<section>
+    <div class="container card style-transparent">
+        <div class="card-body">
+            <table id="#print-content" class="dataTables_full table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Submiited On
+                            </th>
+                            <th>
+                                Reamrks By Officer
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.SocietyStatus1)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@item.Status</span>
+                                </td>
+                                <td>
+                                    <span>  @item.SubmittedDate.ToString("dd MMM yyyy")</span>
+                                </td>
+                                <td>
+                                    <span>@item.Remarks</span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</section>
+<style type="text/css">
+    .card-body:last-child {
+    border-radius: 0 0 2px 2px;
+    margin-top: 8%;
+}
+</style>

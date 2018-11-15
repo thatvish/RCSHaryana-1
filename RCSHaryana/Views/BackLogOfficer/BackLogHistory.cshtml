@@ -1,0 +1,79 @@
+﻿<section>
+    <style>
+        .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+            color: black;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .col-md-6 {
+            font-weight: normal;
+        }
+    </style>
+    <form class="form form-validate" novalidate="novalidate" accept-charset="utf-8" method="post">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-4 form-group">
+                    @Html.DropDownList("FormNameId", new SelectList(ViewBag.FormNamelst as System.Collections.IEnumerable, "FormId", "FormName"),
+                                        "Select", new { id = "FormNameId", @class = "form-control", required = "required" })
+                    <label for="ARCSOffice">Form Name<span style="color:red;"><strong>*</strong></span></label>
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.DropDownList("InspectorCode", new SelectList(ViewBag.InsPklLst as System.Collections.IEnumerable, "Value", "Text"),
+                                        "Select", new { id = "InspectorCode", @class = "form-control", required = "required" })
+                    <label for="ARCSOffice">Inspector Name<span style="color:red;"><strong>*</strong></span></label>
+                </div>
+                @*<div class="col-md-6 form-group">
+                        <input type="text" class="form-control" title="from date=" id="fromdate" name="fromdate" autocomplete="false" readonly required>
+                        <label for="Address">From Date <span style="color:red;"><strong>*</strong></span></label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input type="text" class="form-control" title="To date" id="todate" name="todate" autocomplete="false" readonly required>
+                        <label for="Address">To Date<span style="color:red;"><strong>*</strong></span></label>
+                    </div>*@
+                <div class="col-md-4 form-group text-right">
+                    <br />
+                    <button type="submit" class="btn btn-primary btn-success" id="ShowHistoryInARCS">View History</button>
+                    @*<input type="button" value="Update" disabled="disabled" class="btn btn-primary" id="SubmitDateInARCS" />*@
+                </div>
+            </div>
+
+            @if (ViewBag.BackLogHistory != null)
+            {
+                <div class="container card style-transparent">
+                    <table class="dataTables_full table table-striped">
+                        <tbody>
+                            @foreach (var item in ViewBag.BackLogHistory)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <strong>Column Name:- </strong><span>@item.ColumnName</span><br />
+                                        <strong>Old Value:- </strong><span>@item.OldValue</span><br />
+                                        <strong>Changed Value:- </strong><span>@item.NewVAlue</span><br />
+                                        <strong>Changed Date:- </strong><span>@item.ChangeDate</span>
+                                    </td>
+                                    <td>
+                                        <strong>Inspector Name:- </strong><span>@item.FirstName</span><br />
+                                    </td>
+                                    <td>
+                                        <strong>Society Name:- </strong><span>@item.SocietyName</span><br />
+                                        <strong>Old Reg No:- </strong><span>@item.OldRedgNo</span><br />
+                                        <strong>New Reg No:- </strong><span>@item.SocietyTransID</span><br />
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+
+                    </table>                                     
+                </div>
+            }
+        </div>
+    </form>
+</section>
+<style>
+    section:first-child {
+        margin-top: 150px;
+    }
+</style>

@@ -1,0 +1,207 @@
+﻿<title> Form ‘C’</title>
+<section>
+    <div class="section-body contain-lg">
+        <div class="card tabs-right style-default-light">
+            <div id="maindiv">
+                <p align="center">FORM C</p>
+                <p align="center">Copy of Resolution Adopted by the Promoters</p>
+                <div class="card-body tab-content style-default-bright">
+                    &nbsp;&nbsp;&nbsp;A general meeting of persons interested in organizing a Co-operative Society under the purview of the
+                    Haryana Co-operative Societies Act, 1984 is held on dated @ViewBag.MeetingDate
+                    @ViewBag.Address1
+                    <span style="font-weight: bold" ;>District </span>
+                    @ViewBag.Address2
+                    <span style="font-weight: bold" ;>Post Office</span>
+                    @ViewBag.Postoffice
+                    @ViewBag.Pin
+                    under the chairpersonship of Shri/Smt. :-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                        }
+                    }
+                    and it is resolved: -<p></p>
+                    <p></p>
+                    1.	That Shri/Smt.
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Secretary")
+                        {
+                        }
+                    }
+                    ………………………. is appointed as Secretary for recording minutes of to-day’s meeting.<p></p>
+                    2.	That the Assistant Registrar, Co-opertive Societies,
+                    @ViewBag.ARCSName
+                    , should be approached to get a co-operative society registered under the following name and style:<p></p>
+                    <span style="font-weight: bold" ;> @ViewBag.SocietyName</span>, @ViewBag.Address1
+                    <span style="font-weight: bold" ;>District </span>
+                    @ViewBag.Address2
+                    ,
+                    <span style="font-weight: bold" ;>PostOffice </span>@ViewBag.PostOffice
+                    .<p></p>
+                    3.	That the registered office of the proposed society shall be at @ViewBag.PostOffice
+                    <span> District </span> @ViewBag.Address2, @ViewBag.Pin
+                    Haryana
+                    <p></p>
+                    4.  That the area of operation of the proposed society will be <span style="font-weight: bold" ;>
+                        @ViewBag.District
+                    </span>,
+                    .<p></p>
+                    5.  That the enclosed Byelaws of the Society which we have carefully studied and know, are hereby adopted and<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    1.
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberDesignationName</span>
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    and<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Vice President")
+                        {
+                            <span>@item.SocietyMemberDesignationName</span>
+
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    are authorized to sign on them (Bye Laws) on behalf of all of us.<p></p>
+                    6.  That the first managing committee of the Society shall consist of the following: -<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.  President:-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    <p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.  Vice-President :-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Vice President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    <p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.  Cashier:- :-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Cashier")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    <p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.  Member Committee :-
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Member Committee")
+                        {
+                            <br &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; />
+                            <span style="text-align:center;">@item.SocietyMemberName</span>
+                            <span style="text-align:center;">@item.RelationshipName</span>
+                            <span style="text-align:center;">@item.RelationshipMemberName</span>
+                        }
+                    }
+                    <p></p>
+                    7.   That the society should seek affiliation with the following Co-operative Institutions: -<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.<p></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.<p></p>
+                    8.  That the maximum credit limits of the promoting members was fixed as follows: - (where applicable)<p></p>
+                    9.  That the maximum credit limit of the society is fixed at Rs ______________________<p></p>
+                    10. Interest shall be charged on loans to members at the rate of _____________________<p></p>
+                    11. That Shri
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "Cashier")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    is appointed as Cashier of the Society and
+                    handed over Rs @ViewBag.Total in cash (Rs @ViewBag.ShareMoney as share money, Rs. @ViewBag.AdminssionFee as admission fee and Rs. @ViewBag.Deposit as deposits). This amount has been deposited in
+                    @ViewBag.BankName. (Original receipt to be attached with the appliation for registration).<p></p>
+                    12. That Shri @ViewBag.CustodianName  @ViewBag.CustodianRelationName  @ViewBag.CustodianFatherName
+                    @*@foreach (var item in ViewBag.lstFormc)
+        {
+            if (@item.SocietyMemberDesignationName == "President")
+            {
+                <span>@item.SocietyMemberName</span>
+                <span>@item.RelationshipName</span>
+                <span>@item.RelationshipMemberName</span>
+            }
+        }*@
+                    is appointed as Custodian of the Books of the Society. He should be required to
+                    furnish a receipt in the form E.<p></p>
+                    13. That the Cashier and the Custodian of books shall on all occasions on demand produce the cash and the record including account books of the
+                    society to persons duly authorized in this behalf under the Co-operative Societies Act or rules framed there under or as required under Bye-laws
+                    of the society.<p></p>
+                    14. That Shri
+                    @foreach (var item in ViewBag.lstFormc)
+                    {
+                        if (@item.SocietyMemberDesignationName == "President")
+                        {
+                            <span>@item.SocietyMemberName</span>
+                            <span>@item.RelationshipName</span>
+                            <span>@item.RelationshipMemberName</span>
+                        }
+                    }
+                    President/Secretary of the Society should approach the Assistant Registrar,
+                    Co-operative Societies @ViewBag.ARCSName
+                    on our behalf for the
+                    Registration of the society. He is also authorized to sign cuttings
+                    and omissions, if any, on the application for Registration or copies of the proposed Bye-laws and also to furnish any other
+                    information as may be required by the Registrar in this connection.<p></p>
+                    <p class="col-lg-8">(Please give below list of all signatories)</p><p class="col-lg-4"></p>
+                    <p class="col-lg-8">
+                        “Certified that it is true copy of such entry and the book containing the entry is still in the custody of the Society.”
+                    </p>
+                    <p class="col-lg-4"></p>
+                    <div class="col-lg-6">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;Place_________________
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="col-lg-offset-8" align="right">
+                            Secretary
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;Date________________
+                        </p>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+            @*<input type="button" class="btn btn btn-primary " onclick="location.href='@Url.Action("Report", "Society",new {id= "PDF" ,value="FormC"})'" value="Print & Download" />*@
+                <a href="@Url.Action("Report", "Society",new {id= "PDF",value="FormC"})" class="btn btn btn-primary" target="_blank">Print & Download</a>
+            </div>
+        </div>
+    </div>
+    <!--end .section-body -->
+</section>

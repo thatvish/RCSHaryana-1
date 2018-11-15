@@ -1,0 +1,158 @@
+﻿<script src="~/scripts/js/BackLogListOfManagingCommitteeMembersForOfficers.js"></script>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">BackLog Details</li>
+        </ol>
+    </div>
+    <div class="section-body contain-lg">
+        <div class="card tabs-left style-default-light">
+            <!-- BEGIN SEARCH BAR -->
+            <div class="card-body style-primary no-y-padding">
+                <form class="form form-inverse" accept-charset="utf-8" method="post">
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-content">
+                                <div class="form-control-line"></div>
+
+                                @if (Convert.ToInt32(Session["RoleId"]) == 2)
+                                {
+                                    @Html.DropDownList("SocietyList", new SelectList(ViewBag.lstSL as System.Collections.IEnumerable, "Value", "Text"),
+                                                 "Select", new { id = "SocietyList", @class = "form-control", required = "required" })
+                                }                               
+                            </div>
+                            <div class="input-group-btn">
+                                <button id="btnSearch" class="btn btn-floating-action btn-default-bright" onclick="BindAllBackLogDetailsForOfficers();" type="button"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <ul class="card-head nav nav-tabs tabs-accent" data-toggle="tabs">
+                <li class="active"><a href="#BackLogDetails">BackLog Details</a></li>
+                <li><a href="#ElectionDetails" id="ElectionDetailId">Election Details</a></li>
+                <li><a href="#FormL">Form L</a></li>
+                <li><a href="#ApprovedLForm" id="ApprovedLFormId">Approved L Form</a></li>
+                <li><a href="#SharedTransfer" id="SharedTransferId">Share Transfer</a></li>
+                <li><a href="#BackLogViewForm" id="ShowBackLogViewDocs">Dcouments</a></li>
+            </ul>
+            <div id="mytabs" class="card-body tab-content style-default-bright">
+                @if (ViewBag.result == "1")
+                {
+                    <div class="alert alert-success" role="alert">
+                        @ViewBag.show
+                    </div>
+                }
+                @if (ViewBag.result == "0")
+                {
+                    <div class="alert alert-warning" role="alert">
+                        @ViewBag.show
+                    </div>
+                }
+                <div class="tab-pane active" id="BackLogDetails">
+                    @Html.Partial("~/Views/Shared/_Bck_SocietyDetailsForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="ElectionDetails">
+                    @Html.Partial("~/Views/Shared/_Bck_ElectionDetails.cshtml")
+                </div>
+                <div class="tab-pane" id="FormL">
+                    @Html.Partial("~/Views/Shared/_Bck_ListandDetailsOfCommitteeMembersForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="ApprovedLForm">
+                    @Html.Partial("~/Views/Shared/_Bck_listOfSocietyMembersForOfficers.cshtml")
+                </div>
+                <div class="tab-pane" id="SharedTransfer">
+                    @Html.Partial("~/Views/Shared/_Bck_listOfShareTransferMember.cshtml")
+                </div>
+                <div class="tab-pane" id="BackLogViewForm">
+                    @Html.Partial("~/Views/Shared/_ViewDocsForBackLog.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+</script>
+<script>
+    function validation(abc) {
+        //debugger;
+        var id = abc.id;
+        var selectedFile = document.getElementById(id).files;
+        //Check File is not Empty
+        if (selectedFile.length > 0) {
+            var re = /(\.pdf)$/i;
+            var fname = (document.getElementById(id).value).substring(12);
+            var count = res.length;
+            if (count > 2) {
+                document.getElementById(id).value = null;
+                alert("File not supported! Kindly select pdf file only");
+                return false;
+            }
+            if (re.exec(fname)) {
+                var extenstion = (document.getElementById(id).value).substring(12);
+                // Select the very first file from list
+                var fileToLoad = selectedFile[0];
+                // FileReader function for read the file.
+                var fileReader = new FileReader();
+                var base64;
+                var filesubstring;
+                // Onload of file read the file content
+                fileReader.onload = function (fileLoadedEvent) {
+                    base64 = fileLoadedEvent.target.result;
+                    substring = "JVBER";
+                    if (base64.includes(substring)) {
+                    }
+                    else {
+                        document.getElementById(id).value = null;
+                        alert("File not supported! Kindly select pdf file only");
+                    }
+                    //console.log(base64);
+                };
+                // Convert data to base64
+                fileReader.readAsDataURL(fileToLoad);
+            }
+            else {
+                document.getElementById(id).value = null;
+                alert("File not supported! Kindly select pdf file only");
+            }
+        }
+    }
+
+    $('#btnSearch').click(function () {
+        loadremark();
+    });
+    function loadremark() {
+        var e = document.getElementById("SocietyList");
+        var SocietyTransID = e.options[e.selectedIndex].value;
+        $.ajax({
+            url: "/BackLogOfficer/BackLogMemberRemarkInspector/",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: { SocietyTransID },
+            success: function (result) {
+                var html = '';
+                $.each(result, function (key, item) {
+                    var getDate = item.Date
+                    var date = new Date(parseInt(getDate.substr(6)));
+                    var month = date.getMonth() + 1;
+                    html += '<tr>';
+                    html += '<td>' + item.Remarks + '</td>';
+                    html += '<td>' + date.getDate() + '/' + month + '/' + date.getFullYear() + '</td>';
+                    html += '</tr>';
+                });
+                $('.tblBindRemarkArcs').html(html);
+            },
+            error: function (errormessage) {
+            }
+        });
+    }
+</script> 

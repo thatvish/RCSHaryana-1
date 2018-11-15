@@ -1,0 +1,68 @@
+﻿<script>
+    $(document).ready(function () {
+        $('.gui-controls li a').click(function (e) {
+            $('.gui-controls li.active').removeClass('active');
+            var $parent = $(this).parent();
+            $parent.addClass('active');
+           // e.preventDefault();
+        });
+    });
+</script>
+<div id="menubar" class="menubar-inverse">
+    <div class="menubar-fixed-panel">
+        <div>
+            <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <div class="expanded">
+            <a href="@Url.Action("Dashboard", "BackLog")">
+                <span class="text-lg text-bold text-primary ">RCS&nbsp;HARYANA</span>
+            </a>
+            <span class="text-lg text-bold text-primary " style="text-align:center">BackLog Section</span>
+        </div>
+    </div>
+    <div class="menubar-scroll-panel">
+        <!-- BEGIN MAIN MENU -->
+        <ul id="main-menu" class="gui-controls">
+            <!-- BEGIN DASHBOARD -->
+            <li>
+                <a href="@Url.Action("Dashboard", "BackLog")">
+                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <span class="title">Details of the Society</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="@Url.Action("ElectionDetails", "BackLog")">
+                    <div class="gui-icon"><i class="md md-access-time"></i></div>
+                    <span class="title">Election Details</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("FormL", "BackLog")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Approved L Form</span> 
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ShareTransfer", "BackLog")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Share Transfer<br /> Approval</span>
+                </a>
+            </li>  
+            <li>
+                <a href="@Url.Action("BackLogFormL", "BackLog")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Upload & Send<br /></span>
+                </a>
+            </li>  
+        </ul><!--end .main-menu -->
+        <!-- END MAIN MENU -->
+        <div class="menubar-foot-panel">
+            <small class="no-linebreak hidden-folded">
+                <span class="opacity-75">Copyright &copy; 2018</span> <strong>NIC</strong>
+            </small>
+        </div>
+    </div><!--end .menubar-scroll-panel-->
+</div>

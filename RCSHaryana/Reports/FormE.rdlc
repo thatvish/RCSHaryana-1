@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="NewRcsHryFormE">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>add8506d-6e88-4b3d-9a98-43fcba2be58d</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="NewRcsHryDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>aa85d761-fa6d-41cc-a980-bd4ef6dd09b3</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="ReportFormE">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>ae5d4451-10c7-4fd5-ba0f-03e4ab9f996e</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>NewRcsHryDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="SocietyMemberName">
+          <DataField>SocietyMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RelationshipName">
+          <DataField>RelationshipName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RelationshipMemberName">
+          <DataField>RelationshipMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HouseNo">
+          <DataField>HouseNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SectorStreet">
+          <DataField>SectorStreet</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DisName">
+          <DataField>DisName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SocietyName">
+          <DataField>SocietyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>NewRcsHryDataSet</rd:DataSetName>
+        <rd:SchemaPath>D:\Project For Report 23 July\RCSHaryana\RCSHaryana\NewRcsHryDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>GetDetailsForFormD</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetDetailsForFormDTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Query>
+        <DataSourceName>NewRcsHryFormE</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SocietyTransId">
+          <DataField>SocietyTransId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProceedingBook">
+          <DataField>ProceedingBook</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="CashBook">
+          <DataField>CashBook</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="LedgerBook">
+          <DataField>LedgerBook</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="MemberRegister">
+          <DataField>MemberRegister</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="ActandRule">
+          <DataField>ActandRule</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Byelawsofsociety">
+          <DataField>Byelawsofsociety</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Appsformembership">
+          <DataField>Appsformembership</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>NewRcsHryFormE</rd:DataSetName>
+        <rd:SchemaPath>E:\ss\RCSHaryana\RCSHaryana\NewRcsHryFormE.xsd</rd:SchemaPath>
+        <rd:TableName>GetReportE</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetReportETableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="DataSet3">
+      <Query>
+        <DataSourceName>ReportFormE</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="SocietyMemberName">
+          <DataField>SocietyMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RelationshipName">
+          <DataField>RelationshipName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address1">
+          <DataField>Address1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address2">
+          <DataField>Address2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Custodian_SocietyMemberName">
+          <DataField>Custodian_SocietyMemberName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Custodian_FatherName">
+          <DataField>Custodian_FatherName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PostOffice">
+          <DataField>PostOffice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DisName">
+          <DataField>DisName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SocietyName">
+          <DataField>SocietyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ReportFormE</rd:DataSetName>
+        <rd:SchemaPath>E:\ss\RCSHaryana\RCSHaryana\ReportFormE.xsd</rd:SchemaPath>
+        <rd:TableName>GetDetailsForFormE</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>GetDetailsForFormETableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve">                                                           </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>                Form 'E'
+
+                                                           Receipt of Custodian of Books</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>
+
+I </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Custodian_SocietyMemberName.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!RelationshipName.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Custodian_FatherName.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>  resident of  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Address1.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Address2.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>  District  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!DisName.Value, "DataSet3")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> of Society </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!SocietyName.Value, "DataSet1")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> a do hereby certify that I have taken over the charge of the below listed books of  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!SocietyName.Value, "DataSet1")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> today </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=CDate(Today()).ToString("MMM dd,yyyy")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> and I undertake that I shall produce them on demand to any of the persons duly authorised in this behalf under the Haryana Cooperative Societies Act, Rules framed thereunder and the Bye-laws of the society in the manner as has been laid down in the said Act, Rules and the bye-laws.
+
+(List of books alongwith pages to be given)
+
+1.	Proceeding Book	                                                                         
+2.	Cash Book	                                                            
+3.	Ledger Book	                                                         
+4.	Member Register	                                                  
+5.	Act &amp; Rule	                                                             
+6.	Bye-laws of society	                                               
+7.	Applications for membership	                                 
+8.	Other	                                                                  </Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>
+                                                                             Signature or thumb impression of the custodian of the books
+
+ 
+Signature of the witnesses                                       Address of the witnesses
+1.                                                                          1.
+
+2.                                                                          2.
+
+                                                                                                                                               Countersigned
+
+                                                                                                                                               (President)
+
+Place__________________
+
+Date __________________
+
+(NOTE :- Name and full address of the witnesses should be given. Any two promoter members of the society can act as witness )</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>0.36724cm</Top>
+            <Left>0.63182cm</Left>
+            <Height>16.68667cm</Height>
+            <Width>18.08396cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>6.90625in</Height>
+        <Style />
+      </Body>
+      <Width>7.36842in</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="ID1J7sQ1GTvPap9LF1jXhBr8g">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAABwAAAAXCAYAAAAYyi9XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAIsSURBVEhLtZZNTxNRFIbfaYXahkVpGlqBEljIAgMJChKpGAjSDexIWBghfIRf4MY/wYKVCzWEj6VuiVpRIy3ImujKQAgQikIhpNK00xbOGWaGllxqxxmfpM3kdtIn571n7hwpHo+fgTiR05hc/YTPsR1kcjleMk2ZzYah+tuYautCOV0zF9/E+tGhpTJGpv96s/UTx+mUupInPM1mLJVppLJZ5M6UEBV0oct+Q736v+hCK5AkCQ991QhW3YKkrl3FUmG3rwZzwT7MBB/jvtevrhZiiZAr6/HX4mVnL9zlDup4mXpCVn8txLSQowtVB/CaZB6SbSZOMBL5oHS9CFNClg0EGvCio0epbINkwyT7cRy/uEGAUMgRddLGt1R6r918vidUU4fp9keKbPtPAmPRcFEZIxS2erx49aAX810hNLk96moh3CBaZSx7svzu2hjzEQrdZQ7YqLSAqwJvu/vR7vXplV5tEI7xaeQ9vv+lMg2hkI+4iZUlHNGRVHXTiVlq9WaK18YxGmgQEUIhH0TRX3sYj37EQSoJv9OFBYr3efM9Qw0iQijU+Lq/i+HlMPaTp6ileJ813TXUICKKCrnStYMYJlaXkMjIyj4aaRARRYUaKxTvaCSMb79jhhpERElChhtp8MviP1emUbKQ403SO9MsJQutQhfy/MEfq3HSi91Oz6+GbuAjjAceh92urpiHZZONd5RHSUOf2pg0zTQ88OTPIGbgylh2mRxwDkL21Bm5D5WoAAAAAElFTkSuQmCC</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>853efd81-a7f5-4cd6-ae48-2392bfb90caa</rd:ReportID>
+</Report>

@@ -1,0 +1,241 @@
+﻿<title>FORM ‘D’:- Receipt of Cashier</title>
+<section>
+    <div class="section-header">
+        <ol class="breadcrumb">
+            <li class="active">Receipt of Cashier</li>
+        </ol>
+    </div>
+    <div class="row">
+        <br />
+        <div class="col-xs-12 text-right cus-form-bttn">
+            <button id="ProcedureFee" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Receipt
+            </button>
+            <small>(To be filled by applicant)</small>
+            <br />
+            <em id="message">you cann't add Receipt details, becuase your request sent to ARCS officer.</em>
+            <br />
+        </div>
+    </div>
+    <div class="card card-underline">
+        <div class="card-body">
+            <div class="card tabs-right style-default-light">
+                <div class="card-body tab-content style-default-bright">
+                    <div class="tab-pane active" id="first6">
+                        <div id="print-content">
+                            <div class="row">
+                                <p class="col-lg-12" align="center">
+                                    Form “D”
+                                </p>
+                                <p class="col-lg-12" align="center">
+                                    Receipt of Cashier
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p class="col-lg-1">
+                                </p>
+                                <p class="col-lg-10">
+                                    I @ViewBag.SocietyMemberName
+                                    @ViewBag.Relationshipname
+                                    
+                                    @ViewBag.RelationshipMemberName
+                                    resident of 
+                                    
+                                    @ViewBag.Address Tehsil
+                                    @ViewBag.District
+                                    
+                                    cashier of the @ViewBag.SocietyName
+                                    do hereby certify that I have today received on account of:
+                                </p>
+                                <p class="col-lg-1">
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p class="col-lg-1">
+                                </p>
+                                <p class="col-lg-10">
+                                    (a) Share Money :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x20b9 @ViewBag.ShareMoney
+                                    <br />
+                                    (b) Admission fee :&nbsp;&nbsp;&nbsp;&#x20b9 @ViewBag.AdmissionFees
+                                    <br />
+                                    (c) Deposits :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x20b9 @ViewBag.Deposits
+                                    <br />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Total :</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x20b9 <strong>@ViewBag.Total</strong> 
+                                </p>
+                                <p class="col-lg-1">
+                                </p>                               
+                            </div>
+                            <div class="row">
+                                <p class="col-lg-1">
+                                </p>
+                                <p class="col-lg-10">
+                                    I undertake that I shall immediately on demand produce the cash in hand with me at all occasions to any
+                                    of the persons duly authorized in this behalf under the Haryana Co-operative Societies Act, and Rules
+                                    framed thereunder and the bye-laws of the society.
+                                </p>
+                                <p class="col-lg-1">
+                                </p>
+                            </div>
+                            @*<div class="col-lg-12">
+                                <p>Signature/Thumb Impression
+                                   of the cashier
+                                   (Revenue Stamp)
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>
+                                        Signature of the witnesses
+                                    </label>
+                                    <p>
+                                        1. 
+                                    </p>
+                                    <p>
+                                        2. 
+                                    </p>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>
+                                        Address of the witnesses
+                                    </label>
+                                    <p>
+                                        1. 
+                                    </p>
+                                    <p>
+                                        2. 
+                                    </p>
+                                </div>
+                                <div class="col-md-10 form-group">
+                                    <p class="col-lg-offset-12" align="right">
+                                        Countersigned
+                                     </p>
+                                    <p></p>
+                                    <p class="col-lg-offset-12" align="right">
+                                        (President)
+                                    </p>
+                                    <p>
+                                        
+                                        Place__________________
+                                    </p>
+                                    <p>
+                                        Date __________________
+                                    </p>
+                                    <p>
+                                        (NOTE :- Name and full address of the witnesses should be given. Any two promoter members of the society can act as witness )
+                                    </p>
+                                </div>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div><!--end .card -->
+    </div>
+</div>
+<!--end .section-body -->
+</section>
+<div class="modal fade cus-modal-div" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Receipt</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form form-validate" novalidate="novalidate" action="@Url.Action("procedurefee", "Society")" accept-charset="utf-8" method="post">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" class="form-control" id="ShareMoney" name="ShareMoney" required data-rule-number="true">
+                                        <label for="Mainobjects">Share Money <span style="color:red;"><strong>*</strong></span></label>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-12 form-group ">
+                                        <input type="text" class="form-control" id="AdmissionFee" name="AdmissionFee" required data-rule-number="true">
+                                        <label for="Mainobjects">Admission Fee<span style="color:red;"><strong>*</strong></span></label>
+                                    </div>
+                                    <br />
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" class="form-control" id="Deposits" name="Deposits" data-rule-number="true">
+                                        <label for="Mainobjects">Deposits</label>
+                                    </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="btnAdd">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@*<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("input[name='GridHtml']").val($("#print-content").html());
+            $("input[name='FormName']").val("FormD");
+        });
+    });
+</script>*@
+
+<script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        w = window.open();
+        w.document.write(printContents);
+        w.print();
+        w.close();
+    }
+
+    function exportpdf() {
+        $("#print-content").print();
+    }
+
+    $(document).ready(function () {
+        var number1 = parseInt(@ViewBag.SocietyStatus);
+        if (number1 != "NaN") {
+            if (number1 != 0) {
+                $('#message').show();
+                $('#ProcedureFee').attr('disabled', 'disabled');
+            }
+            if (number1 == 0) {
+                $('#message').hide();
+            }
+        }
+    });
+</script>
+<style>
+    .text-right.cus-form-bttn {
+        margin-top: 25px !important;
+    }
+</style>
+<script>
+    function demoFromHTML() {
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#print-content')[0];
+        specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 550
+        };
+        pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+            function (dispose) {
+                pdf.save('FormD.pdf');
+            }, margins
+        );
+    }
+</script>

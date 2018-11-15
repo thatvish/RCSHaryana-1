@@ -1,0 +1,123 @@
+﻿<section>
+    <div class="section-body cus-section-tabs">
+        <div class="row">
+            <!-- BEGIN ALERT - REVENUE -->
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <a href="">
+                        <div class="card-body no-padding">
+                            <div class="alert alert-callout alert-info no-margin">
+                                @*<strong class="pull-right text-success text-lg">0,38% <i class="md md-trending-up"></i></strong>*@
+                                <strong class="text-xl">@ViewBag.Total</strong><br />
+                                <span class="opacity-50">Total BackLog Applications</span>
+                                <div class="stick-bottom-left-right">
+                                    <div class="progress progress-hairline no-margin">
+                                        <div class="progress-bar progress-bar-warning" style="width:43%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a><!--end .card-body -->
+                </div><!--end .card -->
+            </div><!--end .col -->
+            <div class="col-md-3 col-sm-6">
+                <a href="">
+                    <div class="card">
+                        <div class="card-body no-padding">
+                            <div class="alert alert-callout alert-danger no-margin">
+                                @*<strong class="pull-right text-danger text-lg">0,18% <i class="md md-trending-down"></i></strong>*@
+                                <strong class="text-xl">@ViewBag.TotalPending</strong><br />
+                                <input type="hidden" id="Role" value="2" />
+                                <span class="opacity-50" id="bckapplication">Total Pending BackLog</span>
+                                <div class="stick-bottom-left-right">
+                                    <div class="progress progress-hairline no-margin">
+                                        <div class="progress-bar progress-bar-danger" style="width:43%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end .card-body -->
+                    </div>
+                </a><!--end .card -->
+            </div><!--end .col -->
+            <div class="col-md-3 col-sm-6">
+                <a href="@Url.Action("BackLogToInspector", "ARCS")">
+                    <div class="card">
+                        <div class="card-body no-padding">
+                            <div class="alert alert-callout alert-warning no-margin">
+                                @*<strong class="pull-right text-danger text-lg">0,18% <i class="md md-trending-down"></i></strong>*@
+                                <strong class="text-xl">@ViewBag.TotalForwardedToInspector</strong><br />
+                                <span class="opacity-50">To Inspector BackLog Applications</span>
+                                <div class="stick-bottom-left-right">
+                                    <div class="progress progress-hairline no-margin">
+                                        <div class="progress-bar progress-bar-warning" style="width:43%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end .card-body -->
+                    </div><!--end .card -->
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+
+                <div class="card">
+                    <div class="card-body no-padding">
+                        <div class="alert alert-callout alert-dismissable no-margin">
+                            @*<strong class="pull-right text-danger text-lg">0,18% <i class="md md-trending-down"></i></strong>*@
+                            <strong class="text-xl">@ViewBag.TotalApplicationComesFromInspector</strong><br />
+                            <a id="aARCSPendingActionDashboard" href="@Url.Action("BackLogApplicationDetails", "ARCS")">
+                                <span class="opacity-50">From Inspector</span>
+                            </a>
+                            <div class="stick-bottom-left-right">
+                                <div class="progress progress-hairline no-margin">
+                                    <div class="progress-bar progress-bar-accent-dark" style="width:43%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end .card-body -->
+                </div><!--end .card -->
+
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body no-padding">
+                        <div class="alert alert-callout alert-success no-margin">
+                            @*<strong class="pull-right text-warning text-lg">0,01% <i class="md md-swap-vert"></i></strong>*@
+                            <strong class="text-xl">@ViewBag.TotalApprove</strong><br />
+                            <a href="#">
+                                <span class="opacity-50">Total BackLog Applications Freezed</span>
+                            </a>
+                            <div class="stick-bottom-left-right">
+                                <div class="progress progress-hairline no-margin">
+                                    <div class="progress-bar progress-bar-success" style="width:43%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end .card-body -->
+                </div><!--end .card -->
+            </div>
+        </div><!--end .row -->
+    </div><!--end .section-body -->
+</section>
+<style>
+    .cus-modal-div .modal-dialog {
+        width: 70% !important;
+    }
+</style>
+<script language="javascript" type="text/javascript">
+    function noBack() { window.history.forward() }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function (evt) { if (evt.persisted) noBack() }
+    window.onunload = function () { void (0) }
+</script>
+<script type="text/javascript" language="Javascript">
+    history.go(1);
+</script>
+<script>
+    function aClickDashboard(obj) {
+        $('#Bck_liARCSPendingAction').addClass("active expanded");
+        $('#Bck_aPendingAction').addClass("active");
+    }
+    
+
+</script>

@@ -1,0 +1,113 @@
+﻿<script src="~/scripts/js/BackLogListOfManagingCommitteeMembersForOfficers.js"></script>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            @*<em id="msgCommitteMember">you can't Add/edit your committe members, becuase your request sent to ARCS officer.</em>*@
+            <div class="table-responsive">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th hidden="hidden">
+                                ID
+                            </th>
+                            <th>
+                                Column Name
+                            </th>
+                            <th>
+                                Old Value
+                            </th>
+                            <th>
+                                Changed Value
+                            </th>                          
+                            <th>
+                                Inspector Name
+                            </th>
+                            <th>
+                                Society Name
+                            </th>
+                            <th>
+                                Old Reg No
+                            </th>
+                            <th>
+                                New Reg No
+                            </th>                                                 
+                        </tr>
+                    </thead>
+                    <tbody class="Bck_HistoryView"></tbody>
+                </table>
+            &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;            
+                <div class="col-md-12 form-group"  id="BindHistoryDivInspector" style="display:none">
+                    <input type="checkbox" id="chk1" name="chk1" disabled required value="false"/>
+                    <label>I do certify the Record has been verified and authenticated. </label>
+                    </div>
+
+                <div class="col-md-12 form-group">
+                    <br />
+                    <textarea pattern="[a-zA-Z0-9\s]+" rows="3" class="form-control" id="DeclarationRemarks" name="DeclarationRemarks" required placeholder="Remarks"></textarea>
+                    <label for="Remark">Fill Remark Below <span style="color:red;"><strong>*</strong></span></label>
+                </div>             
+                </div><!--end .table-responsive -->
+        </div><!--end .card-body -->
+
+    </div><!--end .card -->
+</div>
+
+<script>
+    //$('#checkbox-value').text($('#chk1').val());
+    $(document).ready(function () {
+        window.localStorage.lastname = "declatationDivInspector";
+    });
+    $("#chk1").on('change', function () {
+        if ($("#DeclarationRemarks").val() == "") {
+            alert("Fill Remark First");
+            $('#chk1').prop('checked', false);
+            $('#DeclarationRemarks').css('border-color', 'Red');
+            return false;
+           
+        }
+        if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+        } else {
+            $(this).attr('value', 'false');
+        }
+        $('#DeclarationRemarks').css('border-color', 'green');
+        $('#checkbox-value').text($('#checkbox1').val());
+       
+        var IsCheck = $("#chk1").val();
+        if (IsCheck === "true") {
+
+            IsCheck = 1;
+        }
+        if (IsCheck === "false") {
+
+            IsCheck = 0;
+        }
+        var Remark = $("#DeclarationRemarks").val()
+        var e = document.getElementById("SocietyList");
+        var SocietyTransID = e.options[e.selectedIndex].value;
+        $.ajax({
+            url: "/BackLogOfficer/SaveDeclaration/",
+            type: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            data: { IsCheck: IsCheck, Remark: Remark, SocietyTransID:SocietyTransID },
+            success: function (i) {
+                if (i >= 1 || i === "-2") {
+                    alert("You have successfully verified and checked the changes done by Inspector.Now You can Freeze the Application.")
+                    document.getElementById("btnForwordFreeze").disabled = false;
+                    document.getElementById("chk1").disabled = true;
+                }           
+                else {
+                    alert("Something went wrong.")
+                }
+               
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+
+    });   
+
+
+</script>

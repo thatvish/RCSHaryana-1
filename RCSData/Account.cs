@@ -1,24 +1,14 @@
-﻿using System;
+﻿using Microsoft.ApplicationBlocks.Data;
+using RCSEntities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RCSEntities;
-using System.Configuration;
-
 
 namespace RCSData
 {
     public class Account
     {
-        #region ConnectionString
-        //SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Dbconnection"].ConnectionString);
-        static string ConStr = "Data Source=localhost;Initial Catalog=NewRcsHry;Integrated Security=True";
-        SqlConnection connection = new SqlConnection(ConStr);
-        #endregion;
-
         #region ValidateUser
         public int ValidateUser(Login objLogin)
         {
@@ -28,12 +18,12 @@ namespace RCSData
 
         public string GetEncrptedSalt(string UserName)
         {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("[dbo].[GetUserEncrptedKey]", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserName", UserName);
-            SqlDataReader rdr = cmd.ExecuteReader();
             string EncryptedSalt = "";
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@UserName",UserName),
+            };
+            SqlDataReader rdr = SqlHelper.ExecuteReader(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[GetUserEncrptedKey]", param);
             if (rdr.HasRows)
             {
                 while (rdr.Read())
@@ -41,124 +31,176 @@ namespace RCSData
                     EncryptedSalt = rdr["Salt"].ToString();
                 }
             }
-            connection.Close();
             return EncryptedSalt;
         }
 
         private int IsValidOrNot(Login objL)
         {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("[dbo].[ValidateUser]", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserName", objL.UserName);
-            cmd.Parameters.AddWithValue("@Password", objL.Password);
-            var details = cmd.ExecuteReader();
-            var statusMaster = new DataTable();
-            if (details.HasRows)
+            SqlParameter[] param = new SqlParameter[]
             {
-                statusMaster.Load(details);
-                return Convert.ToInt16(statusMaster.Rows[0]["LoginId"]);
+                new SqlParameter("@UserName",objL.UserName),
+                new SqlParameter("@Password",objL.Password),
+            };
+            SqlDataReader rdr = SqlHelper.ExecuteReader(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[ValidateUser]", param);
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    return Convert.ToInt16(rdr["LoginId"]);
+                }
             }
-            connection.Close();
             return 0;
         }
 
-        public LoginUserDetails GetLoginUserDetails(int UserId)
+        public LoginUserDetails GetLoginUserDetails(Int64 UserId)
         {
             LoginUserDetails objLUD = new LoginUserDetails();
-            using (SqlConnection con = new SqlConnection(ConStr))
+            SqlParameter[] param = new SqlParameter[]
             {
-                con.Open();
-                SqlCommand com = new SqlCommand("[dbo].[LoginUserDetails]", con);
-                com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@LoginId", UserId);
-                SqlDataReader rdr = com.ExecuteReader();
+                new SqlParameter("@LoginId", UserId),
+            };
+            SqlDataReader rdr = SqlHelper.ExecuteReader(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[LoginUserDetails]", param);
+            if (rdr.HasRows)
+            {
                 while (rdr.Read())
                 {
                     objLUD.UserId = Convert.ToInt32(rdr["LoginId"]);
-                    objLUD.Role = rdr["Role"].ToString();
+                    objLUD.Role = Convert.ToInt32(rdr["Role"].ToString());
                     objLUD.Name = rdr["FirstName"].ToString();
                     objLUD.UserType = Convert.ToInt32(rdr["UserTypeCode"]);
+                    objLUD.UserName = rdr["UserName"].ToString();
+                    objLUD.Salt = rdr["Salt"].ToString();
+                    objLUD.ARCSCode = Convert.ToInt32(rdr["ARCSCode"].ToString());
+                    objLUD.SocietyTransId = rdr["SocietyTransId"].ToString();
+                    objLUD.SocietyStatus = Convert.ToInt32(rdr["SocietyStatus1"]);
+                    objLUD.StatusEditable = Convert.ToInt32(rdr["StatusEditable"]);
+                    objLUD.FormE = Convert.ToInt32(rdr["FormE"]);
+                    objLUD.Total = Convert.ToInt32(rdr["Total"]);
+                    objLUD.BackLogResetStatus = Convert.ToInt32(rdr["BackLogResetStatus"]);
                 }
-                return objLUD;
             }
+            return objLUD;
+        }
+        public LoginUserDetails GetRoleId(Int64 UserId)
+        {
+            LoginUserDetails objLUD1 = new LoginUserDetails();
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@LoginId", UserId),
+            };
+            SqlDataReader rdr = SqlHelper.ExecuteReader(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[GetRoleId]", param);
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    
+                    objLUD1.Role = Convert.ToInt32(rdr["Role"].ToString());
+                    objLUD1.SocietyTransId = rdr["SocietyTransID"].ToString();
+                    objLUD1.UserId = Convert.ToInt32(rdr["LoginID"].ToString());
+                    objLUD1.BackLogResetStatus = Convert.ToInt32(rdr["BackLogResetStatus"].ToString());
+                    objLUD1.SocietyStatus = Convert.ToInt32(rdr["SocietyStatus"].ToString());
+                }
+            }
+            return objLUD1;
+        }
+        public int UpdateLoginAttempts(LoginAttemptsModels objLAM)
+        {
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@LoginAttempts", objLAM.LoginAttempts),
+                new SqlParameter("@UserId", objLAM.UserId),
+            };
+            var details = SqlHelper.ExecuteNonQuery(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[UpdateLoginAttempts]", param);
+            if (details >= 1)
+            {
+                return 1;
+            }
+            return 0;
         }
         #endregion
+
+        public LoginAttemptsModels GetLoginAttempts(string UserId)
+        {
+            LoginAttemptsModels objLAM = new LoginAttemptsModels();
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@UserId", UserId),
+            };
+            SqlDataReader rdr = SqlHelper.ExecuteReader(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[GetLoginAttempts]", param);
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    objLAM.IntervalPending = Convert.ToInt32(rdr["IntervalPending"]);
+                    objLAM.LoginAttempts = Convert.ToInt32(rdr["LoginAttempts"].ToString());
+                }
+            }
+            return objLAM;
+        }
 
         #region UserRegistration
         public List<SecurityQuestionsModels> GetSecurityQuestions()
         {
-            connection.Open();
             List<SecurityQuestionsModels> lstSQM = new List<SecurityQuestionsModels>();
-            SqlCommand cmd = new SqlCommand("[dbo].[GetSecurityQuestions]", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            var dr = cmd.ExecuteReader();
-            var dt = new DataTable();
-            if (dr.HasRows)
+            SqlDataReader rdr = SqlHelper.ExecuteReader(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[GetSecurityQuestions]");
+            if (rdr.HasRows)
             {
-                dt.Load(dr);
-                if (dt.Rows.Count > 0)
+                while (rdr.Read())
                 {
-                    foreach (DataRow r in dt.Rows)
+                    SecurityQuestionsModels objSQM = new SecurityQuestionsModels
                     {
-                        SecurityQuestionsModels objSQM = new SecurityQuestionsModels();
-                        objSQM.QuestionId = Convert.ToInt32(r["QuestionId"]);
-                        objSQM.SecurityQuestion = r["Question"].ToString();
-                        lstSQM.Add(objSQM);
-                    }
+                        QuestionId = Convert.ToInt32(rdr["QuestionId"]),
+                        SecurityQuestion = rdr["Question"].ToString()
+                    };
+                    lstSQM.Add(objSQM);
                 }
             }
-            connection.Close();
             return lstSQM;
         }
 
         public int SaveResgiratedUser(ResgirationModels objRM)
         {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("[dbo].[SaveResgiratedUser]", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Password", objRM.Password);
-            cmd.Parameters.AddWithValue("@DeptID", objRM.DeptID);
-            cmd.Parameters.AddWithValue("@DisCode", objRM.DisCode);
-            cmd.Parameters.AddWithValue("@ARCSCode", objRM.ARCSCode);
-            cmd.Parameters.AddWithValue("@Username", objRM.Username);
-            cmd.Parameters.AddWithValue("@UserTypeCode", objRM.UserTypeCode);
-            cmd.Parameters.AddWithValue("@DeptDesignationCode", objRM.DeptDesignationCode);
-            cmd.Parameters.AddWithValue("@FirstName", objRM.FirstName);
-            cmd.Parameters.AddWithValue("@EmailID", objRM.EmailID);
-            cmd.Parameters.AddWithValue("@IsChanged", objRM.IsChanged);
-            cmd.Parameters.AddWithValue("@CreatedBy", objRM.CreatedBy);
-            cmd.Parameters.AddWithValue("@SecurityQuestionCode", objRM.SecurityQuestionCode);
-            cmd.Parameters.AddWithValue("@SecurityAnswer", objRM.SecurityAnswer);
-            cmd.Parameters.AddWithValue("@Role", objRM.Role);
-            cmd.Parameters.AddWithValue("@Address1", objRM.Address1);
-            cmd.Parameters.AddWithValue("@Address2", objRM.Address2);
-            cmd.Parameters.AddWithValue("@PostalCode", objRM.PostalCode);
-            cmd.Parameters.AddWithValue("@Salt", objRM.Salt);
-            cmd.Parameters.AddWithValue("@DistrictOfOperation", objRM.DistrictOfOperation);
-            cmd.Parameters.AddWithValue("@PostOffice", objRM.PostOffice);
-            cmd.Parameters.AddWithValue("@Age", objRM.Age);
-            cmd.Parameters.AddWithValue("@Gender", objRM.Gender);
-            cmd.Parameters.AddWithValue("@Mobile", objRM.Mobile);
-            cmd.Parameters.AddWithValue("@SocietyStatus", objRM.SocietyStatus);
-            cmd.Parameters.AddWithValue("@SocietyRegistrationNo", objRM.SocietyRegistrationNo);
-            var details = cmd.ExecuteNonQuery();
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@Password", objRM.Password),
+                new SqlParameter("@DeptID", objRM.DeptID),
+                new SqlParameter("@DisCode", objRM.DisCode),
+                new SqlParameter("@Username", objRM.Username),
+                new SqlParameter("@UserTypeCode", objRM.UserTypeCode),
+                new SqlParameter("@DeptDesignationCode", objRM.DeptDesignationCode),
+                new SqlParameter("@FirstName", objRM.FirstName),
+                new SqlParameter("@EmailID", objRM.EmailID),
+                new SqlParameter("@IsChanged", objRM.IsChanged),
+                new SqlParameter("@CreatedBy", objRM.CreatedBy),
+                new SqlParameter("@SecurityQuestionCode", objRM.SecurityQuestionCode),
+                new SqlParameter("@SecurityAnswer", objRM.SecurityAnswer),
+                new SqlParameter("@Role", objRM.Role),
+                new SqlParameter("@Address1", objRM.Address1),
+                new SqlParameter("@Address2", objRM.Address2),
+                new SqlParameter("@PostalCode", objRM.PostalCode),
+                new SqlParameter("@Salt", objRM.Salt),
+                new SqlParameter("@PostOffice", objRM.PostOffice),
+                new SqlParameter("@Age", objRM.Age),
+                new SqlParameter("@Gender", objRM.Gender),
+                new SqlParameter("@Mobile", objRM.Mobile),
+            };
+            var details = SqlHelper.ExecuteNonQuery(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[SaveResgiratedUser]", param);
+
             if (details >= 1)
             {
                 return 1;
             }
-            connection.Close();
             return 0;
         }
 
         public bool ValidateUser(string UserName)
         {
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("[dbo].[CheckUserAvailability]", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserName", UserName);
-            SqlDataReader rdr = cmd.ExecuteReader();
             string status = "";
+            SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@UserName",UserName),
+            };
+            SqlDataReader rdr = SqlHelper.ExecuteReader(Utility.GetConString(), CommandType.StoredProcedure, "[dbo].[CheckUserAvailability]", param);
             if (rdr.HasRows)
             {
                 while (rdr.Read())
@@ -166,7 +208,6 @@ namespace RCSData
                     status = rdr["Status"].ToString();
                 }
             }
-            connection.Close();
             if (status == "TRUE")
             {
                 return true;

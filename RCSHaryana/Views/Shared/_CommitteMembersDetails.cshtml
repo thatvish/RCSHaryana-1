@@ -1,7 +1,39 @@
-﻿<script src="~/scripts/js/managingcommitteMembers.js"></script>
-<div class="col-xs-12 text-right">
-    <button id="AddManagingCommitteMembers" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBoxOfManagingCommitteMember();">Add Managing Committe Members</button><br /><br />
+﻿@*<script src="~/scripts/js/BackLogManagingcommitteMembers.js"></script>*@
+<style>
+    #dvLoading {
+        background: #000 url('../../images/giphy.gif') no-repeat center center;
+        height: 100px;
+        width: 100px;
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        margin: -25px 0 0 -25px;
+    }
+</style>
+<div id="dvLoading" style="display:none"></div>
+<div class="tools row">
+    <div class="col-lg-6 text-left"><a id="BackToApplication" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-left"></span> &nbsp;Step 1</a></div>
+    <div class="col-lg-6 text-right"><a id="NextToSocietyMembers" class="btn btn-flat hidden-xs" href="#"><span class="glyphicon glyphicon-arrow-right"></span> &nbsp;Step 3</a></div>
 </div>
+<div class="col-xs-12 text-right">
+    <button id="AddManagingCommitteMembers" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBoxOfManagingCommitteMember();">Add First Managing Committe Members</button><br /><br />
+</div>
+
+@{
+    //var first = RCSEntities.UserInfo.CitizenInfo.NoOfMembers.ToString();
+    //var second = RCSEntities.UserInfo.CitizenInfo.AddedMember.ToString();
+    var first = Convert.ToString(Convert.ToInt32(Session["NoOfMembers"]));
+    var second = Convert.ToString(Convert.ToInt32(Session["AddedMember"]));
+    if (string.IsNullOrEmpty(first))
+    {
+        first = "0";
+    }
+    if (string.IsNullOrEmpty(second))
+    {
+        second = "0";
+    }
+}
 <div class="col-lg-12">
     <div class="card">
         <div class="card-body">
@@ -16,12 +48,12 @@
                                 Name
                             </th>
                             <th>
-                                Mobile No
+                                Guardian's/ Father's /Husband's Name
                             </th>
-                            @*<th>
-                                    Status
-                                </th>*@
                             <th>
+                                Designation
+                            </th>
+                            <th id="tblactionCommitteMember">
                                 Action
                             </th>
                         </tr>
@@ -37,7 +69,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Add Managing Committe Members</h4>
+                <h4 class="modal-title" id="myModalLabel">Add First Managing Committe Members</h4>
             </div>
             <div class="modal-body">
                 <form class="form form-validate" novalidate="novalidate" accept-charset="utf-8" method="post">
@@ -46,72 +78,28 @@
                             <div class="card-body">
                                 <div class="col-md-6 form-group">
                                     <input type="hidden" class="form-control" id="SocietyMemberID" name="SocietyMemberID">
-                                    <input type="text" class="form-control" id="SocietyMemberName" name="SocietyMemberName" required>
-                                    <label for="SocietyMemberName">1. Society Member Name</label>
+                                    <input pattern="[a-zA-Z0-9.\s]+" type="text" autocomplete="off" class="form-control" id="SocietyMemberName" name="SocietyMemberName" required>
+                                    <label for="SocietyMemberName">1. Society Member Name <span style="color:red;"><strong>*</strong></span></label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input pattern="[a-zA-Z0-9.\s]+" type="text" autocomplete="off" class="form-control" id="RelationshipMemberName" name="RelationshipMemberName" required>
+                                    <label for="RelationshipMemberName">2. Guardian's/ Father's /Husband's Name <span style="color:red;"><strong>*</strong></span></label>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    @Html.DropDownList("ManagingRelationshipName", new SelectList(ViewBag.Relationship as System.Collections.IEnumerable, "Value", "Text"),
+                                                         "Select", new { id = "ManagingRelationshipName", @class = "form-control", required = "required" })
+                                    <label for="SocietyMemberDesignation">3. Relationship With Committee Member <span style="color:red;"><strong>*</strong></span></label>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     @Html.DropDownList("SocietyMemberDesignation", new SelectList(ViewBag.MemberCommDesignation as System.Collections.IEnumerable, "Value", "Text"),
                                                      "Select", new { id = "SocietyMemberDesignation", @class = "form-control", required = "required" })
-                                    <label for="SocietyMemberDesignation">2. Society Member Designation</label>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="RelationshipMemberName" name="RelationshipMemberName" required>
-                                    <label for="RelationshipMemberName">3. Guardian Name</label>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    @Html.DropDownList("RelationshipCode", new SelectList(ViewBag.Relationship as System.Collections.IEnumerable, "Value", "Text"),
-                                                     "Select", new { id = "RelationshipCode", @class = "form-control", required = "required" })
-                                    <label for="RelationshipCode">3.1 Relationship with Committee Member</label>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="Address" name="Address" required>
-                                    <label for="Address">4. Address</label>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="HouseNo" name="HouseNo" required>
-                                    <label for="HouseNo">4.1 House No.</label>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="SectorStreet" name="SectorStreet{i}" required>
-                                    <label for="SectorStreet">4.2 Sector/Street</label>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    @Html.DropDownList("CommitteMemberDistrict", new SelectList(ViewBag.CommitteMemberDistrict as System.Collections.IEnumerable, "Value", "Text"),
-                                                     "Select", new { id = "CommitteMemberDistrict", @class = "form-control", required = "required" })
-                                    <label for="District">4.3 District</label>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="MobileNumber" name="MobileNumber" data-rule-digits="true" maxlength="10" minlength="10" required>
-                                    <label for="Mobile">5. Mobile</label>
-                                    <p class="help-block">10 digit mobile no</p>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="email" class="form-control" id="Email" name="Email" required>
-                                    <label for="Email">5.1 Email</label>
-                                    <p class="help-block">example@example.com</p>
-                                </div>
-                                <div id="divAadharNo" class="col-md-6 form-group">
-                                    <input type="text" class="form-control AadharNo" id="AadharNo" name="AadharNo" data-rule-digits="true" maxlength="12" minlength="12" required>
-                                    <label id="result" for="AadharNo">6. AadharNo</label>
-                                    <p class="help-block">12 aadhar no</p>
-                                </div>
-                                <div hidden="hidden" class="col-md-6 form-group">
-                                    <div class="checkbox checkbox-styled">
-                                        <label>
-                                            <input type="checkbox" class="checkbox checkbox-inline checkbox-styled" id="IsPresident" name="IsPresident" onchange="isChecked(this, 'Save')">
-                                            <label for="IsPriesdent"><span>Check any one person’s details for further correspondence</span></label>
-                                        </label>
-                                    </div>
+                                    <label for="SocietyMemberDesignation">4. Society Member Designation <span style="color:red;"><strong>*</strong></span></label>
                                 </div>
                             </div>
                         </div>
-                        @*<div class="col-xs-6 text-center">
-                                <button class="btn btn-primary btn-success" id="Save" type="submit" disabled="disabled">Save As Draft</button>
-                                &nbsp;&nbsp;&nbsp; <label class="small info">kindly select persident then button will be enable</label>
-                            </div>*@
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddManagingCommitteMember();">Add</button>
-                            <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="UpdateManagingCommitteMember();">Update</button>
+                            <button type="button" class="btn btn-primary" id="btnAdd11" onclick="return AddManagingCommitteMember();">Add</button>
+                            <button type="button" class="btn btn-primary" id="btnUpdate11" style="display:none;" onclick="UpdateManagingCommitteMember();">Update</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -122,11 +110,23 @@
 </div>
 <style>
     .cus-modal-div .modal-dialog {
-    width: 70% !important;
-}
+        width: 70% !important;
+    }
 </style>
 <script>
+    $(document).ready(function () {
+        var f1 = @first;
+        var f2 = @second;
+        if(f1==f2 && f1>"0" && f2>"0")
+        {
+            $('#AddManagingCommitteMembers').hide();
+            //event.preventDefault();
+        }
+    });
+
     $('#AddManagingCommitteMembers').click(function () {
         $("#result").html("<span style='color:#333'>6. AadharNo</span>");
     });
+
+
 </script>

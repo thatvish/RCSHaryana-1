@@ -1,0 +1,138 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-12 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="NameofProposedSociety" name="NameofProposedSociety" value="" required readonly>
+                    <label for="NameofProposedSociety">1. Name of Proposed Society</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="ClassofSocietyandLiability" name="ClassofSocietyandLiability" required readonly>
+                    <label for="ClassofSocietyandLiability">2. Class of Society and Liability</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="SocietySubClassCode" name="SocietySubClassCode" required readonly>
+                    <label for="SocietySubClassCode">2.1 Sub Class Of Society</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="RegisteredAddress" name="RegisteredAddress" required readonly>
+                    <label for="RegisteredAddress">3. Registered Address</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="HouseNoSectorNoRoad" name="HouseNoSectorNoRoad" required readonly>
+                    <label for="HouseNoSectorNoRoad">3.1 House No. /Sector No. /Road</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="PostOffice" name="PostOffice" required readonly>
+                    <label for="PostOffice">3.2 Post Office</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="PostalCode" name="PostalCode" data-rule-number="true" maxlength="6" pattern="[0-9]{6}" required readonly>
+                    <label for="PostalCode">3.3 Postal Code</label>
+                </div>
+                @*<div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="AreaofOperation" name="AreaofOperation" required readonly>
+                    <label for="AreaofOperation">4. Area of Operation</label>
+                </div>*@
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Mainobjects1" name="Mainobject1" required readonly>
+                    <label for="Mainobjects">4. Main objects</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Mainobjects2" name="Mainobject2" readonly>
+                    <label for="Mainobjects1">4.1 Main objects</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Mainobjects3" name="Mainobject3" readonly>
+                    <label for="Mainobjects2">4.2 Main objects</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Mainobjects4" name="Mainobject4" readonly>
+                    <label for="Mainobjects3">4.3 Main objects</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Noofmemberspresent" name="Noofmemberspresent" data-rule-number="true" data-rule-range="[1,100]" maxlength="2" required readonly>
+                    <label for="Noofmemberspresent">5. No of members at present</label>
+                </div>
+                @*<div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Occupation" name="Occupation" readonly>
+                    <label for="Occupation">6. Select Occupation</label>
+                </div>*@
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Categoryofsociety" name="Categoryofsociety" readonly>
+                    <label for="Categoryofsociety">7. Category of society</label>
+                    <p class="help-block">(if any)</p>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Estimatedunsecureddebtsofmembers" name="Estimatedunsecureddebtsofmembers" readonly>
+                    <label for="Estimatedunsecureddebtsofmembers">8. Estimated unsecured debts of members</label>
+                    <p class="help-block"> (in case of credit society)</p>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="AreaMortgagedbymembers" name="AreaMortgagedbymembers" readonly>
+                    <label for="AreaMortgagedbymembers">9. Area Mortgaged by members</label>
+                    <p class="help-block"> (in case of credit society)</p>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="Valueofashare" name="Valueofashare" required readonly>
+                    <label for="Valueofashare">10. Value of a share</label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="detailsofshares" name="detailsofshares" required readonly>
+                    <label for="detailsofshares">11. Capital with details</label>
+                    <p class="help-block">of shares, deposits fee etc.</p>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input type="text" autocomplete="off" class="form-control" id="ModeofPayment" name="ModeofPayment" required readonly>
+                    <label for="ModeofPayment">12. Mode of Payment</label>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-head style-primary-light">
+                    <header>Correspondence Address</header>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-6 form-group">
+                        <input readonly type="text" class="form-control" id="Name1" autocomplete="off" name="Name1" required>
+                        <label for="Name">1. Name </label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input readonly type="text" class="form-control" id="FatherName1" autocomplete="off" name="FatherName1" required>
+                        <label for="Name">1.2 Father's Name </label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input readonly type="text" class="form-control" id="Mobile1" name="Mobile1" autocomplete="off" required data-rule-digits="true" maxlength="10" minlength="10">
+                        <label for="Mobile">2. Mobile </label>
+                        <p class="help-block">10 digit mobile no</p>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input readonly type="email" class="form-control" id="Email1" name="Email1" autocomplete="off" required>
+                        <label for="Email">3. Email </label>
+                        <p class="help-block">example@example.com</p>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input readonly pattern="[a-zA-Z0-9(),\s]+" type="text" class="form-control" id="Address3" name="Address3" autocomplete="off" required>
+                        <label for="Address">4. Address </label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input readonly pattern="[a-zA-Z0-9(),\s]+" type="text" class="form-control" id="HouseNoSectorNoRoad1" name="HouseNoSectorNoRoad1" autocomplete="off" required>
+                        <label for="HouseNoSectorNoRoad">5 House No. /Sector No. /Road </label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input readonly pattern="[a-zA-Z0-9\s]+" type="text" class="form-control" id="PostOffice1" name="PostOffice1" autocomplete="off" required>
+                        <label for="PostOffice">6 Post Office</label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input readonly type="text" class="form-control" id="PostalCode1" name="PostalCode1" autocomplete="off" data-rule-number="true" maxlength="6" pattern="[0-9]{6}" required>
+                        <label for="PostalCode">7 Postal Code </label>
+                        <p class="help-block">Six digit zip code</p>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <input readonly pattern="[a-zA-Z0-9\s]+" type="text" class="form-control" id="DistrictForUser1" name="DistrictForUser1" autocomplete="off" required>
+                        <label for="PostOffice">8 District </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

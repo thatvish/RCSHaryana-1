@@ -1,12 +1,26 @@
 ﻿<script>
     $(document).ready(function () {
-        $('.gui-controls li a').click(function (e) {
-            $('.gui-controls li.active').removeClass('active');
-            var $parent = $(this).parent();
-            $parent.addClass('active');
-           // e.preventDefault();
-        });
+        var liId = localStorage.getItem("liId");
+        var aId = localStorage.getItem("aId");
+        if (liId !== "undefined" && aId !== "undefined") {
+            $('#' + liId).addClass("active expanded");
+            $('#' + aId).addClass("active");
+        } else {
+            $('#liApplication').addClass("active expanded");
+            $('#aApplication').addClass("active");
+            // Sorry! No Web Storage support..
+        }
     });
+
+    function liClick(obj) {
+        var liId = $(obj).attr('id');
+        localStorage.setItem("liId", liId);
+    }
+
+    function aClick(obj) {
+        var aId = $(obj).attr('id');
+        localStorage.setItem("aId", aId);
+    }
 </script>
 <div id="menubar" class="menubar-inverse ">
     <div class="menubar-fixed-panel">
@@ -24,33 +38,38 @@
     <div class="menubar-scroll-panel">
         <!-- BEGIN MAIN MENU -->
         <ul id="main-menu" class="gui-controls">
-            <!-- BEGIN DASHBOARD -->
-            <li>
-                <a href="">
+            <li onClick="return liClick(this);" id="liApplication">
+                <a onClick="return aClick(this);" id="aApplication" href="@Url.Action("Application", "Society")">
                     <div class="gui-icon"><i class="md md-home"></i></div>
-                    <span class="title">Dashboard</span>
+                    <span class="title">Fill Application</span>
                 </a>
             </li>
-            <li class="gui-folder">
+
+            <li id="step2" class="gui-folder">
                 <a>
                     <div class="gui-icon"><span class="glyphicon glyphicon-list-alt"></span></div>
-                    <span class="title">Forms</span>
+                    <span class="title">Step 2nd Download</span>
                 </a>
                 <ul>
-                    <li>
-                        <a href="@Url.Action("Application", "Society")">
-                            <span class="title">Form B</span>
-                        </a>
-                    </li>
-                    <li><a href="@Url.Action("Application", "Society")"><span class="title">Form C</span></a></li>
-                    <li><a href="@Url.Action("Application", "Society")"><span class="title">Form D</span></a></li>
-                    <li><a href=""><span class="title">Form E</span></a></li>
+                    <li onClick="return liClick(this);" id="liFormLD"><a id="aFormLD" onClick="return aClick(this);" href="@Url.Action("FormL", "Downloads")"><span class="title">Form L</span></a></li>
+                    <li onClick="return liClick(this);" id="liFormCD"><a id="aFormCD" onClick="return aClick(this);" href="@Url.Action("FormC", "Downloads")"><span class="title">Form C</span></a></li>
+                    <li onClick="return liClick(this);" id="liFormDD"><a id="aFormDD" onClick="return aClick(this);" href="@Url.Action("FormD", "Downloads")"><span class="title">Form D</span></a></li>
+                    <li onClick="return liClick(this);" id="liFormED"><a id="aFormED" onClick="return aClick(this);" href="@Url.Action("FormE", "Downloads")"><span class="title">Form E</span></a></li>
                 </ul>
             </li>
-            <li>
-                <a href="">
-                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
-                    <span class="title">Setting</span>
+            <li id="step3" class="gui-folder">
+                <a>
+                    <div class="gui-icon"><span class="glyphicon glyphicon-list-alt"></span></div>
+                    <span class="title">Step 3rd Upload</span>
+                </a>
+                <ul>
+                    <li onClick="return liClick(this);" id="liFormAU"><a id="aFormAU" onClick="return aClick(this);" href="@Url.Action("FormA", "Society")"><span class="title">Form A</span></a></li>
+                </ul>
+            </li>
+            <li onClick="return liClick(this);" id="liStatus">
+                <a id="aFormStatus" onClick="return aClick(this);" href="@Url.Action("Status", "Society")">
+                    <div class="gui-icon"><i class="md-swap-horiz"></i></div>
+                    <span class="title">Status</span>
                 </a>
             </li>
         </ul><!--end .main-menu -->
@@ -62,3 +81,85 @@
         </div>
     </div><!--end .menubar-scroll-panel-->
 </div>
+<script src="/Content/assets/js/libs/jquery/BootStrapTour.js"></script>
+<link href="/Content/assets/css/theme-default/BootStrapTour.css" rel="stylesheet" />
+<script>
+    $(function () {
+        var tour = new Tour({
+            debug: true,
+            storage: false,
+            steps: [
+            {
+                element: "#step1",
+                title: "STEP - 1 INPUT",
+                content: "<ul>" +
+                         "<div><li><strong>1. Form B which in available in three tabs</strong></li> " +
+                         "<li><strong>a. Society Details</strong></li></div>" +
+                         "<span class='readmore' style='color:red'><strong>Read More...</strong></span><div class='message'>" +
+                         "<li><strong>b. Managing Committee Members</strong></li>" +
+                         "<li><strong>c. List of Members. Here each members scanned image (Size 50KB to 150KB) is to be uploaded.</strong></li>" +
+                         "<li><strong>2. Fill Form D by clicking on the Receipt</strong></li>" +
+                         "<li><strong>a. Share Money and Admission Fee is compulsory. Deposits is Optional</strong></li>" +
+                         "<li><strong>b. Total shall be automatically generated</strong></li>" +
+                         "<li><strong>6. Fill Form E by marking the check boxes for custodian of books</strong></li>" +
+                         "<li><strong>7. This completes the STEP 1. Unless STEP 1 is completed STEP 2 cannot be executed.</strong></li>" +
+                         "</div></ul>",
+                onShown: function () {
+                    $(".popover-content .message").css('display', 'none');
+                    $("span.readmore").click(function () {
+                        $(".message").css('display', 'block');
+                        $(this).css('display', 'none');
+                    });
+                },
+                placement: "right"
+            },
+            {
+                element: "#step2",
+                title: "STEP -2 DOWNLOAD",
+                content: "<ul>" +
+                       "<div><li><strong>1. Download Auto generated L Form, Form C, Form D and Form E.</strong></li> " +
+                       "<li><strong>2. Manual Signature is to be stamped in each form.</li></div></ul>",
+                placement: "right",
+                onShow: function () {
+                    return $("#appSettings").addClass("open");
+                },
+                onHide: function () {
+                    $("#appSettings").removeClass("open");
+                }
+            },
+            {
+                element: "#step3",
+                title: "STEP -3 UPLOAD",
+                content: "<ul>" +
+                  "<div><li><strong>1. Form A shall be available with all enclosures.</strong></li> " +
+                  "<li><strong>2. Browse and Upload the Signed L Form, Form C, Form D and Form E.</strong></li></div>" +
+                  "<li><strong>3. Once uploaded the Form cannot be changed as it is forwarded to ARCS.</strong></li>" +
+                  "</div></ul>",
+                placement: "right",
+                onShow: function () {
+                    return $("#appSettings").addClass("open");
+                },
+                onHide: function () {
+                    $("#appSettings").removeClass("open");
+                }
+            },
+            {
+                element: "#step4",
+                title: "Society Status",
+                content: "Status of the application can be tracked by the Applicant.",
+                placement: "right",
+                onShow: function () {
+                    return $("#appSettings").addClass("open");
+                },
+                onHide: function () {
+                    $("#appSettings").removeClass("open");
+                }
+            }
+            ]
+        });
+        $('#tour-go').click(function () {
+            tour.init();
+            tour.start();
+        });
+    });
+</script>

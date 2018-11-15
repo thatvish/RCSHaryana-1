@@ -1,0 +1,131 @@
+﻿<script>
+    $(document).ready(function () {
+        var liId = localStorage.getItem("liId");
+        var aId = localStorage.getItem("aId");
+        $('#' + liId).addClass("active expanded");
+        $('#' + aId).addClass("active");
+
+        @*  backlog Id generated on 10-07- 2018 *@
+
+        var Bck_liId = localStorage.getItem("Bck_liId");
+        var Bck_aId = localStorage.getItem("Bck_aId");
+        $('#' + Bck_liId).addClass("active expanded");
+        $('#' + Bck_aId).addClass("active");
+    });
+    function liClick(obj) {
+        var liId = $(obj).attr('id');
+        localStorage.setItem("liId", liId);
+    }
+
+    function aClick(obj) {
+        var aId = $(obj).attr('id');
+        localStorage.setItem("aId", aId);
+    }
+</script>
+<div id="menubar" class="menubar-inverse">
+    <input type="hidden" value="" id="bckvalue"/>
+    <div class="menubar-fixed-panel">
+        <div>
+            <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <div class="expanded">
+            <a href="@Url.Action("Dashboard", "ARCS")">
+                <span class="text-lg text-bold text-primary ">RCS&nbsp;HARYANA</span>
+            </a>
+        </div>
+    </div>
+    <div class="menubar-scroll-panel">
+        <!-- BEGIN MAIN MENU -->
+        <ul id="main-menu" class="gui-controls">
+            <!-- BEGIN DASHBOARD -->
+            <li onClick="return liClick(this);" id="liARCSDashboard">
+                <a id="aARCSDashboard" onClick="return aClick(this);" href="@Url.Action("Dashboard", "ARCS")">
+                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            
+            <li onClick="return liClick(this);" id="liARCSSocietyMemberDetails">
+                <a id="aARCSSocietyMemberDetails" onClick="return aClick(this);" href="@Url.Action("SocietyMemberDetails", "ARCS")">
+                    <div class="gui-icon"><i class="md md-access-time"></i></div>
+                    <span class="title">Pending Societies</span>
+                </a>
+            </li>
+            <li onClick="return liClick(this);" id="liARCSPendingAction">
+                <a id="aPendingAction" onClick="return aClick(this);" href="@Url.Action("PendingAction", "ARCS")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">From Inspector</span> 
+                </a>
+            </li>
+            <li onClick="return liClick(this);" id="liARCSApprovedSociety">
+                <a id="aApprovedSociety" onClick="return aClick(this);" href="@Url.Action("ApprovedSociety", "ARCS")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Approved Societies</span>
+                </a>
+            </li>
+            @*<li onClick="return liClick(this);" id="liIEclick">
+                <a href="#">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Import Export File</span>
+                </a>
+                <ul>
+                    <li><a href="~/ImportExcel/BacklogExcelFormat.xlsx"><span class="title">Download Excel File</span></a></li>
+                    <li><a href="@Url.Action("UploadExcel", "ARCS" )"><span class="title">Upload Excel File</span></a></li>
+                </ul>
+            </li>*@
+            <li onClick="return liClick(this);" id="liARCSListPassword">
+                <a id="aARCSListPassword" onClick="return aClick(this);" href="@Url.Action("ListPassword", "ARCS")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Print Password</span>
+                </a>
+            </li>
+            @*<li>
+                <a href="@Url.Action("CreatePasswordBackLog", "ARCS")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Get User Credential</span>
+                </a>
+            </li>*@
+        </ul><!--end .main-menu -->
+        <ul id="backlog-menu" class="gui-controls">
+            <!-- BEGIN DASHBOARD -->
+            <li onClick="return liClick(this);" id="liARCSDashboardBacklog">
+                <a id="aARCSDashboardBacklog" onClick="return aClick(this);" href="@Url.Action("BackLogDashboard", "BackLogOfficer")">
+                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <span class="title">BackLog Dashboard</span>
+                </a>
+            </li>
+            <li onClick="return liClick(this);" id="liBackARCSSocietyMemberDetails">
+                <a id="aBackARCSSocietyMemberDetails" onClick="return aClick(this);" href="@Url.Action("BackLogMemberDetail", "BackLogOfficer")">
+                    <div class="gui-icon"><i class="md md-access-time"></i></div>
+                    <span class="title">Pending Societies</span>
+                </a>
+            </li>
+            <li onClick="return liClick(this);" id="liBackARCSPendingAction">
+                <a id="aBackPendingAction" onClick="return aClick(this);" href="@Url.Action("BackLogPendingAction", "BackLogOfficer")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">From Inspector</span>
+                </a>
+            </li>
+            <li id="liTotalFreeze" onClick="return liClick(this);">
+                <a id="aBackTotalFreezeApp" onClick="return aClick(this);" href="@Url.Action("TotalFreeze", "BackLogOfficer")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">Total Freeze Application</span>
+                </a>
+            </li>
+            <li id="liBackclickhistory" onClick="return liClick(this);">
+                <a id="aBackHistory" onClick="return aClick(this);" href="@Url.Action("BackLogHistory", "BackLogOfficer")">
+                    <div class="gui-icon"><i class="fa fa-puzzle-piece fa-fw"></i></div>
+                    <span class="title">See History</span>
+                </a>
+            </li>
+        </ul><!--end .main-menu -->
+        <!-- END MAIN MENU -->
+        <div class="menubar-foot-panel">
+            <small class="no-linebreak hidden-folded">
+                <span class="opacity-75">Copyright &copy; 2018</span> <strong>NIC</strong>
+            </small>
+        </div>
+    </div><!--end .menubar-scroll-panel-->
+</div>
